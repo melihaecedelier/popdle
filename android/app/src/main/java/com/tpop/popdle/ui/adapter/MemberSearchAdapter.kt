@@ -1,6 +1,8 @@
 package com.tpop.popdle.ui.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,10 +38,20 @@ class MemberSearchAdapter(
         val tvSub = view.findViewById<TextView>(R.id.tvDropdownSub)
         val tvBadge = view.findViewById<TextView>(R.id.tvDropdownGroupBadge)
 
-        tvAvatar.text = member.name.firstOrNull()?.toString() ?: "T"
+        tvAvatar.text = member.groupIconEmoji
+        try {
+            val bg = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setColor(Color.parseColor(member.avatarBgColor))
+            }
+            tvAvatar.background = bg
+        } catch (e: Exception) {
+            tvAvatar.setBackgroundResource(R.drawable.bg_gradient_button)
+        }
+
         tvName.text = member.name
-        tvSub.text = "${member.group} • ${member.roleDisplay}"
-        tvBadge.text = member.group
+        tvSub.text = "${member.groupIconEmoji} ${member.group} • ${member.roleDisplay}"
+        tvBadge.text = "${member.groupIconEmoji} ${member.group}"
 
         return view
     }

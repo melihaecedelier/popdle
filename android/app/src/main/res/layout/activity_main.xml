@@ -69,11 +69,96 @@
                     android:src="@drawable/ic_fire" />
             </LinearLayout>
 
+            <!-- 6 T-POP GRUBU GÖRSEL ROZETLERİ -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="✨ Manifest"
+                        android:textColor="#EC4899"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="⚡ Crush"
+                        android:textColor="#EA580C"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="🔮 Karma"
+                        android:textColor="#A855F7"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="🌟 Aura"
+                        android:textColor="#06B6D4"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="🪷 Mantra"
+                        android:textColor="#F59E0B"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_card_neutral"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="🔥 Radikal"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
             <!-- Günlük Seri ve Puan Kartı -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_card_neutral"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -181,7 +266,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Manifest ve yeni nesil T-Pop gruplarından günün gizli üyesini özellikleriyle bul!"
+                        android:text="Manifest, Crush, Karma, Aura, Mantra ve Radikal gruplarından günün gizli üyesini bul!"
                         android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
 
@@ -242,7 +327,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Rastgele seçilen T-Pop üyeleriyle dilediğin kadar oyna, kendini hazırla."
+                        android:text="6 T-Pop grubundan rastgele seçilen üyelerle sınırsız tahmin yapın."
                         android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -279,6 +364,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvClueTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -291,20 +377,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="İkonik şarkı sözünden ve gizli ipuçlarından hangi üye olduğunu bil!"
+                        android:text="İkonik şarkı sözünden ve gizli özelliklerden hangi üye olduğunu bil!"
                         android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Alt Bilgi / Manifest Vurgusu -->
+            <!-- Alt Bilgi / 6 Grup İmzası -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="Manifest, KÖFN, Madrigal ve T-Pop Kültürü ile Geliştirildi\nMobil Programlama Vize Projesi"
+                android:text="Manifest • Crush • Karma • Aura • Mantra • Radikal\nMobil Programlama Vize Projesi"
                 android:textColor="@color/text_muted"
                 android:textSize="11sp" />
         </LinearLayout>

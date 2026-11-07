@@ -1,9 +1,10 @@
 package com.tpop.popdle.ui.adapter
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.tpop.popdle.R
 import com.tpop.popdle.data.model.MatchStatus
@@ -16,7 +17,7 @@ class GuessAdapter(
 ) : RecyclerView.Adapter<GuessAdapter.GuessViewHolder>() {
 
     fun addGuess(comparison: MemberGuessComparison) {
-        guesses.add(0, comparison) // En yeni tahmin en üstte görünsün
+        guesses.add(0, comparison)
         notifyItemInserted(0)
     }
 
@@ -45,14 +46,23 @@ class GuessAdapter(
 
         fun bind(comparison: MemberGuessComparison) {
             val member = comparison.guessedMember
-            val context = binding.root.context
 
-            // 1. Üye Bilgisi
+            // 1. Üye Bilgisi ve Görsel Avatar Rozeti
             binding.tvMemberName.text = member.name
-            binding.tvMemberAvatar.text = member.name.firstOrNull()?.toString() ?: "T"
+            binding.tvMemberAvatar.text = member.groupIconEmoji
 
-            // 2. Grup
-            binding.tvGroupName.text = member.group
+            try {
+                val shape = GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    setColor(Color.parseColor(member.avatarBgColor))
+                }
+                binding.tvMemberAvatar.background = shape
+            } catch (e: Exception) {
+                binding.tvMemberAvatar.setBackgroundResource(R.drawable.bg_gradient_button)
+            }
+
+            // 2. Grup ve Grup İkonu
+            binding.tvGroupName.text = "${member.groupIconEmoji} ${member.group}"
             binding.boxGroup.setBackgroundResource(getBackgroundForStatus(comparison.groupMatch))
 
             // 3. Cinsiyet

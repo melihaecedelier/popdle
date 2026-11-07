@@ -16,27 +16,26 @@
     .tile-flip {
       animation: flipIn 0.5s ease forwards;
     }
-    /* Hide scrollbars for clean mobile feel */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 select-none font-sans">
 
-  <!-- Mobil Çerçeve / Konteyner -->
+  <!-- Mobil Çerçeve / Ana Konteyner -->
   <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden min-h-[92vh]">
     
     <!-- Üst Bar: Logo, Seri ve İkonlar -->
     <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 px-4 py-3 flex items-center justify-between sticky top-0 z-20">
       <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-black text-white text-lg shadow-md shadow-pink-500/20">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-purple-500/20">
           P
         </div>
         <div>
-          <h1 class="text-xl font-black tracking-wider text-white flex items-center gap-1">
-            POPDLE <span class="text-[10px] bg-pink-500/20 text-pink-400 border border-pink-500/30 px-1.5 py-0.5 rounded font-bold">T-POP</span>
+          <h1 class="text-xl font-black tracking-wider text-white flex items-center gap-1.5">
+            POPDLE <span class="text-[10px] bg-pink-500/20 text-pink-400 border border-pink-500/30 px-1.5 py-0.5 rounded-full font-bold">T-POP</span>
           </h1>
-          <p class="text-[11px] text-slate-400 font-medium">Manifest & T-Pop Tahmin Oyunu</p>
+          <p class="text-[11px] text-slate-400 font-medium">Manifest • Crush • Karma • Aura • Mantra • Radikal</p>
         </div>
       </div>
 
@@ -51,6 +50,30 @@
       </div>
     </header>
 
+    <!-- 6 T-POP GRUBU GÖRSEL ROZETLERİ (YATAY KAYDIRILABİLİR) -->
+    <div class="overflow-x-auto no-scrollbar bg-slate-950/80 border-b border-slate-800 py-2 px-3">
+      <div class="flex gap-2 min-w-max text-[11px] font-bold">
+        <span class="px-2.5 py-1 rounded-full bg-pink-950/70 border border-pink-500/40 text-pink-300 flex items-center gap-1 shadow-sm">
+          <span>✨</span> Manifest
+        </span>
+        <span class="px-2.5 py-1 rounded-full bg-red-950/70 border border-red-500/40 text-red-300 flex items-center gap-1 shadow-sm">
+          <span>⚡</span> Crush
+        </span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-950/70 border border-purple-500/40 text-purple-300 flex items-center gap-1 shadow-sm">
+          <span>🔮</span> Karma
+        </span>
+        <span class="px-2.5 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 flex items-center gap-1 shadow-sm">
+          <span>🌟</span> Aura
+        </span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-950/70 border border-amber-500/40 text-amber-300 flex items-center gap-1 shadow-sm">
+          <span>🪷</span> Mantra
+        </span>
+        <span class="px-2.5 py-1 rounded-full bg-rose-950/70 border border-rose-500/40 text-rose-300 flex items-center gap-1 shadow-sm">
+          <span>🔥</span> Radikal
+        </span>
+      </div>
+    </div>
+
     <!-- Mod Seçim Sekmeleri (Tabs) -->
     <div class="grid grid-cols-3 bg-slate-950 p-1 border-b border-slate-800 text-xs font-bold">
       <button id="tabDaily" class="py-2 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow">
@@ -60,7 +83,7 @@
         <span>♾️</span> Pratik
       </button>
       <button id="tabClue" class="py-2 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
-        <span>💡</span> İpucu
+        <span>🖼️</span> Görsel & İpucu
       </button>
     </div>
 
@@ -72,8 +95,8 @@
         
         <!-- Üst Bilgi Barı -->
         <div class="flex items-center justify-between mb-3 text-xs">
-          <span id="modeBadge" class="bg-purple-950 text-purple-300 border border-purple-800 px-2 py-0.5 rounded-full font-semibold">
-            Günün Gizli Üyesi
+          <span id="modeBadge" class="bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
+            <span>⭐</span> Günün Gizli Üyesi
           </span>
           <span id="attemptCountBadge" class="text-slate-400">
             Tahmin: <strong class="text-white" id="attemptsNum">0</strong>
@@ -86,7 +109,7 @@
             <input 
               id="memberInput" 
               type="text" 
-              placeholder="T-Pop üyesi arayın (Örn: Sueda, Hilal, Salman...)" 
+              placeholder="Üye veya grup arayın (Örn: Sueda, Derin, Melis...)" 
               class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition shadow-inner"
               autocomplete="off"
             />
@@ -98,17 +121,17 @@
             </button>
           </div>
 
-          <!-- Canlı Autocomplete Öneri Listesi -->
+          <!-- Canlı Autocomplete Öneri Listesi (Görsel Avatarlı) -->
           <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50">
             <!-- Dinamik doldurulacak -->
           </div>
         </div>
 
-        <!-- LoLdle Tablo Başlıkları (Yatay Kaydırılabilir) -->
+        <!-- LoLdle Tablo Başlıkları -->
         <div class="overflow-x-auto no-scrollbar bg-slate-950/70 border border-slate-800 rounded-xl py-2 px-1 mb-2">
-          <div class="flex text-[11px] font-bold text-slate-400 min-w-[540px] px-1 text-center">
-            <div class="w-[85px]">Üye</div>
-            <div class="w-[75px]">Grup</div>
+          <div class="flex text-[11px] font-bold text-slate-400 min-w-[550px] px-1 text-center">
+            <div class="w-[90px]">Görsel / Üye</div>
+            <div class="w-[80px]">Grup</div>
             <div class="w-[65px]">Cinsiyet</div>
             <div class="w-[100px]">Rol / Görev</div>
             <div class="w-[70px]">Yaş</div>
@@ -121,47 +144,66 @@
         <div id="guessesList" class="flex-1 flex flex-col space-y-2 overflow-y-auto no-scrollbar">
           <!-- Boş Durum Karşılama Kartı -->
           <div id="emptyStateBox" class="flex-1 flex flex-col items-center justify-center p-6 text-center text-slate-400">
-            <div class="w-14 h-14 rounded-2xl bg-purple-950/50 border border-purple-800/50 flex items-center justify-center text-2xl mb-3">
-              🎤
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-500/20 via-purple-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl mb-3 shadow-inner">
+              ✨
             </div>
-            <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
+            <h3 class="text-sm font-bold text-white mb-1">İlk T-Pop Tahmininizi Yapın!</h3>
             <p class="text-xs text-slate-400 max-w-xs">
-              Manifest, KÖFN, Madrigal veya Grup Hepsi üyelerinden bir isim yazarak ipuçlarını açığa çıkarın.
+              Manifest, Crush, Karma, Aura, Mantra veya Radikal üyelerinden bir isim yazarak özellikleri eşleştirin.
             </p>
           </div>
         </div>
 
       </section>
 
-      <!-- İPUCU / ŞARKI SÖZÜ MODU GÖRÜNÜMÜ -->
+      <!-- GÖRSEL FOTOĞRAF & İPUCU MODU GÖRÜNÜMÜ -->
       <section id="clueSection" class="flex flex-col flex-1 hidden">
         <div class="flex items-center justify-between mb-3 text-xs">
-          <span class="bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-0.5 rounded-full font-semibold">
-            Şarkı Sözü & Alıntı Modu
+          <span class="bg-cyan-950 text-cyan-300 border border-cyan-800 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
+            <span>🖼️</span> Görsel Silüet & İpucu Modu
           </span>
           <span id="clueAttemptsBadge" class="text-pink-400 font-bold">Kalan Hak: 5</span>
         </div>
 
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 mb-4">
+        <!-- GÖRSEL SİLÜET / BULANIK FOTOĞRAF KARTI -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 mb-4 flex flex-col items-center">
+          
+          <div class="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-slate-700 bg-slate-950 shadow-xl flex items-center justify-center my-1">
+            <!-- Dinamik Avatar / Silüet -->
+            <div id="silhouetteAvatar" class="w-full h-full flex flex-col items-center justify-center text-4xl filter blur-md brightness-50 transition-all duration-700 transform scale-110">
+              🎤
+            </div>
+            <!-- Kilit İkonu -->
+            <div id="silhouetteLock" class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-xs font-bold text-white">
+              <span class="text-xl mb-1">🔒</span>
+              <span class="text-[10px] text-amber-300 font-medium">Bulanık Silüet</span>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-400 mt-2 text-center">
+            Her yanlış tahminde görsel netleşir ve yeni ipuçları açılır!
+          </p>
+
+          <div class="w-full my-3 border-t border-slate-700/60"></div>
+
+          <!-- Şarkı Sözü / Alıntı -->
           <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-2 py-0.5 rounded">
             Şarkı Sözü / Alıntı
           </span>
-          <blockquote id="clueQuoteText" class="mt-3 text-base font-bold italic text-white leading-snug">
+          <blockquote id="clueQuoteText" class="mt-2 text-center text-sm font-bold italic text-white leading-snug">
             “Manifest'in sahnedeki ses tüneli ve lider vokali!”
           </blockquote>
 
-          <div class="my-4 border-t border-slate-700/60"></div>
-
-          <div class="text-[11px] font-bold text-slate-400 mb-2">Kademeli İpuçları (Yanlış Tahminde Açılır):</div>
-          <div class="space-y-1.5 text-xs">
+          <!-- Kademeli İpuçları -->
+          <div class="w-full mt-3 space-y-1.5 text-xs">
             <div id="clueStage1" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
-              🔒 İpucu 1: 1. Yanlış Tahminde Açılır (Cinsiyet & Burç)
+              🔒 İpucu 1: 1. Yanlışta Açılır (Cinsiyet & Burç)
             </div>
             <div id="clueStage2" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
-              🔒 İpucu 2: 2. Yanlış Tahminde Açılır (Grup & Rol)
+              🔒 İpucu 2: 2. Yanlışta Açılır (Grup & Rol)
             </div>
             <div id="clueStage3" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
-              🔒 İpucu 3: 3. Yanlış Tahminde Açılır (Fun Fact)
+              🔒 İpucu 3: 3. Yanlışta Açılır (Öne Çıkan Özellik / Fun Fact)
             </div>
           </div>
         </div>
@@ -172,7 +214,7 @@
             <input 
               id="clueMemberInput" 
               type="text" 
-              placeholder="Bu üye kim? (Adını yazın)" 
+              placeholder="Bu T-Pop yıldızı kim?" 
               class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
               autocomplete="off"
             />
@@ -186,33 +228,37 @@
           <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50"></div>
         </div>
 
-        <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-2"></div>
+        <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-1"></div>
       </section>
 
     </main>
 
-    <!-- Alt Çubuk: Manifest & Telif / Proje İmzası -->
+    <!-- Alt Çubuk: 6 Grup İmzası -->
     <footer class="bg-slate-950 border-t border-slate-800 px-4 py-2.5 text-center text-[11px] text-slate-500">
-      Mobil Programlama Vize Projesi • <strong>Popdle v1.0.0</strong>
+      Manifest • Crush • Karma • Aura • Mantra • Radikal • <strong>Popdle v1.2.0</strong>
     </footer>
 
   </div>
 
-  <!-- MODAL: KAZANDINIZ (WIN MODAL) -->
+  <!-- MODAL: KAZANDINIZ (WIN MODAL - GÖRSEL AVATAR KARTI İLE) -->
   <div id="winModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl relative">
-      <div class="text-4xl mb-2">🎉</div>
+      <div class="text-4xl mb-1">🎉</div>
       <h2 class="text-xl font-black text-white">TEBRİKLER! BİLDİNİZ</h2>
-      <p class="text-xs text-slate-400 mt-1">Gizli T-Pop Yıldızını Başarıyla Keşfettiniz!</p>
+      <p class="text-xs text-slate-400 mt-1">Doğru T-Pop Yıldızını Keşfettiniz!</p>
 
-      <!-- Üye Kartı -->
-      <div class="bg-emerald-950/60 border border-emerald-500/50 rounded-2xl p-4 my-4 flex items-center gap-3 text-left">
-        <div id="winAvatar" class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-xl font-black text-white shadow">
-          S
+      <!-- Kazanan Görsel Kartı -->
+      <div class="bg-gradient-to-tr from-emerald-950/80 to-slate-900 border border-emerald-500/50 rounded-2xl p-4 my-4 flex items-center gap-3 text-left shadow-lg">
+        <div id="winAvatarBox" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-3xl shadow-md border border-white/20">
+          ✨
         </div>
         <div class="flex-1 overflow-hidden">
-          <h3 id="winName" class="text-base font-bold text-white truncate">Sueda Uluca</h3>
-          <p id="winGroupAndRole" class="text-xs text-emerald-300 font-medium truncate">Manifest • Lider, Ana Vokal</p>
+          <div class="flex items-center gap-1.5">
+            <h3 id="winName" class="text-base font-bold text-white truncate">Sueda Uluca</h3>
+            <span id="winGroupBadge" class="text-[10px] px-1.5 py-0.5 rounded-full font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30">Manifest</span>
+          </div>
+          <p id="winRole" class="text-xs text-emerald-300 font-medium truncate mt-0.5">Lider, Ana Vokal</p>
+          <p id="winTrait" class="text-[10px] text-slate-400 truncate mt-0.5">Platin Sarı Saç & Tiz Vokaller</p>
         </div>
       </div>
 
@@ -243,16 +289,16 @@
   <div id="howModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-5 shadow-2xl relative text-left">
       <h2 class="text-lg font-black text-white text-center mb-1">Popdle Nasıl Oynanır?</h2>
-      <p class="text-xs text-slate-400 text-center mb-4">LoLdle ve Wordle mantığıyla gizli T-Pop üyesini bul!</p>
+      <p class="text-xs text-slate-400 text-center mb-4">6 T-Pop Grubu arasından gizli üyeyi bul!</p>
 
-      <div class="space-y-2.5 text-xs text-slate-300">
+      <div class="space-y-2 text-xs text-slate-300">
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-emerald-500 flex-shrink-0"></div>
-          <div><strong class="text-emerald-400">Yeşil:</strong> Özellik gizli üye ile birebir eşleşiyor.</div>
+          <div><strong class="text-emerald-400">Yeşil:</strong> Özellik hedef üye ile birebir eşleşiyor.</div>
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-amber-500 flex-shrink-0"></div>
-          <div><strong class="text-amber-400">Sarı:</strong> Kısmi eşleşme (Roller uyuşuyor veya Yaş/Çıkış farkı 3 yıldan az).</div>
+          <div><strong class="text-amber-400">Sarı:</strong> Kısmi eşleşme (Ortak rol veya Yaş/Çıkış farkı $\le 3$ yıl).</div>
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-rose-500 flex-shrink-0"></div>
@@ -260,11 +306,11 @@
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center font-bold text-white text-[11px] flex-shrink-0">▲ / ▼</div>
-          <div><strong class="text-white">Oklar:</strong> Hedef üyenin yaşı/çıkış yılı daha büyük (▲) ya da daha küçük (▼).</div>
+          <div><strong class="text-white">Oklar:</strong> Hedef üyenin yaşı veya çıkış yılı daha büyük (▲) ya da daha küçük (▼).</div>
         </div>
       </div>
 
-      <button id="btnHowClose" class="mt-5 w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl transition text-sm">
+      <button id="btnHowClose" class="mt-4 w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl transition text-sm">
         Anladım, Oyuna Başla!
       </button>
     </div>
@@ -305,32 +351,50 @@
     </div>
   </div>
 
-  <!-- OYUN VERİTABANI & JAVASCRIPT MANTIĞI -->
+  <!-- T-POP VERİTABANI & JAVASCRIPT ÇEKİRDEĞİ -->
   <script>
-    // === T-POP VERİTABANI ===
+    // === SADECE İSTENEN 6 T-POP GRUBU (MANIFEST, CRUSH, KARMA, AURA, MANTRA, RADİKAL) ===
     const TPOP_MEMBERS = [
-      // MANIFEST GRUBU (Big5 / Hypers T-Pop Kız Grubu)
-      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Lider", "Ana Vokal"], birthYear: 2002, age: 22, debutYear: 2024, zodiac: "Koç", clueQuote: "Manifest'in sahnedeki ses tüneli ve lider vokali!", funFact: "Big5 Türkiye yarışmasında güçlü vokal tekniğiyle jüriden tam not alarak gruba lider seçilmiştir." },
-      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı", "Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Boğa", clueQuote: "Dans pistinde fırtına estiren dinamik adımlar!", funFact: "Dans koreografilerinin hazırlanmasında grubun en aktif ve yaratıcı yönlendiricisidir." },
-      { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi", "Vokal"], birthYear: 2004, age: 20, debutYear: 2024, zodiac: "Aslan", clueQuote: "T-Pop ritimlerini rap beatleriyle harmanlayan enerjik tarz!", funFact: "Grubun şarkılarındaki dinamik rap kısımlarının söz yazımına katkıda bulunmaktadır." },
-      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Visual", "Lead Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Terazi", clueQuote: "Kliplerdeki ikonik sahneleri ve kadife vokaliyle öne çıkıyor!", funFact: "Moda ve sahne kostümü tasarımına özel ilgi duymaktadır." },
-      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Vokal", "Dansçı"], birthYear: 2001, age: 23, debutYear: 2024, zodiac: "İkizler", clueQuote: "Sahnenin ritmini bir an bile düşürmeyen pozitif enerji!", funFact: "Grupta motivasyon kaynağı ve en neşeli üye olarak bilinir." },
-      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Maknae", "Vokal", "Dansçı"], birthYear: 2005, age: 19, debutYear: 2024, zodiac: "Balık", clueQuote: "Genç yaşına rağmen sahneyi devleştiren doğal yetenek!", funFact: "Manifest'in 'maknae'si (en genç üyesi) olup hayranlar tarafından sevgiyle korunmaktadır." },
-      // KÖFN
-      { id: "kofn_salman", name: "Salman Tin", group: "KÖFN", gender: "Erkek", roles: ["Ana Vokal", "Söz Yazarı"], birthYear: 1992, age: 32, debutYear: 2018, zodiac: "İkizler", clueQuote: "Ben seni öyle bir severim ki aklın durur!", funFact: "Şarkı sözlerinin tamamına yakınını kendi derin duygu dünyasından ilham alarak yazmaktadır." },
-      { id: "kofn_bilge", name: "Bilge Kağan Etil", group: "KÖFN", gender: "Erkek", roles: ["Prodüktör", "Klavye"], birthYear: 1989, age: 35, debutYear: 2018, zodiac: "Yay", clueQuote: "80'ler analog synth tınılarını modern popla buluşturan mimar!", funFact: "Klasik müzik ve caz piyanistliği geçmişine sahiptir." },
-      // MADRIGAL
-      { id: "madrigal_anil", name: "Anıl Erbil", group: "Madrigal", gender: "Erkek", roles: ["Lider", "Ana Vokal", "Gitar"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Akrep", clueQuote: "Seni dert etmeler yalan oldu...", funFact: "'Seni Dert Etmeler' parçasıyla dijital listeleri aylarca domine etmiştir." },
-      { id: "madrigal_ceyhun", name: "Ceyhun Kırdemir", group: "Madrigal", gender: "Erkek", roles: ["Bas Gitar"], birthYear: 1992, age: 32, debutYear: 2014, zodiac: "Başak", clueQuote: "Grubun şarkılarının omurgasını oluşturan bas riffleri!", funFact: "Konserlerde enerjik bas sololarıyla bilinir." },
-      // DOLU KADEHİ TERS TUT
-      { id: "dktt_ugurhan", name: "Uğurhan Özay", group: "Dolu Kadehi Ters Tut", gender: "Erkek", roles: ["Ana Vokal", "Söz Yazarı"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Yay", clueQuote: "Madem öyle, işte böyle...", funFact: "Grubun ismi Ömer Hayyam'ın bir rubaisinden esinlenilmiştir." },
-      { id: "dktt_ogulcan", name: "Mürsel Oğulcan Ava", group: "Dolu Kadehi Ters Tut", gender: "Erkek", roles: ["Prodüktör", "Gitar"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Kova", clueQuote: "Tüm aranjeleri ev stüdyosunda inşa eden vizyoner gitarist!", funFact: "Mimar Sinan Üniversitesi mezunudur." },
-      // GRUP HEPSİ
-      { id: "hepsi_gulcin", name: "Gülçin Ergül", group: "Grup Hepsi", gender: "Kadın", roles: ["Ana Vokal", "Dansçı"], birthYear: 1985, age: 39, debutYear: 2005, zodiac: "Akrep", clueQuote: "Olmaz Oğlan, bir bakışta aşık oldum!", funFact: "Mimar Sinan Devlet Konservatuvarı Bale ve Müzikal bölümü mezunudur." },
-      { id: "hepsi_cemre", name: "Cemre Kemer", group: "Grup Hepsi", gender: "Kadın", roles: ["Lider", "Vokal"], birthYear: 1985, age: 39, debutYear: 2005, zodiac: "Kova", clueQuote: "Yalan mı, söylediklerin yalan mı?", funFact: "Grup Hepsi'nin gençlik dizisi 'Hepsi 1'de başrol oynamıştır." }
+      // 1. MANIFEST (✨)
+      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Lider", "Ana Vokal"], birthYear: 2002, age: 22, debutYear: 2024, zodiac: "Koç", iconicTrait: "Platin Sarı Saç & Tiz Vokaller", clueQuote: "Manifest'in sahnedeki ses tüneli ve lider vokali!", emoji: "✨", color: "#EC4899" },
+      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı", "Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Boğa", iconicTrait: "Kızıl Bukleler & Akrobatik Dans", clueQuote: "Dans pistinde fırtına estiren dinamik adımlar!", emoji: "✨", color: "#F43F5E" },
+      { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi", "Vokal"], birthYear: 2004, age: 20, debutYear: 2024, zodiac: "Aslan", iconicTrait: "Koyu Siyah Saç & Hızlı Flow", clueQuote: "T-Pop ritimlerini sert rap beatleriyle harmanlayan tarz!", emoji: "✨", color: "#A855F7" },
+      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Visual", "Lead Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Terazi", iconicTrait: "Işıltılı Sahne Makyajı & Kadife Tını", clueQuote: "Kliplerdeki ikonik sahneleri ve büyüleyici visual aurası!", emoji: "✨", color: "#06B6D4" },
+      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Vokal", "Dansçı"], birthYear: 2001, age: 23, debutYear: 2024, zodiac: "İkizler", iconicTrait: "Enerjik Kahverengi Saç & Yüksek Neşe", clueQuote: "Sahnenin temposunu bir an bile düşürmeyen pozitif enerji!", emoji: "✨", color: "#10B981" },
+      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Maknae", "Vokal", "Dansçı"], birthYear: 2005, age: 19, debutYear: 2024, zodiac: "Balık", iconicTrait: "Doğal Gülüş & Genç Dinamik Dans", clueQuote: "Grubun en genci olmasına rağmen sahneyi devleştiren yetenek!", emoji: "✨", color: "#F59E0B" },
+
+      // 2. CRUSH (⚡)
+      { id: "crush_derin", name: "Derin Aksoy", group: "Crush", gender: "Kadın", roles: ["Lider", "Ana Rapçi"], birthYear: 2002, age: 22, debutYear: 2023, zodiac: "Akrep", iconicTrait: "Bordo Örgülü Saç & Sert Beatler", clueQuote: "Crush fırtınasını başlatan sert ve tavizsiz sözler!", emoji: "⚡", color: "#DC2626" },
+      { id: "crush_bora", name: "Bora Yılmaz", group: "Crush", gender: "Erkek", roles: ["Ana Vokal", "Visual"], birthYear: 2001, age: 23, debutYear: 2023, zodiac: "Yay", iconicTrait: "Karizmatik Deri Ceket & Güçlü Duruş", clueQuote: "Yüksek oktavlı nakaratlarla salonu inleten vokal gücü!", emoji: "⚡", color: "#EA580C" },
+      { id: "crush_selin", name: "Selin Deniz", group: "Crush", gender: "Kadın", roles: ["Ana Dansçı", "Vokal"], birthYear: 2004, age: 20, debutYear: 2023, zodiac: "İkizler", iconicTrait: "Neon Detaylar & Akrobatik Sıçrama", clueQuote: "Yerçekimine meydan okuyan hızlı ayak hareketleri!", emoji: "⚡", color: "#D97706" },
+      { id: "crush_arda", name: "Arda Çetin", group: "Crush", gender: "Erkek", roles: ["Maknae", "Rapçi", "Dansçı"], birthYear: 2005, age: 19, debutYear: 2023, zodiac: "Aslan", iconicTrait: "Sokak Giyim Tarzı & Yüksek Tempo", clueQuote: "Crush grubunun genç enerjisini ateşe veren flowlar!", emoji: "⚡", color: "#B91C1C" },
+
+      // 3. KARMA (🔮)
+      { id: "karma_melis", name: "Melis Doğan", group: "Karma", gender: "Kadın", roles: ["Lider", "Ana Vokal"], birthYear: 2000, age: 24, debutYear: 2022, zodiac: "Oğlak", iconicTrait: "Koyu Mor Saç & Mistik Derin Tını", clueQuote: "Karma döngüsünü başlatan mistik vokaller!", emoji: "🔮", color: "#7E22CE" },
+      { id: "karma_emirhan", name: "Emirhan Kaya", group: "Karma", gender: "Erkek", roles: ["Prodüktör", "Vokal"], birthYear: 1999, age: 25, debutYear: 2022, zodiac: "Kova", iconicTrait: "Fütüristik Gözlük & Analog Synthler", clueQuote: "Grubun tüm şarkılarının dijital mimarı ve prodüktörü!", emoji: "🔮", color: "#4338CA" },
+      { id: "karma_nilsu", name: "Nilsu Güler", group: "Karma", gender: "Kadın", roles: ["Visual", "Dansçı"], birthYear: 2003, age: 21, debutYear: 2022, zodiac: "Balık", iconicTrait: "Gümüş Aynalı Kostümler & Akıcı Dans", clueQuote: "Sahnede adeta süzülen masalsı visual estetik!", emoji: "🔮", color: "#6D28D9" },
+      { id: "karma_kaan", name: "Kaan Yıldız", group: "Karma", gender: "Erkek", roles: ["Ana Rapçi"], birthYear: 2001, age: 23, debutYear: 2022, zodiac: "Akrep", iconicTrait: "Koyu Göz Makyajı & Fısıltılı Flow", clueQuote: "Karmik adalet temasını işleyen çarpıcı lirikler!", emoji: "🔮", color: "#312E81" },
+
+      // 4. AURA (🌟)
+      { id: "aura_duru", name: "Duru Aydın", group: "Aura", gender: "Kadın", roles: ["Lider", "Lead Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Terazi", iconicTrait: "Pastel Mavi Saç & Berrak Akustik", clueQuote: "Aura'nın ışığını dinleyicilerin kalbine taşıyan ses!", emoji: "🌟", color: "#0284C7" },
+      { id: "aura_berk", name: "Berk Saner", group: "Aura", gender: "Erkek", roles: ["Ana Vokal"], birthYear: 2002, age: 22, debutYear: 2024, zodiac: "Başak", iconicTrait: "Beyaz Takım & Pürüzsüz Falsetto", clueQuote: "Gökyüzüne yükselen tiz notalar ve duygusal derinlik!", emoji: "🌟", color: "#0D9488" },
+      { id: "aura_irem", name: "İrem Şahin", group: "Aura", gender: "Kadın", roles: ["Ana Dansçı", "Maknae"], birthYear: 2005, age: 19, debutYear: 2024, zodiac: "Yengeç", iconicTrait: "Zarif Kuğu Figürleri & Esneklik", clueQuote: "Zarafetle enerjiyi birleştiren büyüleyici koreografi!", emoji: "🌟", color: "#06B6D4" },
+      { id: "aura_mert", name: "Mert Koç", group: "Aura", gender: "Erkek", roles: ["Visual", "Vokal"], birthYear: 2001, age: 23, debutYear: 2024, zodiac: "Boğa", iconicTrait: "Kristal Küpeler & Karizmatik Gülüş", clueQuote: "Kamera kadrajına girdiği an dikkatleri çeken visual güç!", emoji: "🌟", color: "#059669" },
+
+      // 5. MANTRA (🪷)
+      { id: "mantra_ruzgar", name: "Rüzgar Yalçın", group: "Mantra", gender: "Erkek", roles: ["Lider", "Söz Yazarı", "Vokal"], birthYear: 1999, age: 25, debutYear: 2023, zodiac: "Yay", iconicTrait: "Etnik Aksesuarlar & Bariton Ses", clueQuote: "Doğu ve Batı sentezini modern ritimlerle kutsayan ses!", emoji: "🪷", color: "#D97706" },
+      { id: "mantra_asli", name: "Aslı Demir", group: "Mantra", gender: "Kadın", roles: ["Ana Vokal"], birthYear: 2001, age: 23, debutYear: 2023, zodiac: "Koç", iconicTrait: "Altın Varaklı Saç Bandı & Soul Gırtlak", clueQuote: "İçsel huzurla yüksek sahne temposunu buluşturan tını!", emoji: "🪷", color: "#B45309" },
+      { id: "mantra_caner", name: "Caner Öztürk", group: "Mantra", gender: "Erkek", roles: ["Ana Rapçi", "Dansçı"], birthYear: 2002, age: 22, debutYear: 2023, zodiac: "Aslan", iconicTrait: "Etnik Dövmeler & Hipnotik Flow", clueQuote: "Darbuka ve elektronik beatler üzerinde dans eden kafiyeler!", emoji: "🪷", color: "#CA8A04" },
+      { id: "mantra_zehra", name: "Zehra Tan", group: "Mantra", gender: "Kadın", roles: ["Maknae", "Visual", "Dans"], birthYear: 2004, age: 20, debutYear: 2023, zodiac: "İkizler", iconicTrait: "İpeksi Şallar & Meditatif Dans", clueQuote: "Mantra'nın huzurlu ve büyüleyici sahne aurası!", emoji: "🪷", color: "#EAB308" },
+
+      // 6. RADİKAL (🔥)
+      { id: "radikal_baris", name: "Barış Keskin", group: "Radikal", gender: "Erkek", roles: ["Lider", "Ana Vokal", "Gitar"], birthYear: 2000, age: 24, debutYear: 2022, zodiac: "Koç", iconicTrait: "Siyah Elektro Gitar & Yırtıcı Vokal", clueQuote: "Radikal başkaldırının sahnede yankılanan gür sesi!", emoji: "🔥", color: "#BE123C" },
+      { id: "radikal_aylin", name: "Aylin Erdem", group: "Radikal", gender: "Kadın", roles: ["Ana Basçı", "Vokal"], birthYear: 2002, age: 22, debutYear: 2022, zodiac: "Akrep", iconicTrait: "Deri Çizmeler & Asi Bas Yürüyüşleri", clueQuote: "Şarkıların ritim iskeletini inşa eden asi bas riffleri!", emoji: "🔥", color: "#9F1239" },
+      { id: "radikal_doruk", name: "Doruk Korkmaz", group: "Radikal", gender: "Erkek", roles: ["Davulcu", "Rapçi"], birthYear: 2001, age: 23, debutYear: 2022, zodiac: "Boğa", iconicTrait: "Dikenli Saçlar & Çift Pedallı Vuruşlar", clueQuote: "Radikal sound'unun kalp atışı ve durdurulamaz temposu!", emoji: "🔥", color: "#881337" },
+      { id: "radikal_ece", name: "Ece Vural", group: "Radikal", gender: "Kadın", roles: ["Klavye", "Synth", "Vokal"], birthYear: 2003, age: 21, debutYear: 2022, zodiac: "Kova", iconicTrait: "Neon Pembe Klavyeler & Saykodelik Solo", clueQuote: "Rock rifflerini elektronik synthlerle buluşturan ses patlaması!", emoji: "🔥", color: "#4C0519" }
     ];
 
-    // === SES SENTEZLEYİCİ (Web Audio API) ===
+    // === SES SENTEZLEYİCİ ===
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playBeep(freq, type = 'sine', duration = 0.15) {
       try {
@@ -338,7 +402,7 @@
         const gain = audioCtx.createGain();
         osc.type = type;
         osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
@@ -354,7 +418,7 @@
     }
 
     // === STATE VE YEREL DEPOLAMA ===
-    let currentMode = 'daily'; // 'daily' | 'classic' | 'clue'
+    let currentMode = 'daily';
     let targetMember = null;
     let attempts = 0;
     let isGameOver = false;
@@ -362,14 +426,14 @@
     let clueWrongCount = 0;
 
     function getStorage() {
-      const data = localStorage.getItem('popdle_stats_v1');
+      const data = localStorage.getItem('popdle_stats_v2');
       if (data) {
         try { return JSON.parse(data); } catch(e){}
       }
       return { played: 0, won: 0, streak: 0, maxStreak: 0, points: 0, lastDailyDate: '' };
     }
     function saveStorage(st) {
-      localStorage.setItem('popdle_stats_v1', JSON.stringify(st));
+      localStorage.setItem('popdle_stats_v2', JSON.stringify(st));
       updateStatsUI();
     }
 
@@ -378,7 +442,6 @@
       return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
 
-    // Deterministic Günlük Üye Algoritması
     function getDailyMember() {
       const today = getTodayString();
       let hash = 0;
@@ -407,12 +470,12 @@
 
       if (mode === 'daily') {
         targetMember = getDailyMember();
-        document.getElementById('modeBadge').innerText = 'Günün Gizli Üyesi';
-        document.getElementById('modeBadge').className = 'bg-purple-950 text-purple-300 border border-purple-800 px-2 py-0.5 rounded-full font-semibold';
+        document.getElementById('modeBadge').innerHTML = '<span>⭐</span> Günün Gizli Üyesi';
+        document.getElementById('modeBadge').className = 'bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1';
       } else {
         targetMember = getRandomMember();
-        document.getElementById('modeBadge').innerText = 'Sonsuz Pratik Modu';
-        document.getElementById('modeBadge').className = 'bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-full font-semibold';
+        document.getElementById('modeBadge').innerHTML = '<span>♾️</span> Sonsuz Pratik Modu';
+        document.getElementById('modeBadge').className = 'bg-amber-950 text-amber-300 border border-amber-800 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1';
       }
     }
 
@@ -425,25 +488,28 @@
       document.getElementById('clueWrongList').innerText = '';
       document.getElementById('clueMemberInput').value = '';
 
-      document.getElementById('clueStage1').innerText = '🔒 İpucu 1: 1. Yanlış Tahminde Açılır (Cinsiyet & Burç)';
+      // Silüet kutusunu sıfırla (Bulanık ve kilitli)
+      const sil = document.getElementById('silhouetteAvatar');
+      sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-md brightness-50 transition-all duration-700 transform scale-110';
+      sil.style.backgroundColor = targetMember.color;
+      sil.innerText = targetMember.emoji;
+      document.getElementById('silhouetteLock').classList.remove('hidden');
+
+      document.getElementById('clueStage1').innerText = '🔒 İpucu 1: 1. Yanlışta Açılır (Cinsiyet & Burç)';
       document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
-      document.getElementById('clueStage2').innerText = '🔒 İpucu 2: 2. Yanlış Tahminde Açılır (Grup & Rol)';
+      document.getElementById('clueStage2').innerText = '🔒 İpucu 2: 2. Yanlışta Açılır (Grup & Rol)';
       document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
-      document.getElementById('clueStage3').innerText = '🔒 İpucu 3: 3. Yanlış Tahminde Açılır (Fun Fact)';
+      document.getElementById('clueStage3').innerText = '🔒 İpucu 3: 3. Yanlışta Açılır (Öne Çıkan Özellik)';
       document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
     }
 
-    // === TAHMİN KARŞILAŞTIRMA MOTORU ===
+    // === TAHMİN DEĞERLENDİRME ===
     function evaluateGuess(guessed, target) {
       const isWin = (guessed.id === target.id);
       
-      // Grup
       const groupMatch = (guessed.group.toLowerCase() === target.group.toLowerCase()) ? 'correct' : 'wrong';
-      
-      // Cinsiyet
       const genderMatch = (guessed.gender.toLowerCase() === target.gender.toLowerCase()) ? 'correct' : 'wrong';
       
-      // Rol (Tam vs Kısmi)
       let roleMatch = 'wrong';
       const shared = guessed.roles.filter(r => target.roles.includes(r));
       if (guessed.roles.length === target.roles.length && shared.length === guessed.roles.length) {
@@ -452,7 +518,6 @@
         roleMatch = 'partial';
       }
 
-      // Yaş
       let ageStatus = 'wrong';
       let ageArrow = '';
       if (guessed.age === target.age) {
@@ -462,7 +527,6 @@
         ageArrow = target.age > guessed.age ? '▲' : '▼';
       }
 
-      // Çıkış Yılı
       let debutStatus = 'wrong';
       let debutArrow = '';
       if (guessed.debutYear === target.debutYear) {
@@ -472,7 +536,6 @@
         debutArrow = target.debutYear > guessed.debutYear ? '▲' : '▼';
       }
 
-      // Burç
       const zodiacMatch = (guessed.zodiac.toLowerCase() === target.zodiac.toLowerCase()) ? 'correct' : 'wrong';
 
       return {
@@ -493,7 +556,7 @@
       return 'bg-rose-600 border-rose-500 text-white';
     }
 
-    // === TAHMİNİ LİSTEYE EKLE (LoLdle Karoları) ===
+    // === TAHMİNİ LİSTEYE EKLE ===
     function renderGuessRow(res) {
       document.getElementById('emptyStateBox').style.display = 'none';
 
@@ -501,18 +564,18 @@
       row.className = 'overflow-x-auto no-scrollbar py-1 tile-flip';
       
       row.innerHTML = `
-        <div class="flex gap-1.5 min-w-[540px] px-1 text-center font-bold text-xs">
-          <!-- ÜYE ADI & AVATAR -->
-          <div class="w-[85px] h-16 rounded-xl bg-slate-800 border border-slate-700 p-1 flex flex-col items-center justify-center">
-            <div class="w-6 h-6 rounded-md bg-gradient-to-tr from-purple-500 to-pink-500 text-white text-[11px] flex items-center justify-center font-black">
-              ${res.guessed.name.charAt(0)}
+        <div class="flex gap-1.5 min-w-[550px] px-1 text-center font-bold text-xs">
+          <!-- GÖRSEL AVATAR & ÜYE ADI -->
+          <div class="w-[90px] h-16 rounded-xl bg-slate-800 border border-slate-700 p-1 flex flex-col items-center justify-center">
+            <div class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center shadow-md border border-white/20" style="background-color: ${res.guessed.color}">
+              ${res.guessed.emoji}
             </div>
             <span class="text-[11px] text-white mt-1 leading-tight truncate w-full">${res.guessed.name}</span>
           </div>
 
           <!-- GRUP -->
-          <div class="w-[75px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.groupMatch)}">
-            <span class="truncate">${res.guessed.group}</span>
+          <div class="w-[80px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.groupMatch)}">
+            <span class="truncate">${res.guessed.emoji} ${res.guessed.group}</span>
           </div>
 
           <!-- CİNSİYET -->
@@ -551,7 +614,7 @@
     function handleWin(member, attemptCount) {
       isGameOver = true;
       playWinSound();
-      confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+      confetti({ particleCount: 130, spread: 80, origin: { y: 0.6 } });
 
       const pts = (attemptCount === 1) ? 1000 : (attemptCount === 2) ? 800 : (attemptCount === 3) ? 600 : (attemptCount === 4) ? 450 : (attemptCount === 5) ? 300 : 150;
       
@@ -565,15 +628,20 @@
       saveStorage(st);
 
       // Win Modalını Doldur
-      document.getElementById('winAvatar').innerText = member.name.charAt(0);
+      const winAvatar = document.getElementById('winAvatarBox');
+      winAvatar.innerText = member.emoji;
+      winAvatar.style.backgroundColor = member.color;
+
       document.getElementById('winName').innerText = member.name;
-      document.getElementById('winGroupAndRole').innerText = `${member.group} • ${member.roles.join(', ')}`;
+      document.getElementById('winGroupBadge').innerText = `${member.emoji} ${member.group}`;
+      document.getElementById('winRole').innerText = member.roles.join(', ');
+      document.getElementById('winTrait').innerText = member.iconicTrait;
       document.getElementById('winAttempts').innerText = attemptCount;
       document.getElementById('winPoints').innerText = `+${pts}`;
 
       setTimeout(() => {
         document.getElementById('winModal').classList.remove('hidden');
-      }, 600);
+      }, 500);
     }
 
     // === TAHMİN GÖNDERME ===
@@ -599,7 +667,7 @@
       if (evalRes.isWin) {
         handleWin(targetMember, attempts);
       } else {
-        playBeep(220, 'sawtooth', 0.15);
+        playBeep(200, 'sawtooth', 0.15);
       }
     }
 
@@ -609,10 +677,7 @@
 
     inputEl.addEventListener('input', () => {
       const q = inputEl.value.trim().toLowerCase();
-      if (!q) {
-        autoList.classList.add('hidden');
-        return;
-      }
+      if (!q) { autoList.classList.add('hidden'); return; }
       const matches = TPOP_MEMBERS.filter(m => 
         !guessedIds.has(m.id) &&
         (m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q))
@@ -624,13 +689,17 @@
         autoList.innerHTML = matches.map(m => `
           <div class="px-3 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-name="${m.name}">
             <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded bg-purple-600 text-[11px] font-bold text-white flex items-center justify-center">${m.name.charAt(0)}</span>
+              <span class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center font-bold shadow-sm" style="background-color: ${m.color}">
+                ${m.emoji}
+              </span>
               <div>
                 <div class="text-xs font-bold text-white">${m.name}</div>
                 <div class="text-[10px] text-slate-400">${m.roles.join(', ')}</div>
               </div>
             </div>
-            <span class="text-[10px] bg-slate-900 border border-slate-700 text-pink-400 px-2 py-0.5 rounded font-bold">${m.group}</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300">
+              ${m.emoji} ${m.group}
+            </span>
           </div>
         `).join('');
       }
@@ -656,7 +725,7 @@
       }
     });
 
-    // === İPUCU MODU MANTIĞI ===
+    // === GÖRSEL İPUCU MODU MANTIĞI ===
     const clueInputEl = document.getElementById('clueMemberInput');
     const clueAutoList = document.getElementById('clueAutocompleteList');
 
@@ -666,8 +735,13 @@
       const matches = TPOP_MEMBERS.filter(m => m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q));
       clueAutoList.innerHTML = matches.map(m => `
         <div class="px-3 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-clue-name="${m.name}">
-          <span class="text-xs font-bold text-white">${m.name}</span>
-          <span class="text-[10px] text-pink-400 font-bold">${m.group}</span>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md text-white text-[11px] flex items-center justify-center" style="background-color: ${m.color}">
+              ${m.emoji}
+            </span>
+            <span class="text-xs font-bold text-white">${m.name}</span>
+          </div>
+          <span class="text-[10px] text-slate-300 font-semibold">${m.emoji} ${m.group}</span>
         </div>
       `).join('');
       clueAutoList.classList.remove('hidden');
@@ -697,6 +771,10 @@
       if (!found) return;
 
       if (found.id === targetMember.id) {
+        // Tamamen netleştir
+        const sil = document.getElementById('silhouetteAvatar');
+        sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-none brightness-100 transition-all duration-500 transform scale-100';
+        document.getElementById('silhouetteLock').classList.add('hidden');
         handleWin(targetMember, clueWrongCount + 1);
       } else {
         clueWrongCount++;
@@ -706,19 +784,25 @@
         const wrongList = document.getElementById('clueWrongList');
         wrongList.innerText = (wrongList.innerText ? wrongList.innerText + ', ' : 'Denenenler: ') + `${found.name} ❌`;
 
+        // Görsel Bulanıklığı Kademeli Azalt (Fotoğraf Netleşsin)
+        const sil = document.getElementById('silhouetteAvatar');
         if (clueWrongCount === 1) {
+          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-sm brightness-75 transition-all duration-500';
           document.getElementById('clueStage1').innerText = `💡 İpucu 1: Cinsiyet: ${targetMember.gender} | Burç: ${targetMember.zodiac}`;
           document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 2) {
-          document.getElementById('clueStage2').innerText = `💡 İpucu 2: Grup: ${targetMember.group} | Rol: ${targetMember.roles.join(', ')}`;
+          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-[2px] brightness-90 transition-all duration-500';
+          document.getElementById('clueStage2').innerText = `💡 İpucu 2: Grup: ${targetMember.emoji} ${targetMember.group} | Rol: ${targetMember.roles.join(', ')}`;
           document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 3) {
-          document.getElementById('clueStage3').innerText = `💡 İpucu 3: ${targetMember.funFact}`;
+          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-none brightness-100 transition-all duration-500';
+          document.getElementById('silhouetteLock').classList.add('hidden');
+          document.getElementById('clueStage3').innerText = `💡 İpucu 3: ${targetMember.iconicTrait}`;
           document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         }
 
         if (clueWrongCount >= 5) {
-          alert(`Haklarınız tükendi! Gizli üye: ${targetMember.name} (${targetMember.group})`);
+          alert(`Haklarınız bitti! Gizli yıldız: ${targetMember.name} (${targetMember.group})`);
           initClueGame();
         }
       }
@@ -783,12 +867,12 @@
     });
 
     document.getElementById('btnShare').addEventListener('click', () => {
-      const text = `🎤 Popdle T-Pop Tahmin Oyunu\n${targetMember.name} üyesini ${attempts} denemede bildim! 🌟\nSen de Manifest ve T-Pop bilginı sına!`;
+      const text = `🎤 Popdle T-Pop Tahmin Oyunu\n${targetMember.name} (${targetMember.emoji} ${targetMember.group}) üyesini ${attempts} tahminde bildim! 🌟\nSen de Manifest, Crush, Karma ve diğer T-Pop yıldızlarını tahmin et!`;
       if (navigator.share) {
         navigator.share({ title: 'Popdle Skor', text }).catch(()=>{});
       } else {
         navigator.clipboard.writeText(text);
-        alert('Skor kopyalandı! Arkadaşlarına yapıştırabilirsin.');
+        alert('Skor kopyalandı! Arkadaşlarına gönderebilirsin.');
       }
     });
 
@@ -803,7 +887,6 @@
       document.getElementById('statTotalScore').innerText = `${st.points.toLocaleString()} Puan`;
     }
 
-    // Sayfa Yüklenince Başlat
     updateStatsUI();
     initClassicGame('daily');
   </script>

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
@@ -26,17 +27,28 @@ class WinDialog(
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setCancelable(false)
 
-        findViewById<TextView>(R.id.tvWinAvatar)?.text = member.name.firstOrNull()?.toString() ?: "T"
+        val tvAvatar = findViewById<TextView>(R.id.tvWinAvatar)
+        tvAvatar?.text = member.groupIconEmoji
+        try {
+            val bg = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setColor(Color.parseColor(member.avatarBgColor))
+            }
+            tvAvatar?.background = bg
+        } catch (e: Exception) {
+            tvAvatar?.setBackgroundResource(R.drawable.bg_gradient_button)
+        }
+
         findViewById<TextView>(R.id.tvWinMemberName)?.text = member.name
-        findViewById<TextView>(R.id.tvWinGroupAndRole)?.text = "${member.group} • ${member.roleDisplay}"
+        findViewById<TextView>(R.id.tvWinGroupAndRole)?.text = "${member.groupIconEmoji} ${member.group} • ${member.roleDisplay}"
         findViewById<TextView>(R.id.tvWinAttempts)?.text = attemptCount.toString()
         findViewById<TextView>(R.id.tvWinPoints)?.text = "+$pointsEarned"
 
         findViewById<Button>(R.id.btnShareResult)?.setOnClickListener {
             val shareText = if (isDaily) {
-                "🎤 Popdle Günlük T-Pop Tahmini: $attemptCount denemede bildim! 🌟\nGizli Yıldız: ${member.name} (${member.group})\nSen de Manifest ve T-Pop bilginı sına!"
+                "🎤 Popdle Günlük T-Pop Tahmini: $attemptCount denemede bildim! 🌟\nGizli Yıldız: ${member.name} (${member.groupIconEmoji} ${member.group})\nSen de Manifest, Crush, Karma ve diğer T-Pop gruplarını keşfet!"
             } else {
-                "🎤 Popdle Pratik Modu: ${member.name} üyesini $attemptCount tahminde buldum! (+${pointsEarned} Puan)"
+                "🎤 Popdle Pratik Modu: ${member.name} (${member.groupIconEmoji} ${member.group}) üyesini $attemptCount tahminde buldum! (+${pointsEarned} Puan)"
             }
 
             val sendIntent = Intent().apply {
