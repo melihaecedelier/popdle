@@ -10,11 +10,11 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     @keyframes flipIn {
-      0% { transform: rotateX(-90deg); opacity: 0; }
-      100% { transform: rotateX(0deg); opacity: 1; }
+      0% { transform: scale(0.95) translateY(-8px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
     }
     .tile-flip {
-      animation: flipIn 0.5s ease forwards;
+      animation: flipIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -80,13 +80,13 @@
         </div>
 
         <!-- Arama ve Tahmin Girişi -->
-        <div class="relative mb-3">
+        <div class="relative mb-3 z-30">
           <div class="flex gap-2">
             <input 
               id="memberInput" 
               type="text" 
-              placeholder="Bir T-Pop üyesi arayın (Örn: Sueda, Oğuzhan, Suzy...)" 
-              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition shadow-inner"
+              placeholder="Bir T-Pop üyesi seçin veya arayın..." 
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition shadow-inner cursor-pointer"
               autocomplete="off"
             />
             <button 
@@ -97,35 +97,27 @@
             </button>
           </div>
 
-          <!-- Canlı Autocomplete Öneri Listesi -->
-          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50">
+          <!-- Canlı Açılır Üye Listesi (Tıklayınca ve Yazınca Anında Gelir) -->
+          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-64 overflow-y-auto hidden divide-y divide-slate-700/60">
             <!-- Dinamik doldurulacak -->
           </div>
         </div>
 
-        <!-- LoLdle Tablo Başlıkları -->
-        <div class="overflow-x-auto no-scrollbar bg-slate-950/70 border border-slate-800 rounded-xl py-2 px-1 mb-2">
-          <div class="flex text-[11px] font-bold text-slate-400 min-w-[550px] px-1 text-center">
-            <div class="w-[90px]">Görsel / Üye</div>
-            <div class="w-[80px]">Grup</div>
-            <div class="w-[65px]">Cinsiyet</div>
-            <div class="w-[100px]">Rol / Görev</div>
-            <div class="w-[70px]">Yaş</div>
-            <div class="w-[70px]">Çıkış</div>
-            <div class="w-[75px]">Burç</div>
-          </div>
+        <!-- CANLI GERİ BİLDİRİM BANNER'I (Doğru mu Yanlış mı Bildim?) -->
+        <div id="feedbackBanner" class="hidden mb-3 p-3 rounded-2xl text-xs font-bold transition-all duration-300 shadow-md">
+          <!-- Dinamik doldurulacak -->
         </div>
 
-        <!-- Yapılan Tahminler Listesi -->
-        <div id="guessesList" class="flex-1 flex flex-col space-y-2 overflow-y-auto no-scrollbar">
+        <!-- Yapılan Tahminler Listesi (Responsive Kartlar) -->
+        <div id="guessesList" class="flex flex-col space-y-3 pb-6">
           <!-- Boş Durum Karşılama Kartı -->
-          <div id="emptyStateBox" class="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400">
+          <div id="emptyStateBox" class="flex flex-col items-center justify-center py-10 text-center text-slate-400">
             <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl mb-3 shadow-inner">
               🎤
             </div>
             <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
             <p class="text-xs text-slate-400 max-w-xs">
-              Arama kutusuna bir üye adı yazarak özellikleri yeşil, sarı ve kırmızı ipuçlarıyla eşleştirin.
+              Yukarıdaki arama kutusuna tıklayarak T-Pop üyelerinden birini seçin. Yaptığınız her tahminde özelliklerin tutup tutmadığı renklerle gösterilecektir.
             </p>
           </div>
         </div>
@@ -179,19 +171,19 @@
               🔒 İpucu 2: 2. Yanlışta Açılır (Grup & Rol)
             </div>
             <div id="clueStage3" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
-              🔒 İpucu 3: 3. Yanlışta Açılır (Resmi Şarkı / Albüm)
+              🔒 İpucu 3: 3. Yanlışta Açılır (Şarkı & Diskografi)
             </div>
           </div>
         </div>
 
         <!-- Tahmin Girişi -->
-        <div class="relative mb-3">
+        <div class="relative mb-3 z-30">
           <div class="flex gap-2">
             <input 
               id="clueMemberInput" 
               type="text" 
               placeholder="Bu T-Pop üyesi kim?" 
-              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 transition cursor-pointer"
               autocomplete="off"
             />
             <button 
@@ -201,7 +193,7 @@
               Cevapla
             </button>
           </div>
-          <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50"></div>
+          <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/60"></div>
         </div>
 
         <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-1"></div>
@@ -270,15 +262,15 @@
       <div class="space-y-2 text-xs text-slate-300">
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-emerald-500 flex-shrink-0"></div>
-          <div><strong class="text-emerald-400">Yeşil:</strong> Özellik hedef üye ile birebir eşleşiyor.</div>
+          <div><strong class="text-emerald-400">Yeşil (Doğru):</strong> Özellik hedef üye ile birebir eşleşiyor.</div>
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-amber-500 flex-shrink-0"></div>
-          <div><strong class="text-amber-400">Sarı:</strong> Kısmi eşleşme (Ortak rol veya Yaş/Çıkış farkı $\le 3$ yıl).</div>
+          <div><strong class="text-amber-400">Sarı (Kısmi):</strong> Ortak bir rol var veya Yaş/Çıkış farkı $\le 3$ yıl.</div>
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-rose-500 flex-shrink-0"></div>
-          <div><strong class="text-rose-400">Kırmızı:</strong> Bu özellik uyuşmuyor.</div>
+          <div><strong class="text-rose-400">Kırmızı (Yanlış):</strong> Bu özellik hedef üye ile uyuşmuyor.</div>
         </div>
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center font-bold text-white text-[11px] flex-shrink-0">▲ / ▼</div>
@@ -329,26 +321,26 @@
 
   <!-- T-POP RESMİ VERİTABANI & JAVASCRIPT ÇEKİRDEĞİ -->
   <script>
-    // === KULLANICININ VERDİĞİ BİREBİR RESMİ TABLO VERİSİ (30 ÜYE & ŞARKILAR) ===
+    // === 30 RESMİ T-POP ÜYESİ VE ŞARKILARI ===
     const TPOP_MEMBERS = [
       // 1. MANIFEST (Çıkış: 2025)
-      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2025, zodiac: "İkizler", iconicTrait: "Ana Dansçı (Main Dancer) • 'Zamansızdık'", clueQuote: "Zamansızdık ama sahnede ritmi asla kaçırmadık!", emoji: "✨", color: "#EC4899" },
-      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Boğa", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Başrol Sensin'", clueQuote: "Bu hikayede başrol sensin!", emoji: "✨", color: "#F43F5E" },
+      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2025, zodiac: "İkizler", iconicTrait: "Ana Dansçı • 'Zamansızdık'", clueQuote: "Zamansızdık ama sahnede ritmi asla kaçırmadık!", emoji: "✨", color: "#EC4899" },
+      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Boğa", iconicTrait: "Baş Dansçı • 'Başrol Sensin'", clueQuote: "Bu hikayede başrol sensin!", emoji: "✨", color: "#F43F5E" },
       { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Rapçi", "Vokal"], birthYear: 2004, age: 22, debutYear: 2025, zodiac: "Aslan", iconicTrait: "Rapçi & Vokal • 'Snap', 'Arıyo'", clueQuote: "Arıyo ama nafile, Snap attım sahneden!", emoji: "✨", color: "#A855F7" },
-      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Yardımcı Vokalist"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Terazi", iconicTrait: "Yardımcı Vokalist (Sub Vocal) • 'Daha İyi'", clueQuote: "Artık çok daha iyi, amatör hislere elveda!", emoji: "✨", color: "#06B6D4" },
-      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2002, age: 24, debutYear: 2025, zodiac: "Koç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Hileli (feat. Ajda Pekkan)'", clueQuote: "Ajda Pekkan ile 'Hileli' düetinde parlayan ana vokal!", emoji: "✨", color: "#EC4899" },
-      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2005, age: 21, debutYear: 2025, zodiac: "Balık", iconicTrait: "Ana Rapçi (Main Rapper) • 'Toz Pembe'", clueQuote: "Toz pembe dünyaları yıkan hızlı flowlar!", emoji: "✨", color: "#F59E0B" },
+      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Yardımcı Vokalist"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Terazi", iconicTrait: "Yardımcı Vokalist • 'Daha İyi'", clueQuote: "Artık çok daha iyi, amatör hislere elveda!", emoji: "✨", color: "#06B6D4" },
+      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2002, age: 24, debutYear: 2025, zodiac: "Koç", iconicTrait: "Ana Vokalist • 'Hileli (feat. Ajda Pekkan)'", clueQuote: "Ajda Pekkan ile 'Hileli' düetinde parlayan ana vokal!", emoji: "✨", color: "#EC4899" },
+      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2005, age: 21, debutYear: 2025, zodiac: "Balık", iconicTrait: "Ana Rapçi • 'Toz Pembe'", clueQuote: "Toz pembe dünyaları yıkan hızlı flowlar!", emoji: "✨", color: "#F59E0B" },
 
       // 2. CRUSH (Çıkış: 2026-07-31)
       { id: "crush_oguzhan", name: "Oğuzhan Çifçi", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Crush Vokalisti • 'CRUSH!', 'Benim Olsana'", clueQuote: "CRUSH! Sahneye adım attığımız ilk an!", emoji: "⚡", color: "#DC2626" },
-      { id: "crush_batu", name: "Batu Cengiz", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Crush Dans & Sahne Enerjisi • 'Benim Olsana'", clueQuote: "Kaçma benden, benim olsana!", emoji: "⚡", color: "#EA580C" },
+      { id: "crush_batu", name: "Batu Cengiz", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Dans & Vokal • 'Benim Olsana'", clueQuote: "Kaçma benden, benim olsana!", emoji: "⚡", color: "#EA580C" },
       { id: "crush_baris", name: "Barış Çağan Yüksekkaya", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Crush Güçlü Vokal • 'CRUSH!'", clueQuote: "İlk single ile T-Pop listelerini sarsan vokal!", emoji: "⚡", color: "#B91C1C" },
-      { id: "crush_mirac", name: "Miraç Fırat", group: "Crush", gender: "Erkek", roles: ["Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Crush Sahne Koreografisi • 'CRUSH!'", clueQuote: "Senkronize adımlar ve patlayıcı sokak koreografisi!", emoji: "⚡", color: "#D97706" },
-      { id: "crush_milan", name: "Milan Önder", group: "Crush", gender: "Erkek", roles: ["Visual", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Crush Visual Karizma • 'Benim Olsana'", clueQuote: "Kamera karşısında karizmatik duruş ve vokaller!", emoji: "⚡", color: "#991B1B" },
-      { id: "crush_arda", name: "Arda Soydoğan", group: "Crush", gender: "Erkek", roles: ["Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Crush Hızlı Flow • 'CRUSH!'", clueQuote: "Ritimleri hızlandıran dinamik rap flowları!", emoji: "⚡", color: "#C2410C" },
+      { id: "crush_mirac", name: "Miraç Fırat", group: "Crush", gender: "Erkek", roles: ["Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Sahne Koreografisi • 'CRUSH!'", clueQuote: "Senkronize adımlar ve patlayıcı sokak koreografisi!", emoji: "⚡", color: "#D97706" },
+      { id: "crush_milan", name: "Milan Önder", group: "Crush", gender: "Erkek", roles: ["Visual", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Visual Karizma • 'Benim Olsana'", clueQuote: "Kamera karşısında karizmatik duruş ve vokaller!", emoji: "⚡", color: "#991B1B" },
+      { id: "crush_arda", name: "Arda Soydoğan", group: "Crush", gender: "Erkek", roles: ["Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Hızlı Flow • 'CRUSH!'", clueQuote: "Ritimleri hızlandıran dinamik rap flowları!", emoji: "⚡", color: "#C2410C" },
       { id: "crush_efe", name: "Efe Şan", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2005, age: 21, debutYear: 2026, zodiac: "Balık", iconicTrait: "Crush Genç Enerji • 'Benim Olsana'", clueQuote: "Crush grubunun taze ve enerjik sahne ritmi!", emoji: "⚡", color: "#7F1D1D" },
 
-      // 3. KARMA (KARM6 - Çıkış: 2026-05-22 / Serotonin EP)
+      // 3. KARMA (KARM6 - Çıkış: 2026-05-22)
       { id: "karma_cem", name: "Cem Suha Kurt", group: "Karma", gender: "Erkek", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Keşke Benim Olsa'", clueQuote: "Keşke benim olsa dediğin an sahnedeyiz!", emoji: "🔮", color: "#7E22CE" },
       { id: "karma_ezgi", name: "Ezgi Akliman", group: "Karma", gender: "Kadın", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Crop Top'", clueQuote: "Crop Top giydik, blok blok vurduk ritimleri!", emoji: "🔮", color: "#9333EA" },
       { id: "karma_ozlem", name: "Özlem Naz Gözcü", group: "Karma", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Yengeç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Sırra Kadem'", clueQuote: "Sırra kadem bastık, başka bir ihtimal yok!", emoji: "🔮", color: "#6B21A8" },
@@ -356,42 +348,54 @@
       { id: "karma_erdeniz", name: "Erdeniz Telli", group: "Karma", gender: "Erkek", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Baş Vokalist & Baş Dansçı • 'KARMA'", clueQuote: "Serotonin salgılatan dengeli ve akıcı sahne şovu!", emoji: "🔮", color: "#4C1D95" },
       { id: "karma_ada", name: "Ada Atılgan", group: "Karma", gender: "Kadın", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Balık", iconicTrait: "Baş Vokalist & Baş Dansçı • 'Önümüz Yaz'", clueQuote: "Önümüz yaz, enerjimiz yüksek!", emoji: "🔮", color: "#3B0764" },
 
-      // 4. AURA (AURA - Çıkış: 2026-05-15 / ELEMENTAL Albümü)
+      // 4. AURA (AURA - Çıkış: 2026-05-15)
       { id: "aura_asli", name: "Aslı Göztaşı", group: "Aura", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Baş Dansçı (Lead Dancer) • 'YUH!', 'Tuzak'", clueQuote: "YUH! Dedirten çıkış parçası ve tuzak dolu ritimler!", emoji: "🌟", color: "#0284C7" },
       { id: "aura_suzy", name: "Suzy Roumenov", group: "Aura", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Kova", iconicTrait: "Baş Vokalist (Lead Vocal) • 'PES', '2036'", clueQuote: "PES etmeyen 2036 fütüristik vokal melodisi!", emoji: "🌟", color: "#0369A1" },
       { id: "aura_meri", name: "Meri Aslan", group: "Aura", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Ana Vokalist (Main Vocal) • 'We Are Aura!'", clueQuote: "We Are Aura! ELEMENTAL albümünün doruk noktası!", emoji: "🌟", color: "#0D9488" },
-      { id: "aura_esra", name: "Esra Mutlu", group: "Aura", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Masum Kedi', 'Tempo'", clueQuote: "Masum Kedi gibi zarif, yüksek Tempo ile sahnede!", emoji: "🌟", color: "#0F766E" },
+      { id: "aura_esra", name: "Esra Mutlu", group: "Aura", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Masum Kedi'", clueQuote: "Masum Kedi gibi zarif, yüksek Tempo ile sahnede!", emoji: "🌟", color: "#0F766E" },
 
-      // 5. MANTRA (Çıkış: 2026-05-15 / New Era Albümü)
+      // 5. MANTRA (Çıkış: 2026-05-15)
       { id: "mantra_delfin", name: "Delfin Kayra Uraz", group: "Mantra", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Baş Vokalist (Lead Vocal) • 'Bi Kiss'", clueQuote: "Bi Kiss gönderdim sahneden, New Era başladı!", emoji: "🪷", color: "#D97706" },
-      { id: "mantra_sila", name: "Sıla Nisa Bozkurt", group: "Mantra", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Koç", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Toysun', 'Goygoy'", clueQuote: "Toysun daha sen, sahnede goygoy yok ciddiyet var!", emoji: "🪷", color: "#B45309" },
+      { id: "mantra_sila", name: "Sıla Nisa Bozkurt", group: "Mantra", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Koç", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Toysun'", clueQuote: "Toysun daha sen, sahnede goygoy yok ciddiyet var!", emoji: "🪷", color: "#B45309" },
       { id: "mantra_guniz", name: "Güniz Ok", group: "Mantra", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Dansçı (Main Dancer) • 'Tuttu Fırlattı'", clueQuote: "Tuttu Fırlattı kalbimi, Red Flag çaldı sahnede!", emoji: "🪷", color: "#92400E" },
       { id: "mantra_doga", name: "Doğa Bezek", group: "Mantra", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Vokalist (Main Vocal) • 'Tek Başıma'", clueQuote: "Tek Başıma kalsam bile sesim tüm salonu doldurur!", emoji: "🪷", color: "#78350F" },
       { id: "mantra_seyma", name: "Şeyma Akso", group: "Mantra", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Ana Rapçi (Main Rapper) • 'Kaldım Ellerinde'", clueQuote: "Kaldım ellerinde ama flowlarım özgür!", emoji: "🪷", color: "#CA8A04" },
 
-      // 6. RADİKAL (Çıkış: 2026-06-19 / Hayran)
-      { id: "radikal_vedat", name: "Vedat Çelik", group: "Radikal", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Hayran', 'Korkmam Ben'", clueQuote: "Hayran bırakan ses tonu, korkmam ben bu yolda!", emoji: "🔥", color: "#BE123C" },
+      // 6. RADİKAL (Çıkış: 2026-06-19)
+      { id: "radikal_vedat", name: "Vedat Çelik", group: "Radikal", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Hayran'", clueQuote: "Hayran bırakan ses tonu, korkmam ben bu yolda!", emoji: "🔥", color: "#BE123C" },
       { id: "radikal_yusa", name: "Yuşa Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Hayran', 'Yalancı'", clueQuote: "Yalancı sözlere inat gerçek ve keskin adımlar!", emoji: "🔥", color: "#9F1239" },
-      { id: "radikal_yusuf", name: "Yusuf Emre Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Yardımcı Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Yardımcı Vokalist (Sub Vocal) • 'Korkmam Ben'", clueQuote: "Korkmam Ben teklisinde vokal desteği!", emoji: "🔥", color: "#881337" },
+      { id: "radikal_yusuf", name: "Yusuf Emre Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Yardımcı Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Yardımcı Vokalist • 'Korkmam Ben'", clueQuote: "Korkmam Ben teklisinde vokal desteği!", emoji: "🔥", color: "#881337" },
       { id: "radikal_ibrahim", name: "İbrahim Can Kaya", group: "Radikal", gender: "Erkek", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Hayran'", clueQuote: "Hayran şarkısının merkezinde patlayan dans performansı!", emoji: "🔥", color: "#4C0519" }
     ];
 
     // === SES SENTEZLEYİCİ ===
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
     function playBeep(freq, type = 'sine', duration = 0.15) {
       try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
         osc.type = type;
         osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        osc.stop(ctx.currentTime + duration);
       } catch (e) {}
     }
+
     function playWinSound() {
       playBeep(440, 'triangle', 0.1);
       setTimeout(() => playBeep(554.37, 'triangle', 0.1), 100);
@@ -408,14 +412,14 @@
     let clueWrongCount = 0;
 
     function getStorage() {
-      const data = localStorage.getItem('popdle_stats_official');
+      const data = localStorage.getItem('popdle_stats_v3');
       if (data) {
         try { return JSON.parse(data); } catch(e){}
       }
       return { played: 0, won: 0, streak: 0, maxStreak: 0, points: 0, lastDailyDate: '' };
     }
     function saveStorage(st) {
-      localStorage.setItem('popdle_stats_official', JSON.stringify(st));
+      localStorage.setItem('popdle_stats_v3', JSON.stringify(st));
       updateStatsUI();
     }
 
@@ -449,6 +453,10 @@
       document.getElementById('guessesList').innerHTML = '';
       document.getElementById('emptyStateBox').style.display = 'flex';
       document.getElementById('memberInput').value = '';
+      
+      const banner = document.getElementById('feedbackBanner');
+      banner.className = 'hidden mb-3 p-3 rounded-2xl text-xs font-bold';
+      banner.innerHTML = '';
 
       if (mode === 'daily') {
         targetMember = getDailyMember();
@@ -484,7 +492,7 @@
       document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
     }
 
-    // === TAHMİN DEĞERLENDİRME ===
+    // === TAHMİN DEĞERLENDİRME MOTORU ===
     function evaluateGuess(guessed, target) {
       const isWin = (guessed.id === target.id);
       
@@ -532,70 +540,154 @@
     }
 
     function getCardClass(status) {
-      if (status === 'correct') return 'bg-emerald-600 border-emerald-500 text-white';
-      if (status === 'partial') return 'bg-amber-600 border-amber-500 text-white';
-      return 'bg-rose-600 border-rose-500 text-white';
+      if (status === 'correct') return 'bg-emerald-600 border-emerald-500 text-white shadow-sm shadow-emerald-500/20';
+      if (status === 'partial') return 'bg-amber-600 border-amber-500 text-white shadow-sm shadow-amber-500/20';
+      return 'bg-rose-600 border-rose-500 text-white shadow-sm shadow-rose-500/20';
     }
 
-    // === TAHMİNİ LİSTEYE EKLE ===
+    // === TAHMİN KARTINI AŞAĞIYA EKLE (RESPONSIVE & ANLAŞILIR TASARIM) ===
     function renderGuessRow(res) {
       document.getElementById('emptyStateBox').style.display = 'none';
 
-      const row = document.createElement('div');
-      row.className = 'overflow-x-auto no-scrollbar py-1 tile-flip';
+      const card = document.createElement('div');
+      card.className = 'bg-slate-800/95 border border-slate-700/80 rounded-2xl p-3.5 shadow-xl tile-flip space-y-3';
       
-      row.innerHTML = `
-        <div class="flex gap-1.5 min-w-[550px] px-1 text-center font-bold text-xs">
-          <!-- GÖRSEL AVATAR & ÜYE ADI -->
-          <div class="w-[90px] h-16 rounded-xl bg-slate-800 border border-slate-700 p-1 flex flex-col items-center justify-center">
-            <div class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center shadow-md border border-white/20" style="background-color: ${res.guessed.color}">
+      const statusBadge = res.isWin 
+        ? `<span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">🎉 DOĞRU BİLDİNİZ!</span>`
+        : `<span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1">❌ YANLIŞ CEVAP</span>`;
+
+      card.innerHTML = `
+        <!-- Üye Başlığı ve Sonuç Durumu -->
+        <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
+          <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold text-white shadow-md border border-white/20" style="background-color: ${res.guessed.color}">
               ${res.guessed.emoji}
             </div>
-            <span class="text-[11px] text-white mt-1 leading-tight truncate w-full">${res.guessed.name}</span>
+            <div>
+              <div class="text-sm font-black text-white flex items-center gap-1.5">
+                ${res.guessed.name}
+                <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300">
+                  ${res.guessed.group}
+                </span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-medium">${res.guessed.roles.join(', ')} • ${res.guessed.iconicTrait}</div>
+            </div>
+          </div>
+          ${statusBadge}
+        </div>
+
+        <!-- 6 Özellik Göstergesi (Mobil Uyumlu Izgara) -->
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-center text-xs font-bold">
+          
+          <!-- 1. GRUP -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.groupMatch)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Grup</span>
+            <span class="text-xs font-black truncate w-full mt-0.5">${res.guessed.group}</span>
+            <span class="text-[10px] mt-1 font-semibold">${res.groupMatch === 'correct' ? '✅ Doğru' : '❌ Yanlış'}</span>
           </div>
 
-          <!-- GRUP -->
-          <div class="w-[80px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.groupMatch)}">
-            <span class="truncate">${res.guessed.group}</span>
+          <!-- 2. CİNSİYET -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.genderMatch)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Cinsiyet</span>
+            <span class="text-xs font-black mt-0.5">${res.guessed.gender}</span>
+            <span class="text-[10px] mt-1 font-semibold">${res.genderMatch === 'correct' ? '✅ Doğru' : '❌ Yanlış'}</span>
           </div>
 
-          <!-- CİNSİYET -->
-          <div class="w-[65px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.genderMatch)}">
-            <span>${res.guessed.gender}</span>
+          <!-- 3. ROL -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.roleMatch)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Rol</span>
+            <span class="text-xs font-black truncate w-full mt-0.5">${res.guessed.roles[0] || 'Vokal'}</span>
+            <span class="text-[10px] mt-1 font-semibold">${res.roleMatch === 'correct' ? '✅ Doğru' : res.roleMatch === 'partial' ? '🟨 Kısmi' : '❌ Yanlış'}</span>
           </div>
 
-          <!-- ROL -->
-          <div class="w-[100px] h-16 rounded-xl border flex items-center justify-center p-1 text-[10px] leading-tight ${getCardClass(res.roleMatch)}">
-            <span>${res.guessed.roles.join(', ')}</span>
+          <!-- 4. YAŞ -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.age.status)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Yaş</span>
+            <span class="text-xs font-black mt-0.5 flex items-center gap-0.5">
+              ${res.age.arrow ? `<span>${res.age.arrow}</span>` : ''}
+              <span>${res.age.value}</span>
+            </span>
+            <span class="text-[10px] mt-1 font-semibold">${res.age.status === 'correct' ? '✅ Doğru' : res.age.arrow === '▲' ? '▲ Daha Yaşlı' : '▼ Daha Genç'}</span>
           </div>
 
-          <!-- YAŞ -->
-          <div class="w-[70px] h-16 rounded-xl border flex flex-col items-center justify-center p-1 ${getCardClass(res.age.status)}">
-            ${res.age.arrow ? `<span class="text-xs leading-none">${res.age.arrow}</span>` : ''}
-            <span>${res.age.value}</span>
+          <!-- 5. ÇIKIŞ YILI -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.debut.status)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Çıkış Yılı</span>
+            <span class="text-xs font-black mt-0.5 flex items-center gap-0.5">
+              ${res.debut.arrow ? `<span>${res.debut.arrow}</span>` : ''}
+              <span>${res.debut.value}</span>
+            </span>
+            <span class="text-[10px] mt-1 font-semibold">${res.debut.status === 'correct' ? '✅ Doğru' : res.debut.arrow === '▲' ? '▲ Daha Yeni' : '▼ Daha Eski'}</span>
           </div>
 
-          <!-- ÇIKIŞ YILI -->
-          <div class="w-[70px] h-16 rounded-xl border flex flex-col items-center justify-center p-1 ${getCardClass(res.debut.status)}">
-            ${res.debut.arrow ? `<span class="text-xs leading-none">${res.debut.arrow}</span>` : ''}
-            <span>${res.debut.value}</span>
+          <!-- 6. BURÇ -->
+          <div class="p-2.5 rounded-xl border flex flex-col items-center justify-center ${getCardClass(res.zodiacMatch)}">
+            <span class="text-[10px] opacity-80 font-normal uppercase tracking-wider">Burç</span>
+            <span class="text-xs font-black mt-0.5">${res.guessed.zodiac}</span>
+            <span class="text-[10px] mt-1 font-semibold">${res.zodiacMatch === 'correct' ? '✅ Doğru' : '❌ Yanlış'}</span>
           </div>
 
-          <!-- BURÇ -->
-          <div class="w-[75px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.zodiacMatch)}">
-            <span>${res.guessed.zodiac}</span>
-          </div>
         </div>
       `;
 
       const list = document.getElementById('guessesList');
-      list.insertBefore(row, list.firstChild);
+      list.insertBefore(card, list.firstChild);
+
+      // Kartın ekran içine yumuşakça kaydırılması
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // === TAHMİN GÖNDERME ===
+    function submitGuess(name) {
+      if (isGameOver) {
+        alert('Bu oyun tamamlandı! Yeniden başlamak için pratik moduna geçebilir veya sayfayı yenileyebilirsiniz.');
+        return;
+      }
+      
+      const cleanName = name.trim().toLowerCase();
+      const found = TPOP_MEMBERS.find(m => m.name.toLowerCase() === cleanName);
+      if (!found) {
+        alert(`'${name}' listede bulunamadı. Lütfen açılan listeden geçerli bir T-Pop üyesi seçiniz!`);
+        return;
+      }
+      if (guessedIds.has(found.id)) {
+        alert(`${found.name} üyesini zaten tahmin ettiniz! Farklı bir üye deneyin.`);
+        return;
+      }
+
+      guessedIds.add(found.id);
+      attempts++;
+      document.getElementById('attemptsNum').innerText = attempts;
+
+      const evalRes = evaluateGuess(found, targetMember);
+      renderGuessRow(evalRes);
+
+      // Banner Geri Bildirimi
+      const banner = document.getElementById('feedbackBanner');
+      banner.classList.remove('hidden');
+      if (evalRes.isWin) {
+        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-emerald-950/80 border border-emerald-500/60 text-emerald-200 flex items-center justify-between shadow-lg';
+        banner.innerHTML = `<span>🎉 <strong>TEBRİKLER!</strong> Doğru cevap <strong>${found.name}</strong> (${found.group})!</span><span>+${(attempts === 1) ? 1000 : 800} Puan</span>`;
+        handleWin(targetMember, attempts);
+      } else {
+        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-rose-950/80 border border-rose-500/60 text-rose-200 flex flex-col gap-1 shadow-lg';
+        banner.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span>❌ <strong>Yanlış Tahmin:</strong> ${found.name} (${found.group})</span>
+            <span class="text-rose-300">#${attempts}. Deneme</span>
+          </div>
+          <div class="text-[11px] text-slate-300 font-normal">
+            Aşağıdaki kutulardan Yeşil (Doğru), Sarı (Kısmi) ve Kırmızı (Yanlış) ipuçlarına bakarak yeni bir tahmin yapın!
+          </div>
+        `;
+        playBeep(200, 'sawtooth', 0.15);
+      }
     }
 
     function handleWin(member, attemptCount) {
       isGameOver = true;
       playWinSound();
-      confetti({ particleCount: 130, spread: 80, origin: { y: 0.6 } });
+      confetti({ particleCount: 140, spread: 80, origin: { y: 0.6 } });
 
       const pts = (attemptCount === 1) ? 1000 : (attemptCount === 2) ? 800 : (attemptCount === 3) ? 600 : (attemptCount === 4) ? 450 : (attemptCount === 5) ? 300 : 150;
       
@@ -622,72 +714,60 @@
 
       setTimeout(() => {
         document.getElementById('winModal').classList.remove('hidden');
-      }, 500);
+      }, 700);
     }
 
-    // === TAHMİN GÖNDERME ===
-    function submitGuess(name) {
-      if (isGameOver) return;
-      const found = TPOP_MEMBERS.find(m => m.name.toLowerCase() === name.trim().toLowerCase());
-      if (!found) {
-        alert('Lütfen arama listesinden geçerli bir üye seçiniz!');
-        return;
-      }
-      if (guessedIds.has(found.id)) {
-        alert(`${found.name} zaten tahmin edildi!`);
-        return;
-      }
-
-      guessedIds.add(found.id);
-      attempts++;
-      document.getElementById('attemptsNum').innerText = attempts;
-
-      const evalRes = evaluateGuess(found, targetMember);
-      renderGuessRow(evalRes);
-
-      if (evalRes.isWin) {
-        handleWin(targetMember, attempts);
-      } else {
-        playBeep(200, 'sawtooth', 0.15);
-      }
-    }
-
-    // === AUTOCOMPLETE ARAMA ===
+    // === CANLI ARAMA VE SEÇİM LİSTESİ ===
     const inputEl = document.getElementById('memberInput');
     const autoList = document.getElementById('autocompleteList');
 
-    inputEl.addEventListener('input', () => {
-      const q = inputEl.value.trim().toLowerCase();
-      if (!q) { autoList.classList.add('hidden'); return; }
+    function renderSuggestions(query = '') {
+      const q = query.trim().toLowerCase();
       const matches = TPOP_MEMBERS.filter(m => 
         !guessedIds.has(m.id) &&
-        (m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q))
+        (!q || m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q) || m.roles.some(r => r.toLowerCase().includes(q)))
       );
 
       if (matches.length === 0) {
-        autoList.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center">Eşleşen üye bulunamadı</div>`;
+        autoList.innerHTML = `<div class="p-3.5 text-xs text-slate-400 text-center font-medium">Eşleşen üye bulunamadı</div>`;
       } else {
         autoList.innerHTML = matches.map(m => `
-          <div class="px-3.5 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-name="${m.name}">
-            <div class="flex items-center gap-2.5">
-              <span class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center font-bold shadow-sm" style="background-color: ${m.color}">
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-name="${m.name}">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+              <span class="w-8 h-8 rounded-xl text-white text-sm flex items-center justify-center font-bold shadow-sm border border-white/20" style="background-color: ${m.color}">
                 ${m.emoji}
               </span>
               <div>
-                <div class="text-xs font-bold text-white">${m.name}</div>
+                <div class="text-xs font-black text-white group-hover:text-purple-300 transition">${m.name}</div>
                 <div class="text-[10px] text-slate-400">${m.roles.join(', ')} • ${m.iconicTrait}</div>
               </div>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300">
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300 pointer-events-none">
               ${m.group}
             </span>
           </div>
         `).join('');
       }
       autoList.classList.remove('hidden');
+    }
+
+    // Arama kutusuna tıklayınca veya odaklanınca HEMEN aç
+    inputEl.addEventListener('focus', () => renderSuggestions(inputEl.value));
+    inputEl.addEventListener('click', () => renderSuggestions(inputEl.value));
+    inputEl.addEventListener('input', () => renderSuggestions(inputEl.value));
+
+    // Sayfa boşluğuna tıklayınca listeyi kapat
+    document.addEventListener('click', (e) => {
+      if (!inputEl.contains(e.target) && !autoList.contains(e.target)) {
+        autoList.classList.add('hidden');
+      }
+      if (!clueInputEl.contains(e.target) && !clueAutoList.contains(e.target)) {
+        clueAutoList.classList.add('hidden');
+      }
     });
 
-    autoList.addEventListener('click', (e) => {
+    // Açılan listeden bir üyeye tıklanınca
+    autoList.addEventListener('mousedown', (e) => {
       const item = e.target.closest('[data-name]');
       if (item) {
         const name = item.getAttribute('data-name');
@@ -703,6 +783,20 @@
         inputEl.value = '';
         autoList.classList.add('hidden');
         submitGuess(val);
+      } else {
+        renderSuggestions('');
+      }
+    });
+
+    // Enter tuşuna basınca
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = inputEl.value.trim();
+        if (val) {
+          inputEl.value = '';
+          autoList.classList.add('hidden');
+          submitGuess(val);
+        }
       }
     });
 
@@ -710,25 +804,35 @@
     const clueInputEl = document.getElementById('clueMemberInput');
     const clueAutoList = document.getElementById('clueAutocompleteList');
 
-    clueInputEl.addEventListener('input', () => {
-      const q = clueInputEl.value.trim().toLowerCase();
-      if (!q) { clueAutoList.classList.add('hidden'); return; }
-      const matches = TPOP_MEMBERS.filter(m => m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q));
-      clueAutoList.innerHTML = matches.map(m => `
-        <div class="px-3 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-clue-name="${m.name}">
-          <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-md text-white text-[11px] flex items-center justify-center" style="background-color: ${m.color}">
-              ${m.emoji}
-            </span>
-            <span class="text-xs font-bold text-white">${m.name}</span>
-          </div>
-          <span class="text-[10px] text-slate-400">${m.group}</span>
-        </div>
-      `).join('');
-      clueAutoList.classList.remove('hidden');
-    });
+    function renderClueSuggestions(query = '') {
+      const q = query.trim().toLowerCase();
+      const matches = TPOP_MEMBERS.filter(m => 
+        !q || m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q)
+      );
 
-    clueAutoList.addEventListener('click', (e) => {
+      if (matches.length === 0) {
+        clueAutoList.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center font-medium">Eşleşen üye bulunamadı</div>`;
+      } else {
+        clueAutoList.innerHTML = matches.map(m => `
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition" data-clue-name="${m.name}">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+              <span class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center font-bold" style="background-color: ${m.color}">
+                ${m.emoji}
+              </span>
+              <span class="text-xs font-bold text-white">${m.name}</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-semibold pointer-events-none">${m.group}</span>
+          </div>
+        `).join('');
+      }
+      clueAutoList.classList.remove('hidden');
+    }
+
+    clueInputEl.addEventListener('focus', () => renderClueSuggestions(clueInputEl.value));
+    clueInputEl.addEventListener('click', () => renderClueSuggestions(clueInputEl.value));
+    clueInputEl.addEventListener('input', () => renderClueSuggestions(clueInputEl.value));
+
+    clueAutoList.addEventListener('mousedown', (e) => {
       const item = e.target.closest('[data-clue-name]');
       if (item) {
         const name = item.getAttribute('data-clue-name');
@@ -744,6 +848,19 @@
         clueInputEl.value = '';
         clueAutoList.classList.add('hidden');
         submitClueGuess(val);
+      } else {
+        renderClueSuggestions('');
+      }
+    });
+
+    clueInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = clueInputEl.value.trim();
+        if (val) {
+          clueInputEl.value = '';
+          clueAutoList.classList.add('hidden');
+          submitClueGuess(val);
+        }
       }
     });
 
@@ -866,6 +983,7 @@
       document.getElementById('statTotalScore').innerText = `${st.points.toLocaleString()} Puan`;
     }
 
+    // Başlat
     updateStatsUI();
     initClassicGame('daily');
   </script>
