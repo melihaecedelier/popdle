@@ -7,7 +7,8 @@
 * **Proje Adı:** Popdle – T-Pop Edition
 * **Proje Türü:** Yerel Mobil Uygulama (Native Android) & İnteraktif Görsel Web Prototipi
 * **Platform & Dil:** Android Studio, Kotlin, Jetpack Material Design 3, SharedPreferences
-* **Hedef Gruplar:** Sadece 6 Yetkili Grup (**Manifest, Crush, Karma, Aura, Mantra, Radikal**)
+* **Hedef Gruplar:** **Manifest, Crush, Karma (KARM6), Aura, Mantra, Radikal** (Resmi Veri Seti)
+* **Toplam Üye Sayısı:** 30 Doğrulanmış T-Pop İdolü
 * **Hedef Sürüm:** Android 7.0+ (API 24 - 34)
 * **Tarih:** 2026
 
@@ -16,49 +17,70 @@
 ## 1. Proje Özeti ve Kapsam
 
 ### 1.1. Projenin Amacı
-Türkiye'de gelişmekte olan yeni nesil Türk Pop (T-Pop) akımını ve özellikle Big5 yarışmasıyla doğan **Manifest** başta olmak üzere dinamik 6 T-Pop grubunu (**Manifest, Crush, Karma, Aura, Mantra, Radikal**) odağa alan, LoLdle ve Wordle benzeri bir mobil tahmin ve bilgi oyunudur.
+Türkiye'de gelişmekte olan yeni nesil Türk Pop (T-Pop) akımını temsil eden **6 resmi T-Pop grubunu** (**Manifest, Crush, Karma, Aura, Mantra, Radikal**) odağa alan, LoLdle ve Wordle benzeri bir mobil tahmin ve bilgi oyunudur.
 
-Kullanıcılar; grup üyelerini **görsel avatarlar, bulanıklaşan silüet fotoğrafları, kişisel özellikler (Cinsiyet, Rol, Yaş, Çıkış Yılı, Burç)** ve şarkı sözü ipuçlarından yararlanarak tahmin ederler.
-
----
-
-## 2. Kapsamdaki 6 T-Pop Grubu ve Görsel Kimlikleri
-
-Uygulamada yalnızca aşağıdaki 6 modern T-Pop grubu ve bu gruplara ait 26 üye yer almaktadır:
-
-| Grup Adı | Konsept & Müzik Tarzı | Görsel İkon & Tema | Temsilci Üyeler |
-| :--- | :--- | :--- | :--- |
-| **Manifest** | T-Pop Kız Grubu (Big5 / Hypers) | ✨ Pembe / Fuşya | Sueda Uluca, Hilal Yelekçi, Lidya Pınar, Mina Solak, Esin Bahat, Zeynep Sude Oktay |
-| **Crush** | Dinamik & Enerjik Sokak Popu | ⚡ Kızıl / Turuncu | Derin Aksoy, Bora Yılmaz, Selin Deniz, Arda Çetin |
-| **Karma** | Gizemli Mistik & Fütüristik Synth | 🔮 Koyu Mor / İndigo | Melis Doğan, Emirhan Kaya, Nilsu Güler, Kaan Yıldız |
-| **Aura** | Zarif & Parlak Akustik Vokal | 🌟 Camgöbeği / Turkuaz | Duru Aydın, Berk Saner, İrem Şahin, Mert Koç |
-| **Mantra** | Spiritüel & Etnik Pop Fusion | 🪷 Altın / Amber | Rüzgar Yalçın, Aslı Demir, Caner Öztürk, Zehra Tan |
-| **Radikal** | Asi & Rock-Pop Başkaldırı | 🔥 Koyu Ateş / Kömür | Barış Keskin, Aylin Erdem, Doruk Korkmaz, Ece Vural |
+Kullanıcılar; grup üyelerini **görsel avatarlar, bulanıklaşan silüet fotoğrafları, kişisel özellikler (Cinsiyet, Rol/Görev, Yaş, Çıkış Yılı, Burç)** ve resmi şarkı diskografisinden derlenen ipuçlarından yararlanarak tahmin ederler.
 
 ---
 
-## 3. Eklenen Görsel Öğeler ve Mekanikler
+## 2. Resmi Diskografi ve Şarkı Listesi
 
-Kullanıcı deneyimini güçlendirmek ve görsel zenginlik sunmak amacıyla projeye şu görsel bileşenler entegre edilmiştir:
+Uygulamanın ipucu ve soru havuzunda yer alan resmi şarkı ve yayın listesi:
 
-1. **Görsel Avatarlar ve Grup Rozetleri:**
-   - Her üyenin kendi grup rengi ve ikonunu taşıyan görsel avatar rozeti tasarlanmıştır.
-   - Arama kutusunda autocomplete önerileri görsel kartlarla sunulmaktadır.
-   - LoLdle tahmin tablosunda her üyenin avatarı ve grup ikonu yer almaktadır.
+| Grup | Öne Çıkan Şarkılar & Albümler | Yayın Tarihleri & Türü |
+| :--- | :--- | :--- |
+| **Manifest** | Zamansızdık *(Çıkış)*, Arıyo, KTS, Snap, Rüya, Amatör, Başrol Sensin, Daha İyi, Hileli *(feat. Ajda Pekkan)*, Toz Pembe, TRALALA | 2025 – 2026 / Single'lar |
+| **Crush** | CRUSH! *(Çıkış Single'ı)*, Benim Olsana | 2026-07-31 / 2026-09-11 |
+| **Karma (KARM6)** | Keşke Benim Olsa, Sırra Kadem, Crop Top, Önümüz Yaz, Blok Blok, İhtimal, Ta Burama *(feat. Serdar Ortaç)*, KARMA | 2026 / Serotonin EP & Single'lar |
+| **Aura (AURA)** | YUH! *(Çıkış)*, Tuzak, PES, 2036, We Are Aura!, Masum Kedi, Tempo, AURA, Red Flag!, İltifatlar, Derbeder, Parçalı Bulutlu | 2026 / ELEMENTAL Albümü |
+| **Mantra** | Bi Kiss *(Çıkış)*, Toysun, Goygoy, Tuttu Fırlattı, Red Flag, Tek Başıma, Kaldım Ellerinde | 2026-05-15 / New Era Albümü |
+| **Radikal** | Hayran *(Çıkış)*, Korkmam Ben, Yalancı | 2026 / Single'lar |
 
-2. **Kademeli Görsel Silüet & Bulanık Fotoğraf Modu (Silhouette Photo Mode):**
-   - Şarkı Sözü ve İpucu modunda üyenin görseli ilk başta tamamen bulanık (`blur-md brightness-50`) ve kilitli olarak sunulur.
-   - Her yapılan yanlış tahminde görsel kademeli olarak netleşir (`blur-sm` $\to$ `blur-none`), böylece kullanıcı sadece metinsel değil görsel hafızasıyla da üyeyi teşhis edebilir.
+---
 
-3. **Zafer Görsel Kartı (Win Modal):**
-   - Oyuncu doğru üyeyi bulduğunda üyenin ışıltılı görsel avatarı, grup rozeti, sahne özelliği ve konfeti animasyonları ile ödüllendirilir.
+## 3. Resmi Grup Üyeleri ve Rol Dağılımı (30 Üye)
+
+| Üye | Grup | Cinsiyet | Resmi Rol / Görev | Öne Çıkan Şarkı |
+| :--- | :--- | :--- | :--- | :--- |
+| **Esin Bahat** | Manifest | Kadın | Ana Dansçı (Main Dancer) | Zamansızdık, Rüya |
+| **Hilal Yelekçi** | Manifest | Kadın | Baş Dansçı (Lead Dancer) | Başrol Sensin, KTS |
+| **Lidya Pınar** | Manifest | Kadın | Rapçi & Vokal | Snap, Arıyo |
+| **Mina Solak** | Manifest | Kadın | Yardımcı Vokalist (Sub Vocal) | Daha İyi, Amatör |
+| **Sueda Uluca** | Manifest | Kadın | Ana Vokalist (Main Vocal) | Hileli (feat. Ajda Pekkan) |
+| **Zeynep Sude Oktay** | Manifest | Kadın | Ana Rapçi (Main Rapper) | Toz Pembe, Snap |
+| **Oğuzhan Çifçi** | Crush | Erkek | Vokalist | CRUSH!, Benim Olsana |
+| **Batu Cengiz** | Crush | Erkek | Dansçı & Vokal | CRUSH!, Benim Olsana |
+| **Barış Çağan Yüksekkaya** | Crush | Erkek | Vokalist | CRUSH! |
+| **Miraç Fırat** | Crush | Erkek | Dansçı | CRUSH! |
+| **Milan Önder** | Crush | Erkek | Visual & Vokal | Benim Olsana |
+| **Arda Soydoğan** | Crush | Erkek | Rapçi | CRUSH! |
+| **Efe Şan** | Crush | Erkek | Dansçı & Vokal | Benim Olsana |
+| **Cem Suha Kurt** | Karma | Erkek | Ana Rapçi, Ana Dansçı | Keşke Benim Olsa, KARMA |
+| **Ezgi Akliman** | Karma | Kadın | Ana Rapçi, Ana Dansçı | Crop Top, Blok Blok |
+| **Özlem Naz Gözcü** | Karma | Kadın | Ana Vokalist (Main Vocal) | Sırra Kadem, İhtimal |
+| **Adilcan Bilgin** | Karma | Erkek | Ana Vokalist (Main Vocal) | Ta Burama (feat. Serdar Ortaç) |
+| **Erdeniz Telli** | Karma | Erkek | Baş Vokalist, Baş Dansçı | KARMA, Serotonin |
+| **Ada Atılgan** | Karma | Kadın | Baş Vokalist, Baş Dansçı | Önümüz Yaz |
+| **Aslı Göztaşı** | Aura | Kadın | Baş Dansçı (Lead Dancer) | YUH!, Tuzak |
+| **Suzy Roumenov** | Aura | Kadın | Baş Vokalist (Lead Vocal) | PES, 2036 |
+| **Meri Aslan** | Aura | Kadın | Ana Vokalist (Main Vocal) | We Are Aura!, ELEMENTAL |
+| **Esra Mutlu** | Aura | Kadın | Ana Dansçı (Main Dancer) | Masum Kedi, Tempo |
+| **Delfin Kayra Uraz** | Mantra | Kadın | Baş Vokalist (Lead Vocal) | Bi Kiss, New Era |
+| **Sıla Nisa Bozkurt** | Mantra | Kadın | Baş Dansçı (Lead Dancer) | Toysun, Goygoy |
+| **Güniz Ok** | Mantra | Kadın | Ana Dansçı (Main Dancer) | Tuttu Fırlattı, Red Flag |
+| **Doğa Bezek** | Mantra | Kadın | Ana Vokalist (Main Vocal) | Tek Başıma, Bi Kiss |
+| **Şeyma Akso** | Mantra | Kadın | Ana Rapçi (Main Rapper) | Kaldım Ellerinde |
+| **Vedat Çelik** | Radikal | Erkek | Ana Vokalist (Main Vocal) | Hayran, Korkmam Ben |
+| **Yuşa Akbıyık** | Radikal | Erkek | Baş Dansçı (Lead Dancer) | Hayran, Yalancı |
+| **Yusuf Emre Akbıyık** | Radikal | Erkek | Yardımcı Vokalist (Sub Vocal) | Korkmam Ben |
+| **İbrahim Can Kaya** | Radikal | Erkek | Ana Dansçı (Main Dancer) | Hayran |
 
 ---
 
 ## 4. Sistem Mimarisi ve Algoritmik Çözümler
 
 ### 4.1. Günlük Deterministik Hashing
-$$\text{Seed} = |\text{hashCode}(\text{"YYYY-MM-DD"})| \pmod{26}$$
+$$\text{Seed} = |\text{hashCode}(\text{"YYYY-MM-DD"})| \pmod{30}$$
 Her gün gece 00:00'da tarih değiştiğinde tüm oyuncular için ortak yeni bir T-Pop idolü seçilir.
 
 ### 4.2. LoLdle Karşılaştırma Matrisi
@@ -70,4 +92,4 @@ Her gün gece 00:00'da tarih değiştiğinde tüm oyuncular için ortak yeni bir
 ---
 
 ## 5. Sonuç
-Proje, gereksiz gruplardan arındırılarak sadece istenen 6 T-Pop grubuna odaklanmış, görsel avatarlar ve silüet açma mekaniğiyle modern bir mobil oyun deneyimine kavuşturulmuştur.
+Proje, resmi T-Pop diskografisi ve doğrulanmış 30 grup üyesinin verileriyle birebir entegre edilmiş; gereksiz arayüz kalabalığından arındırılarak sade ve modern bir mobil tahmin oyunu olarak tamamlanmıştır.

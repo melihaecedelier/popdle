@@ -7,42 +7,21 @@ Bu rehber, sınavda hocanın projeniz hakkında sorabileceği soruları ve verme
 
 ---
 
-## 📌 1. KONSEPT VE GRUPLAR
+## 📌 1. KONSEPT VE RESMİ VERİ SETİ
 
-### Soru: "Uygulamada hangi gruplar var ve neden bu grupları seçtin?"
+### Soru: "Uygulamada hangi gruplar ve üyeler var? Bilgileri nereden aldın?"
 **Cevabınız:**
-> *"Hocam, projemde yeni nesil Türk Pop (T-Pop) akımını temsil eden **6 özel grubu** modelledim:
-> 1. **Manifest (✨):** Big5 Türkiye yarışmasıyla kurulan Türkiye'nin ilk T-Pop kız grubu (Sueda, Hilal, Lidya, Mina, Esin, Zeynep).
-> 2. **Crush (⚡):** Enerjik ve dans odaklı grup (Derin, Bora, Selin, Arda).
-> 3. **Karma (🔮):** Mistik ve elektronik konsept grubu (Melis, Emirhan, Nilsu, Kaan).
-> 4. **Aura (🌟):** Vokal ve zarafet odaklı grup (Duru, Berk, İrem, Mert).
-> 5. **Mantra (🪷):** Etnik ezgilerle modern popu buluşturan grup (Rüzgar, Aslı, Caner, Zehra).
-> 6. **Radikal (🔥):** Rock-pop ve asi sahne grubu (Barış, Aylin, Doruk, Ece).
-> Toplam 26 üyenin yaş, çıkış yılı, cinsiyet, burç, rol ve görsel sahne özelliklerini veritabanına işledim."*
+> *"Hocam, projemde yeni nesil Türk Pop (T-Pop) akımını temsil eden **6 resmi grubu** ve bu grupların **30 doğrulanmış üyesini** modelledim:
+> 1. **Manifest (Kız Grubu):** Esin Bahat (Ana Dansçı), Hilal Yelekçi (Baş Dansçı), Lidya Pınar (Rapçi & Vokal), Mina Solak (Yardımcı Vokalist), Sueda Uluca (Ana Vokalist), Zeynep Sude Oktay (Ana Rapçi). Çıkış şarkıları 'Zamansızdık', öne çıkan işleri 'Hileli (feat. Ajda Pekkan)' ve 'Başrol Sensin'.
+> 2. **Crush (Erkek Grubu):** Oğuzhan Çifçi, Batu Cengiz, Barış Çağan Yüksekkaya, Miraç Fırat, Milan Önder, Arda Soydoğan, Efe Şan. Çıkış single'ı 'CRUSH!' ve hit parçaları 'Benim Olsana'.
+> 3. **Karma / KARM6 (Karma Co-ed Grubu):** Cem Suha Kurt (Ana Rapçi/Dansçı), Ezgi Akliman (Ana Rapçi/Dansçı), Özlem Naz Gözcü (Ana Vokalist), Adilcan Bilgin (Ana Vokalist), Erdeniz Telli (Baş Vokalist/Dansçı), Ada Atılgan (Baş Vokalist/Dansçı). 'Serotonin' EP'si, 'Keşke Benim Olsa' ve 'Ta Burama (feat. Serdar Ortaç)' şarkılarıyla biliniyor.
+> 4. **Aura (Kız Grubu):** Aslı Göztaşı (Baş Dansçı), Suzy Roumenov (Baş Vokalist), Meri Aslan (Ana Vokalist), Esra Mutlu (Ana Dansçı). 'ELEMENTAL' albümü ve 'YUH!', 'PES', '2036' teklileri.
+> 5. **Mantra (Kız Grubu):** Delfin Kayra Uraz (Baş Vokalist), Sıla Nisa Bozkurt (Baş Dansçı), Güniz Ok (Ana Dansçı), Doğa Bezek (Ana Vokalist), Şeyma Akso (Ana Rapçi). 'New Era' albümü ve 'Bi Kiss', 'Toysun', 'Tuttu Fırlattı' şarkıları.
+> 6. **Radikal (Erkek Grubu):** Vedat Çelik (Ana Vokalist), Yuşa Akbıyık (Baş Dansçı), Yusuf Emre Akbıyık (Yardımcı Vokalist), İbrahim Can Kaya (Ana Dansçı). Çıkış parçası 'Hayran' ve 'Korkmam Ben'."*
 
-### Soru: "Uygulamadaki görsel öğeler ve mekanikler nelerdir?"
+### Soru: "Uygulamadaki görsel ve oyun mekanikleri nelerdir?"
 **Cevabınız:**
-> *"Hocam projede sadece metin karşılaştırması değil, güçlü görsel unsurlar kurguladım:
-> 1. **Görsel Avatarlar ve Grup İkonları:** Her grubun kendine has tematik rengi, ikonu (✨, ⚡, 🔮, 🌟, 🪷, 🔥) ve üyelerin renkli avatarları hem arama kutusunda hem de tahmin satırlarında yer alıyor.
-> 2. **Görsel Silüet / Bulanık Fotoğraf Modu (Clue Mode):** Üyenin görseli ilk başta tamamen bulanık ve kilitli açılıyor. Kullanıcı yanlış tahmin yaptıkça bulanıklık kademeli olarak kalkıyor (`blur` filtresi temizleniyor) ve fotoğraf netleşiyor.
-> 3. **Zafer Görsel Kartı:** Doğru bilindiğinde üyenin ışıltılı görsel avatarı, grup rozeti ve sahne kostüm detaylarıyla zenginleştirilmiş bir tebrik ekranı ve konfeti animasyonu çıkıyor."*
-
----
-
-## 📌 2. TEKNİK & MİMARİ SORULARI
-
-### Soru: "Günlük gizli üye algoritması nasıl çalışıyor?"
-**Cevabınız:**
-> *"Hocam, harici bir sunucu kurmadan tüm kullanıcıların aynı gün aynı üyeyi bulabilmesi için **Date-Hashing Modular Arithmetic** kullandım:
-> `Math.abs("YYYY-MM-DD".hashCode()) % 26` formülü ile günün tarihi bir tohum sayıya dönüştürülüp 26 üyemize modülo ediliyor. Gece 00:00 olunca tarih string'i değiştiği için otomatik yeni gizli üye seçilmiş oluyor."*
-
-### Soru: "LoLdle karşılaştırmasını nasıl yaptın?"
-**Cevabınız:**
-> *"Hocam, `PopdleEngine.compare()` fonksiyonuyla:
-> - Grup, Cinsiyet, Burç birebir eşitse Yeşil (🟩), değilse Kırmızı (🟥).
-> - Roller ortak paylaşıyorsa Sarı (🟨), birebir aynıysa Yeşil.
-> - Yaş ve Çıkış Yılında hedef kişi büyükse yukarı ok (▲), küçükse aşağı ok (▼) çıkıyor. Fark 3 yıl veya daha az ise kullanıcıya yakın olduğunu belirtmek için Sarı renkle işaretleniyor."*
-
-### Soru: "Verileri nerede saklıyorsun?"
-**Cevabınız:**
-> *"Android'in yerel `SharedPreferences` mekanizması ve Google `Gson` kütüphanesini kullanarak `UserStats` nesnesini JSON olarak kaydediyorum. Oyuncunun günlük serisi, kazanma yüzdesi ve puanı cihaz kapansa bile silinmiyor."*
+> *"Hocam arayüzü LoLdle ve Wordle tarzında sade ve şık tuttuk:
+> 1. **LoLdle Karşılaştırma Tablosu:** Kullanıcı tahmin yaptıkça Grup, Cinsiyet, Rol, Yaş, Çıkış Yılı ve Burç özellikleri karşılaştırılır. Birebir tutanlar Yeşil (🟩), yakın olanlar ve ortak roller Sarı (🟨), tutmayanlar Kırmızı (🟥) olur. Yaş ve Çıkış Yılında hedef kişi büyükse yukarı ok (▲), küçükse aşağı ok (▼) ile yönlendirme yapılır.
+> 2. **Görsel Silüet Modu (Silhouette Mode):** Fotoğraf başlangıçta kilitli ve bulanık açılır. Yapılan her yanlış tahminde bulanıklık kademeli olarak kalkarak fotoğraf netleşir ve şarkı ipuçları sunulur.
+> 3. **Günlük Mod Tohumlama Algoritması:** `Math.abs("YYYY-MM-DD".hashCode()) % 30` formülüyle günün tarihi bir sayıya çevrilip 30 üyeye modülo edilir. Harici sunucuya ihtiyaç duymadan herkes aynı gün aynı gizli T-Pop idolünü arar."*
