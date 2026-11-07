@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+app/build/
+*/build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.navigation/
+captures/
+output.json
+
+# Local configuration
+local.properties
+
+# Log files
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

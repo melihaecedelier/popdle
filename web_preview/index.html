@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Popdle – Yeni Nesil T-Pop Tahmin Oyunu</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    @keyframes flipIn {
+      0% { transform: rotateX(-90deg); opacity: 0; }
+      100% { transform: rotateX(0deg); opacity: 1; }
+    }
+    .tile-flip {
+      animation: flipIn 0.5s ease forwards;
+    }
+    /* Hide scrollbars for clean mobile feel */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 select-none font-sans">
+
+  <!-- Mobil Çerçeve / Konteyner -->
+  <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden min-h-[92vh]">
+    
+    <!-- Üst Bar: Logo, Seri ve İkonlar -->
+    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 px-4 py-3 flex items-center justify-between sticky top-0 z-20">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-black text-white text-lg shadow-md shadow-pink-500/20">
+          P
+        </div>
+        <div>
+          <h1 class="text-xl font-black tracking-wider text-white flex items-center gap-1">
+            POPDLE <span class="text-[10px] bg-pink-500/20 text-pink-400 border border-pink-500/30 px-1.5 py-0.5 rounded font-bold">T-POP</span>
+          </h1>
+          <p class="text-[11px] text-slate-400 font-medium">Manifest & T-Pop Tahmin Oyunu</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <button id="btnHowToPlay" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 text-sm font-bold border border-slate-700 transition" title="Nasıl Oynanır?">
+          ?
+        </button>
+        <button id="btnStats" class="px-2.5 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center space-x-1 border border-slate-700 transition" title="İstatistikler">
+          <span class="text-orange-500">🔥</span>
+          <span id="headerStreakText" class="text-xs font-bold text-slate-200">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mod Seçim Sekmeleri (Tabs) -->
+    <div class="grid grid-cols-3 bg-slate-950 p-1 border-b border-slate-800 text-xs font-bold">
+      <button id="tabDaily" class="py-2 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow">
+        <span>⭐</span> Günlük
+      </button>
+      <button id="tabClassic" class="py-2 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+        <span>♾️</span> Pratik
+      </button>
+      <button id="tabClue" class="py-2 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+        <span>💡</span> İpucu
+      </button>
+    </div>
+
+    <!-- OYUN ALANI -->
+    <main class="flex-1 flex flex-col p-4 overflow-y-auto no-scrollbar">
+
+      <!-- GÜNLÜK / PRATİK MODU GÖRÜNÜMÜ -->
+      <section id="classicSection" class="flex flex-col flex-1">
+        
+        <!-- Üst Bilgi Barı -->
+        <div class="flex items-center justify-between mb-3 text-xs">
+          <span id="modeBadge" class="bg-purple-950 text-purple-300 border border-purple-800 px-2 py-0.5 rounded-full font-semibold">
+            Günün Gizli Üyesi
+          </span>
+          <span id="attemptCountBadge" class="text-slate-400">
+            Tahmin: <strong class="text-white" id="attemptsNum">0</strong>
+          </span>
+        </div>
+
+        <!-- Arama ve Tahmin Girişi -->
+        <div class="relative mb-3">
+          <div class="flex gap-2">
+            <input 
+              id="memberInput" 
+              type="text" 
+              placeholder="T-Pop üyesi arayın (Örn: Sueda, Hilal, Salman...)" 
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition shadow-inner"
+              autocomplete="off"
+            />
+            <button 
+              id="btnSubmitGuess" 
+              class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm px-4 rounded-xl shadow-lg shadow-purple-600/30 transition transform active:scale-95 whitespace-nowrap"
+            >
+              Tahmin
+            </button>
+          </div>
+
+          <!-- Canlı Autocomplete Öneri Listesi -->
+          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50">
+            <!-- Dinamik doldurulacak -->
+          </div>
+        </div>
+
+        <!-- LoLdle Tablo Başlıkları (Yatay Kaydırılabilir) -->
+        <div class="overflow-x-auto no-scrollbar bg-slate-950/70 border border-slate-800 rounded-xl py-2 px-1 mb-2">
+          <div class="flex text-[11px] font-bold text-slate-400 min-w-[540px] px-1 text-center">
+            <div class="w-[85px]">Üye</div>
+            <div class="w-[75px]">Grup</div>
+            <div class="w-[65px]">Cinsiyet</div>
+            <div class="w-[100px]">Rol / Görev</div>
+            <div class="w-[70px]">Yaş</div>
+            <div class="w-[70px]">Çıkış</div>
+            <div class="w-[75px]">Burç</div>
+          </div>
+        </div>
+
+        <!-- Yapılan Tahminler Listesi -->
+        <div id="guessesList" class="flex-1 flex flex-col space-y-2 overflow-y-auto no-scrollbar">
+          <!-- Boş Durum Karşılama Kartı -->
+          <div id="emptyStateBox" class="flex-1 flex flex-col items-center justify-center p-6 text-center text-slate-400">
+            <div class="w-14 h-14 rounded-2xl bg-purple-950/50 border border-purple-800/50 flex items-center justify-center text-2xl mb-3">
+              🎤
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
+            <p class="text-xs text-slate-400 max-w-xs">
+              Manifest, KÖFN, Madrigal veya Grup Hepsi üyelerinden bir isim yazarak ipuçlarını açığa çıkarın.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- İPUCU / ŞARKI SÖZÜ MODU GÖRÜNÜMÜ -->
+      <section id="clueSection" class="flex flex-col flex-1 hidden">
+        <div class="flex items-center justify-between mb-3 text-xs">
+          <span class="bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-0.5 rounded-full font-semibold">
+            Şarkı Sözü & Alıntı Modu
+          </span>
+          <span id="clueAttemptsBadge" class="text-pink-400 font-bold">Kalan Hak: 5</span>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 mb-4">
+          <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-2 py-0.5 rounded">
+            Şarkı Sözü / Alıntı
+          </span>
+          <blockquote id="clueQuoteText" class="mt-3 text-base font-bold italic text-white leading-snug">
+            “Manifest'in sahnedeki ses tüneli ve lider vokali!”
+          </blockquote>
+
+          <div class="my-4 border-t border-slate-700/60"></div>
+
+          <div class="text-[11px] font-bold text-slate-400 mb-2">Kademeli İpuçları (Yanlış Tahminde Açılır):</div>
+          <div class="space-y-1.5 text-xs">
+            <div id="clueStage1" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
+              🔒 İpucu 1: 1. Yanlış Tahminde Açılır (Cinsiyet & Burç)
+            </div>
+            <div id="clueStage2" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
+              🔒 İpucu 2: 2. Yanlış Tahminde Açılır (Grup & Rol)
+            </div>
+            <div id="clueStage3" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500">
+              🔒 İpucu 3: 3. Yanlış Tahminde Açılır (Fun Fact)
+            </div>
+          </div>
+        </div>
+
+        <!-- Tahmin Girişi -->
+        <div class="relative mb-3">
+          <div class="flex gap-2">
+            <input 
+              id="clueMemberInput" 
+              type="text" 
+              placeholder="Bu üye kim? (Adını yazın)" 
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
+              autocomplete="off"
+            />
+            <button 
+              id="btnSubmitClue" 
+              class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-sm px-4 rounded-xl shadow-lg transition transform active:scale-95 whitespace-nowrap"
+            >
+              Cevapla
+            </button>
+          </div>
+          <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/95 backdrop-blur border border-slate-700 rounded-xl shadow-2xl z-30 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/50"></div>
+        </div>
+
+        <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-2"></div>
+      </section>
+
+    </main>
+
+    <!-- Alt Çubuk: Manifest & Telif / Proje İmzası -->
+    <footer class="bg-slate-950 border-t border-slate-800 px-4 py-2.5 text-center text-[11px] text-slate-500">
+      Mobil Programlama Vize Projesi • <strong>Popdle v1.0.0</strong>
+    </footer>
+
+  </div>
+
+  <!-- MODAL: KAZANDINIZ (WIN MODAL) -->
+  <div id="winModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl relative">
+      <div class="text-4xl mb-2">🎉</div>
+      <h2 class="text-xl font-black text-white">TEBRİKLER! BİLDİNİZ</h2>
+      <p class="text-xs text-slate-400 mt-1">Gizli T-Pop Yıldızını Başarıyla Keşfettiniz!</p>
+
+      <!-- Üye Kartı -->
+      <div class="bg-emerald-950/60 border border-emerald-500/50 rounded-2xl p-4 my-4 flex items-center gap-3 text-left">
+        <div id="winAvatar" class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-xl font-black text-white shadow">
+          S
+        </div>
+        <div class="flex-1 overflow-hidden">
+          <h3 id="winName" class="text-base font-bold text-white truncate">Sueda Uluca</h3>
+          <p id="winGroupAndRole" class="text-xs text-emerald-300 font-medium truncate">Manifest • Lider, Ana Vokal</p>
+        </div>
+      </div>
+
+      <!-- Skor ve Deneme Rozetleri -->
+      <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="bg-slate-800/80 rounded-xl p-2.5 border border-slate-700">
+          <div id="winAttempts" class="text-xl font-black text-cyan-400">3</div>
+          <div class="text-[11px] text-slate-400">Tahminde</div>
+        </div>
+        <div class="bg-slate-800/80 rounded-xl p-2.5 border border-slate-700">
+          <div id="winPoints" class="text-xl font-black text-amber-400">+600</div>
+          <div class="text-[11px] text-slate-400">Puan Kazanıldı</div>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button id="btnShare" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2.5 rounded-xl shadow-lg transition text-sm">
+          Sonucu Paylaş 📱
+        </button>
+        <button id="btnWinClose" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 rounded-xl border border-slate-700 transition text-sm">
+          Tamam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NASIL OYNANIR (HOW TO PLAY) -->
+  <div id="howModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-5 shadow-2xl relative text-left">
+      <h2 class="text-lg font-black text-white text-center mb-1">Popdle Nasıl Oynanır?</h2>
+      <p class="text-xs text-slate-400 text-center mb-4">LoLdle ve Wordle mantığıyla gizli T-Pop üyesini bul!</p>
+
+      <div class="space-y-2.5 text-xs text-slate-300">
+        <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
+          <div class="w-5 h-5 rounded bg-emerald-500 flex-shrink-0"></div>
+          <div><strong class="text-emerald-400">Yeşil:</strong> Özellik gizli üye ile birebir eşleşiyor.</div>
+        </div>
+        <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
+          <div class="w-5 h-5 rounded bg-amber-500 flex-shrink-0"></div>
+          <div><strong class="text-amber-400">Sarı:</strong> Kısmi eşleşme (Roller uyuşuyor veya Yaş/Çıkış farkı 3 yıldan az).</div>
+        </div>
+        <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
+          <div class="w-5 h-5 rounded bg-rose-500 flex-shrink-0"></div>
+          <div><strong class="text-rose-400">Kırmızı:</strong> Bu özellik uyuşmuyor.</div>
+        </div>
+        <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
+          <div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center font-bold text-white text-[11px] flex-shrink-0">▲ / ▼</div>
+          <div><strong class="text-white">Oklar:</strong> Hedef üyenin yaşı/çıkış yılı daha büyük (▲) ya da daha küçük (▼).</div>
+        </div>
+      </div>
+
+      <button id="btnHowClose" class="mt-5 w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl transition text-sm">
+        Anladım, Oyuna Başla!
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: İSTATİSTİKLER (STATS) -->
+  <div id="statsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-5 shadow-2xl relative text-center">
+      <h2 class="text-lg font-black text-white mb-4">OYUNCU İSTATİSTİKLERİ</h2>
+
+      <div class="grid grid-cols-4 gap-2 mb-4">
+        <div class="bg-slate-800 p-2 rounded-xl">
+          <div id="statPlayed" class="text-lg font-black text-white">0</div>
+          <div class="text-[10px] text-slate-400">Oynanan</div>
+        </div>
+        <div class="bg-slate-800 p-2 rounded-xl">
+          <div id="statWinRate" class="text-lg font-black text-emerald-400">%0</div>
+          <div class="text-[10px] text-slate-400">Kazanma</div>
+        </div>
+        <div class="bg-slate-800 p-2 rounded-xl">
+          <div id="statStreak" class="text-lg font-black text-orange-500">0</div>
+          <div class="text-[10px] text-slate-400">Mevcut Seri</div>
+        </div>
+        <div class="bg-slate-800 p-2 rounded-xl">
+          <div id="statMaxStreak" class="text-lg font-black text-amber-400">0</div>
+          <div class="text-[10px] text-slate-400">En İyi Seri</div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 mb-4 flex justify-between items-center text-xs">
+        <span class="text-slate-400">Toplam Puan:</span>
+        <strong id="statTotalScore" class="text-amber-400 text-base">0 Puan</strong>
+      </div>
+
+      <button id="btnStatsClose" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl border border-slate-700 transition text-sm">
+        Kapat
+      </button>
+    </div>
+  </div>
+
+  <!-- OYUN VERİTABANI & JAVASCRIPT MANTIĞI -->
+  <script>
+    // === T-POP VERİTABANI ===
+    const TPOP_MEMBERS = [
+      // MANIFEST GRUBU (Big5 / Hypers T-Pop Kız Grubu)
+      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Lider", "Ana Vokal"], birthYear: 2002, age: 22, debutYear: 2024, zodiac: "Koç", clueQuote: "Manifest'in sahnedeki ses tüneli ve lider vokali!", funFact: "Big5 Türkiye yarışmasında güçlü vokal tekniğiyle jüriden tam not alarak gruba lider seçilmiştir." },
+      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı", "Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Boğa", clueQuote: "Dans pistinde fırtına estiren dinamik adımlar!", funFact: "Dans koreografilerinin hazırlanmasında grubun en aktif ve yaratıcı yönlendiricisidir." },
+      { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi", "Vokal"], birthYear: 2004, age: 20, debutYear: 2024, zodiac: "Aslan", clueQuote: "T-Pop ritimlerini rap beatleriyle harmanlayan enerjik tarz!", funFact: "Grubun şarkılarındaki dinamik rap kısımlarının söz yazımına katkıda bulunmaktadır." },
+      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Visual", "Lead Vokal"], birthYear: 2003, age: 21, debutYear: 2024, zodiac: "Terazi", clueQuote: "Kliplerdeki ikonik sahneleri ve kadife vokaliyle öne çıkıyor!", funFact: "Moda ve sahne kostümü tasarımına özel ilgi duymaktadır." },
+      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Vokal", "Dansçı"], birthYear: 2001, age: 23, debutYear: 2024, zodiac: "İkizler", clueQuote: "Sahnenin ritmini bir an bile düşürmeyen pozitif enerji!", funFact: "Grupta motivasyon kaynağı ve en neşeli üye olarak bilinir." },
+      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Maknae", "Vokal", "Dansçı"], birthYear: 2005, age: 19, debutYear: 2024, zodiac: "Balık", clueQuote: "Genç yaşına rağmen sahneyi devleştiren doğal yetenek!", funFact: "Manifest'in 'maknae'si (en genç üyesi) olup hayranlar tarafından sevgiyle korunmaktadır." },
+      // KÖFN
+      { id: "kofn_salman", name: "Salman Tin", group: "KÖFN", gender: "Erkek", roles: ["Ana Vokal", "Söz Yazarı"], birthYear: 1992, age: 32, debutYear: 2018, zodiac: "İkizler", clueQuote: "Ben seni öyle bir severim ki aklın durur!", funFact: "Şarkı sözlerinin tamamına yakınını kendi derin duygu dünyasından ilham alarak yazmaktadır." },
+      { id: "kofn_bilge", name: "Bilge Kağan Etil", group: "KÖFN", gender: "Erkek", roles: ["Prodüktör", "Klavye"], birthYear: 1989, age: 35, debutYear: 2018, zodiac: "Yay", clueQuote: "80'ler analog synth tınılarını modern popla buluşturan mimar!", funFact: "Klasik müzik ve caz piyanistliği geçmişine sahiptir." },
+      // MADRIGAL
+      { id: "madrigal_anil", name: "Anıl Erbil", group: "Madrigal", gender: "Erkek", roles: ["Lider", "Ana Vokal", "Gitar"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Akrep", clueQuote: "Seni dert etmeler yalan oldu...", funFact: "'Seni Dert Etmeler' parçasıyla dijital listeleri aylarca domine etmiştir." },
+      { id: "madrigal_ceyhun", name: "Ceyhun Kırdemir", group: "Madrigal", gender: "Erkek", roles: ["Bas Gitar"], birthYear: 1992, age: 32, debutYear: 2014, zodiac: "Başak", clueQuote: "Grubun şarkılarının omurgasını oluşturan bas riffleri!", funFact: "Konserlerde enerjik bas sololarıyla bilinir." },
+      // DOLU KADEHİ TERS TUT
+      { id: "dktt_ugurhan", name: "Uğurhan Özay", group: "Dolu Kadehi Ters Tut", gender: "Erkek", roles: ["Ana Vokal", "Söz Yazarı"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Yay", clueQuote: "Madem öyle, işte böyle...", funFact: "Grubun ismi Ömer Hayyam'ın bir rubaisinden esinlenilmiştir." },
+      { id: "dktt_ogulcan", name: "Mürsel Oğulcan Ava", group: "Dolu Kadehi Ters Tut", gender: "Erkek", roles: ["Prodüktör", "Gitar"], birthYear: 1993, age: 31, debutYear: 2014, zodiac: "Kova", clueQuote: "Tüm aranjeleri ev stüdyosunda inşa eden vizyoner gitarist!", funFact: "Mimar Sinan Üniversitesi mezunudur." },
+      // GRUP HEPSİ
+      { id: "hepsi_gulcin", name: "Gülçin Ergül", group: "Grup Hepsi", gender: "Kadın", roles: ["Ana Vokal", "Dansçı"], birthYear: 1985, age: 39, debutYear: 2005, zodiac: "Akrep", clueQuote: "Olmaz Oğlan, bir bakışta aşık oldum!", funFact: "Mimar Sinan Devlet Konservatuvarı Bale ve Müzikal bölümü mezunudur." },
+      { id: "hepsi_cemre", name: "Cemre Kemer", group: "Grup Hepsi", gender: "Kadın", roles: ["Lider", "Vokal"], birthYear: 1985, age: 39, debutYear: 2005, zodiac: "Kova", clueQuote: "Yalan mı, söylediklerin yalan mı?", funFact: "Grup Hepsi'nin gençlik dizisi 'Hepsi 1'de başrol oynamıştır." }
+    ];
+
+    // === SES SENTEZLEYİCİ (Web Audio API) ===
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq, type = 'sine', duration = 0.15) {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+    function playWinSound() {
+      playBeep(440, 'triangle', 0.1);
+      setTimeout(() => playBeep(554.37, 'triangle', 0.1), 100);
+      setTimeout(() => playBeep(659.25, 'triangle', 0.1), 200);
+      setTimeout(() => playBeep(880, 'triangle', 0.3), 300);
+    }
+
+    // === STATE VE YEREL DEPOLAMA ===
+    let currentMode = 'daily'; // 'daily' | 'classic' | 'clue'
+    let targetMember = null;
+    let attempts = 0;
+    let isGameOver = false;
+    let guessedIds = new Set();
+    let clueWrongCount = 0;
+
+    function getStorage() {
+      const data = localStorage.getItem('popdle_stats_v1');
+      if (data) {
+        try { return JSON.parse(data); } catch(e){}
+      }
+      return { played: 0, won: 0, streak: 0, maxStreak: 0, points: 0, lastDailyDate: '' };
+    }
+    function saveStorage(st) {
+      localStorage.setItem('popdle_stats_v1', JSON.stringify(st));
+      updateStatsUI();
+    }
+
+    function getTodayString() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+
+    // Deterministic Günlük Üye Algoritması
+    function getDailyMember() {
+      const today = getTodayString();
+      let hash = 0;
+      for (let i = 0; i < today.length; i++) {
+        hash = (hash << 5) - hash + today.charCodeAt(i);
+        hash |= 0;
+      }
+      const idx = Math.abs(hash) % TPOP_MEMBERS.length;
+      return TPOP_MEMBERS[idx];
+    }
+
+    function getRandomMember() {
+      return TPOP_MEMBERS[Math.floor(Math.random() * TPOP_MEMBERS.length)];
+    }
+
+    // === OYUN BAŞLATMA ===
+    function initClassicGame(mode = 'daily') {
+      currentMode = mode;
+      attempts = 0;
+      isGameOver = false;
+      guessedIds.clear();
+      document.getElementById('attemptsNum').innerText = '0';
+      document.getElementById('guessesList').innerHTML = '';
+      document.getElementById('emptyStateBox').style.display = 'flex';
+      document.getElementById('memberInput').value = '';
+
+      if (mode === 'daily') {
+        targetMember = getDailyMember();
+        document.getElementById('modeBadge').innerText = 'Günün Gizli Üyesi';
+        document.getElementById('modeBadge').className = 'bg-purple-950 text-purple-300 border border-purple-800 px-2 py-0.5 rounded-full font-semibold';
+      } else {
+        targetMember = getRandomMember();
+        document.getElementById('modeBadge').innerText = 'Sonsuz Pratik Modu';
+        document.getElementById('modeBadge').className = 'bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-full font-semibold';
+      }
+    }
+
+    function initClueGame() {
+      currentMode = 'clue';
+      clueWrongCount = 0;
+      targetMember = getRandomMember();
+      document.getElementById('clueQuoteText').innerText = `“${targetMember.clueQuote}”`;
+      document.getElementById('clueAttemptsBadge').innerText = 'Kalan Hak: 5';
+      document.getElementById('clueWrongList').innerText = '';
+      document.getElementById('clueMemberInput').value = '';
+
+      document.getElementById('clueStage1').innerText = '🔒 İpucu 1: 1. Yanlış Tahminde Açılır (Cinsiyet & Burç)';
+      document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
+      document.getElementById('clueStage2').innerText = '🔒 İpucu 2: 2. Yanlış Tahminde Açılır (Grup & Rol)';
+      document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
+      document.getElementById('clueStage3').innerText = '🔒 İpucu 3: 3. Yanlış Tahminde Açılır (Fun Fact)';
+      document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
+    }
+
+    // === TAHMİN KARŞILAŞTIRMA MOTORU ===
+    function evaluateGuess(guessed, target) {
+      const isWin = (guessed.id === target.id);
+      
+      // Grup
+      const groupMatch = (guessed.group.toLowerCase() === target.group.toLowerCase()) ? 'correct' : 'wrong';
+      
+      // Cinsiyet
+      const genderMatch = (guessed.gender.toLowerCase() === target.gender.toLowerCase()) ? 'correct' : 'wrong';
+      
+      // Rol (Tam vs Kısmi)
+      let roleMatch = 'wrong';
+      const shared = guessed.roles.filter(r => target.roles.includes(r));
+      if (guessed.roles.length === target.roles.length && shared.length === guessed.roles.length) {
+        roleMatch = 'correct';
+      } else if (shared.length > 0) {
+        roleMatch = 'partial';
+      }
+
+      // Yaş
+      let ageStatus = 'wrong';
+      let ageArrow = '';
+      if (guessed.age === target.age) {
+        ageStatus = 'correct';
+      } else {
+        if (Math.abs(guessed.age - target.age) <= 3) ageStatus = 'partial';
+        ageArrow = target.age > guessed.age ? '▲' : '▼';
+      }
+
+      // Çıkış Yılı
+      let debutStatus = 'wrong';
+      let debutArrow = '';
+      if (guessed.debutYear === target.debutYear) {
+        debutStatus = 'correct';
+      } else {
+        if (Math.abs(guessed.debutYear - target.debutYear) <= 3) debutStatus = 'partial';
+        debutArrow = target.debutYear > guessed.debutYear ? '▲' : '▼';
+      }
+
+      // Burç
+      const zodiacMatch = (guessed.zodiac.toLowerCase() === target.zodiac.toLowerCase()) ? 'correct' : 'wrong';
+
+      return {
+        isWin,
+        guessed,
+        groupMatch,
+        genderMatch,
+        roleMatch,
+        age: { value: guessed.age, status: ageStatus, arrow: ageArrow },
+        debut: { value: guessed.debutYear, status: debutStatus, arrow: debutArrow },
+        zodiacMatch
+      };
+    }
+
+    function getCardClass(status) {
+      if (status === 'correct') return 'bg-emerald-600 border-emerald-500 text-white';
+      if (status === 'partial') return 'bg-amber-600 border-amber-500 text-white';
+      return 'bg-rose-600 border-rose-500 text-white';
+    }
+
+    // === TAHMİNİ LİSTEYE EKLE (LoLdle Karoları) ===
+    function renderGuessRow(res) {
+      document.getElementById('emptyStateBox').style.display = 'none';
+
+      const row = document.createElement('div');
+      row.className = 'overflow-x-auto no-scrollbar py-1 tile-flip';
+      
+      row.innerHTML = `
+        <div class="flex gap-1.5 min-w-[540px] px-1 text-center font-bold text-xs">
+          <!-- ÜYE ADI & AVATAR -->
+          <div class="w-[85px] h-16 rounded-xl bg-slate-800 border border-slate-700 p-1 flex flex-col items-center justify-center">
+            <div class="w-6 h-6 rounded-md bg-gradient-to-tr from-purple-500 to-pink-500 text-white text-[11px] flex items-center justify-center font-black">
+              ${res.guessed.name.charAt(0)}
+            </div>
+            <span class="text-[11px] text-white mt-1 leading-tight truncate w-full">${res.guessed.name}</span>
+          </div>
+
+          <!-- GRUP -->
+          <div class="w-[75px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.groupMatch)}">
+            <span class="truncate">${res.guessed.group}</span>
+          </div>
+
+          <!-- CİNSİYET -->
+          <div class="w-[65px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.genderMatch)}">
+            <span>${res.guessed.gender}</span>
+          </div>
+
+          <!-- ROL -->
+          <div class="w-[100px] h-16 rounded-xl border flex items-center justify-center p-1 text-[10px] leading-tight ${getCardClass(res.roleMatch)}">
+            <span>${res.guessed.roles.join(', ')}</span>
+          </div>
+
+          <!-- YAŞ -->
+          <div class="w-[70px] h-16 rounded-xl border flex flex-col items-center justify-center p-1 ${getCardClass(res.age.status)}">
+            ${res.age.arrow ? `<span class="text-xs leading-none">${res.age.arrow}</span>` : ''}
+            <span>${res.age.value}</span>
+          </div>
+
+          <!-- ÇIKIŞ YILI -->
+          <div class="w-[70px] h-16 rounded-xl border flex flex-col items-center justify-center p-1 ${getCardClass(res.debut.status)}">
+            ${res.debut.arrow ? `<span class="text-xs leading-none">${res.debut.arrow}</span>` : ''}
+            <span>${res.debut.value}</span>
+          </div>
+
+          <!-- BURÇ -->
+          <div class="w-[75px] h-16 rounded-xl border flex items-center justify-center p-1 ${getCardClass(res.zodiacMatch)}">
+            <span>${res.guessed.zodiac}</span>
+          </div>
+        </div>
+      `;
+
+      const list = document.getElementById('guessesList');
+      list.insertBefore(row, list.firstChild);
+    }
+
+    function handleWin(member, attemptCount) {
+      isGameOver = true;
+      playWinSound();
+      confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+
+      const pts = (attemptCount === 1) ? 1000 : (attemptCount === 2) ? 800 : (attemptCount === 3) ? 600 : (attemptCount === 4) ? 450 : (attemptCount === 5) ? 300 : 150;
+      
+      const st = getStorage();
+      st.played++;
+      st.won++;
+      st.streak++;
+      if (st.streak > st.maxStreak) st.maxStreak = st.streak;
+      st.points += pts;
+      if (currentMode === 'daily') st.lastDailyDate = getTodayString();
+      saveStorage(st);
+
+      // Win Modalını Doldur
+      document.getElementById('winAvatar').innerText = member.name.charAt(0);
+      document.getElementById('winName').innerText = member.name;
+      document.getElementById('winGroupAndRole').innerText = `${member.group} • ${member.roles.join(', ')}`;
+      document.getElementById('winAttempts').innerText = attemptCount;
+      document.getElementById('winPoints').innerText = `+${pts}`;
+
+      setTimeout(() => {
+        document.getElementById('winModal').classList.remove('hidden');
+      }, 600);
+    }
+
+    // === TAHMİN GÖNDERME ===
+    function submitGuess(name) {
+      if (isGameOver) return;
+      const found = TPOP_MEMBERS.find(m => m.name.toLowerCase() === name.trim().toLowerCase());
+      if (!found) {
+        alert('Lütfen öneri listesinden geçerli bir T-Pop üyesi seçiniz!');
+        return;
+      }
+      if (guessedIds.has(found.id)) {
+        alert(`${found.name} zaten tahmin edildi!`);
+        return;
+      }
+
+      guessedIds.add(found.id);
+      attempts++;
+      document.getElementById('attemptsNum').innerText = attempts;
+
+      const evalRes = evaluateGuess(found, targetMember);
+      renderGuessRow(evalRes);
+
+      if (evalRes.isWin) {
+        handleWin(targetMember, attempts);
+      } else {
+        playBeep(220, 'sawtooth', 0.15);
+      }
+    }
+
+    // === AUTOCOMPLETE ARAMA ===
+    const inputEl = document.getElementById('memberInput');
+    const autoList = document.getElementById('autocompleteList');
+
+    inputEl.addEventListener('input', () => {
+      const q = inputEl.value.trim().toLowerCase();
+      if (!q) {
+        autoList.classList.add('hidden');
+        return;
+      }
+      const matches = TPOP_MEMBERS.filter(m => 
+        !guessedIds.has(m.id) &&
+        (m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q))
+      );
+
+      if (matches.length === 0) {
+        autoList.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center">Eşleşen üye bulunamadı</div>`;
+      } else {
+        autoList.innerHTML = matches.map(m => `
+          <div class="px-3 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-name="${m.name}">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded bg-purple-600 text-[11px] font-bold text-white flex items-center justify-center">${m.name.charAt(0)}</span>
+              <div>
+                <div class="text-xs font-bold text-white">${m.name}</div>
+                <div class="text-[10px] text-slate-400">${m.roles.join(', ')}</div>
+              </div>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-pink-400 px-2 py-0.5 rounded font-bold">${m.group}</span>
+          </div>
+        `).join('');
+      }
+      autoList.classList.remove('hidden');
+    });
+
+    autoList.addEventListener('click', (e) => {
+      const item = e.target.closest('[data-name]');
+      if (item) {
+        const name = item.getAttribute('data-name');
+        inputEl.value = '';
+        autoList.classList.add('hidden');
+        submitGuess(name);
+      }
+    });
+
+    document.getElementById('btnSubmitGuess').addEventListener('click', () => {
+      const val = inputEl.value.trim();
+      if (val) {
+        inputEl.value = '';
+        autoList.classList.add('hidden');
+        submitGuess(val);
+      }
+    });
+
+    // === İPUCU MODU MANTIĞI ===
+    const clueInputEl = document.getElementById('clueMemberInput');
+    const clueAutoList = document.getElementById('clueAutocompleteList');
+
+    clueInputEl.addEventListener('input', () => {
+      const q = clueInputEl.value.trim().toLowerCase();
+      if (!q) { clueAutoList.classList.add('hidden'); return; }
+      const matches = TPOP_MEMBERS.filter(m => m.name.toLowerCase().includes(q) || m.group.toLowerCase().includes(q));
+      clueAutoList.innerHTML = matches.map(m => `
+        <div class="px-3 py-2 hover:bg-slate-700/60 cursor-pointer flex items-center justify-between transition" data-clue-name="${m.name}">
+          <span class="text-xs font-bold text-white">${m.name}</span>
+          <span class="text-[10px] text-pink-400 font-bold">${m.group}</span>
+        </div>
+      `).join('');
+      clueAutoList.classList.remove('hidden');
+    });
+
+    clueAutoList.addEventListener('click', (e) => {
+      const item = e.target.closest('[data-clue-name]');
+      if (item) {
+        const name = item.getAttribute('data-clue-name');
+        clueInputEl.value = '';
+        clueAutoList.classList.add('hidden');
+        submitClueGuess(name);
+      }
+    });
+
+    document.getElementById('btnSubmitClue').addEventListener('click', () => {
+      const val = clueInputEl.value.trim();
+      if (val) {
+        clueInputEl.value = '';
+        clueAutoList.classList.add('hidden');
+        submitClueGuess(val);
+      }
+    });
+
+    function submitClueGuess(name) {
+      const found = TPOP_MEMBERS.find(m => m.name.toLowerCase() === name.trim().toLowerCase());
+      if (!found) return;
+
+      if (found.id === targetMember.id) {
+        handleWin(targetMember, clueWrongCount + 1);
+      } else {
+        clueWrongCount++;
+        playBeep(180, 'sawtooth', 0.2);
+        document.getElementById('clueAttemptsBadge').innerText = `Kalan Hak: ${5 - clueWrongCount}`;
+        
+        const wrongList = document.getElementById('clueWrongList');
+        wrongList.innerText = (wrongList.innerText ? wrongList.innerText + ', ' : 'Denenenler: ') + `${found.name} ❌`;
+
+        if (clueWrongCount === 1) {
+          document.getElementById('clueStage1').innerText = `💡 İpucu 1: Cinsiyet: ${targetMember.gender} | Burç: ${targetMember.zodiac}`;
+          document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
+        } else if (clueWrongCount === 2) {
+          document.getElementById('clueStage2').innerText = `💡 İpucu 2: Grup: ${targetMember.group} | Rol: ${targetMember.roles.join(', ')}`;
+          document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
+        } else if (clueWrongCount === 3) {
+          document.getElementById('clueStage3').innerText = `💡 İpucu 3: ${targetMember.funFact}`;
+          document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
+        }
+
+        if (clueWrongCount >= 5) {
+          alert(`Haklarınız tükendi! Gizli üye: ${targetMember.name} (${targetMember.group})`);
+          initClueGame();
+        }
+      }
+    }
+
+    // === TAB DEĞİŞTİRME ===
+    const tabDaily = document.getElementById('tabDaily');
+    const tabClassic = document.getElementById('tabClassic');
+    const tabClue = document.getElementById('tabClue');
+    const classicSection = document.getElementById('classicSection');
+    const clueSection = document.getElementById('clueSection');
+
+    function resetTabStyles() {
+      [tabDaily, tabClassic, tabClue].forEach(t => {
+        t.className = 'py-2 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1';
+      });
+    }
+
+    tabDaily.addEventListener('click', () => {
+      resetTabStyles();
+      tabDaily.className = 'py-2 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow';
+      classicSection.classList.remove('hidden');
+      clueSection.classList.add('hidden');
+      initClassicGame('daily');
+    });
+
+    tabClassic.addEventListener('click', () => {
+      resetTabStyles();
+      tabClassic.className = 'py-2 rounded-xl bg-amber-600 text-white transition flex items-center justify-center gap-1 shadow';
+      classicSection.classList.remove('hidden');
+      clueSection.classList.add('hidden');
+      initClassicGame('classic');
+    });
+
+    tabClue.addEventListener('click', () => {
+      resetTabStyles();
+      tabClue.className = 'py-2 rounded-xl bg-cyan-600 text-white transition flex items-center justify-center gap-1 shadow';
+      classicSection.classList.add('hidden');
+      clueSection.classList.remove('hidden');
+      initClueGame();
+    });
+
+    // === MODALLAR ===
+    document.getElementById('btnHowToPlay').addEventListener('click', () => {
+      document.getElementById('howModal').classList.remove('hidden');
+    });
+    document.getElementById('btnHowClose').addEventListener('click', () => {
+      document.getElementById('howModal').classList.add('hidden');
+    });
+
+    document.getElementById('btnStats').addEventListener('click', () => {
+      updateStatsUI();
+      document.getElementById('statsModal').classList.remove('hidden');
+    });
+    document.getElementById('btnStatsClose').addEventListener('click', () => {
+      document.getElementById('statsModal').classList.add('hidden');
+    });
+
+    document.getElementById('btnWinClose').addEventListener('click', () => {
+      document.getElementById('winModal').classList.add('hidden');
+      if (currentMode === 'classic') initClassicGame('classic');
+    });
+
+    document.getElementById('btnShare').addEventListener('click', () => {
+      const text = `🎤 Popdle T-Pop Tahmin Oyunu\n${targetMember.name} üyesini ${attempts} denemede bildim! 🌟\nSen de Manifest ve T-Pop bilginı sına!`;
+      if (navigator.share) {
+        navigator.share({ title: 'Popdle Skor', text }).catch(()=>{});
+      } else {
+        navigator.clipboard.writeText(text);
+        alert('Skor kopyalandı! Arkadaşlarına yapıştırabilirsin.');
+      }
+    });
+
+    function updateStatsUI() {
+      const st = getStorage();
+      document.getElementById('headerStreakText').innerText = st.streak;
+      document.getElementById('statPlayed').innerText = st.played;
+      const rate = st.played > 0 ? Math.round((st.won / st.played) * 100) : 0;
+      document.getElementById('statWinRate').innerText = `%${rate}`;
+      document.getElementById('statStreak').innerText = st.streak;
+      document.getElementById('statMaxStreak').innerText = st.maxStreak;
+      document.getElementById('statTotalScore').innerText = `${st.points.toLocaleString()} Puan`;
+    }
+
+    // Sayfa Yüklenince Başlat
+    updateStatsUI();
+    initClassicGame('daily');
+  </script>
+</body>
+</html>

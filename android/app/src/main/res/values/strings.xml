@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Popdle</string>
+    <string name="app_tagline">Yeni Nesil T-Pop Tahmin Oyunu</string>
+    <string name="app_subtagline">Manifest ve Türk Pop Gruplarını Ne Kadar İyi Tanıyorsun?</string>
+
+    <!-- Ana Menü -->
+    <string name="menu_daily_mode">Günün T-Pop Üyesi</string>
+    <string name="menu_daily_desc">Her gün yenilenen gizli üyeyi tahmin et!</string>
+    <string name="menu_classic_mode">Sonsuz Pratik Modu</string>
+    <string name="menu_classic_desc">Rastgele üyelerle sınırsız oyna ve kendini test et.</string>
+    <string name="menu_clue_mode">İpucu &amp; Şarkı Sözü Modu</string>
+    <string name="menu_clue_desc">Şarkı sözünden ve gizli özelliklerden üyeyi bul!</string>
+    <string name="menu_stats">İstatistikler &amp; Seri</string>
+    <string name="menu_how_to_play">Nasıl Oynanır?</string>
+
+    <!-- Oyun Ekranı -->
+    <string name="search_hint">T-Pop üyesi veya grup adı yazın…</string>
+    <string name="btn_guess">Tahmin Et</string>
+    <string name="table_header_member">Üye</string>
+    <string name="table_header_group">Grup</string>
+    <string name="table_header_gender">Cinsiyet</string>
+    <string name="table_header_role">Rol</string>
+    <string name="table_header_age">Yaş</string>
+    <string name="table_header_debut">Çıkış</string>
+    <string name="table_header_zodiac">Burç</string>
+
+    <!-- İpuçları & Durumlar -->
+    <string name="daily_already_completed">Tebrikler! Bugünün gizli üyesini zaten buldun. Yarın yeni bir üye için geri gel!</string>
+    <string name="guess_empty_error">Lütfen listeden geçerli bir T-Pop üyesi seçiniz!</string>
+    <string name="guess_already_made">Bu üyeyi zaten tahmin ettiniz!</string>
+    <string name="win_dialog_title">TEBRİKLER! BİLDİNİZ 🎉</string>
+    <string name="win_dialog_desc">Gizli T-Pop yıldızını başarıyla tahmin ettiniz.</string>
+    <string name="btn_play_again">Tekrar Oyna</string>
+    <string name="btn_share">Sonucu Paylaş</string>
+    <string name="btn_home">Ana Menü</string>
+    <string name="streak_format">%d Günlük Seri 🔥</string>
+    <string name="score_format">+%d Puan</string>
+</resources>

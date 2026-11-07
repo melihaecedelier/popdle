@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="4dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
+
+        <!-- KUTU 1: Üye Adı & Avatar -->
+        <FrameLayout
+            android:id="@+id/boxMember"
+            android:layout_width="90dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_neutral"
+            android:padding="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMemberAvatar"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_gradient_button"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMemberName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    tools:text="Sueda Uluca" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- KUTU 2: Grup Adı -->
+        <FrameLayout
+            android:id="@+id/boxGroup"
+            android:layout_width="85dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_correct"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tvGroupName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Manifest" />
+        </FrameLayout>
+
+        <!-- KUTU 3: Cinsiyet -->
+        <FrameLayout
+            android:id="@+id/boxGender"
+            android:layout_width="70dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_correct"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Kadın" />
+        </FrameLayout>
+
+        <!-- KUTU 4: Rol / Pozisyon -->
+        <FrameLayout
+            android:id="@+id/boxRole"
+            android:layout_width="100dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_partial"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tvRole"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:maxLines="3"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="Lider,\nAna Vokal" />
+        </FrameLayout>
+
+        <!-- KUTU 5: Yaş (Yukarı/Aşağı Ok ile) -->
+        <FrameLayout
+            android:id="@+id/boxAge"
+            android:layout_width="65dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_partial"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivAgeArrow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_arrow_up"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="21" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- KUTU 6: Çıkış Yılı (Yukarı/Aşağı Ok ile) -->
+        <FrameLayout
+            android:id="@+id/boxDebut"
+            android:layout_width="65dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_correct"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDebutArrow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_arrow_down"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvDebut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="2024" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- KUTU 7: Burç -->
+        <FrameLayout
+            android:id="@+id/boxZodiac"
+            android:layout_width="70dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_card_wrong"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tvZodiac"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Boğa" />
+        </FrameLayout>
+
+    </LinearLayout>
+</HorizontalScrollView>
