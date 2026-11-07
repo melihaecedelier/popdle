@@ -104,22 +104,23 @@
         </div>
 
         <!-- CANLI GERİ BİLDİRİM BANNER'I (Doğru mu Yanlış mı Bildim?) -->
-        <div id="feedbackBanner" class="hidden mb-3 p-3 rounded-2xl text-xs font-bold transition-all duration-300 shadow-md">
+        <div id="feedbackBanner" class="hidden mb-3 p-3.5 rounded-2xl text-xs font-bold transition-all duration-300 shadow-md">
           <!-- Dinamik doldurulacak -->
+        </div>
+
+        <!-- Boş Durum Karşılama Kartı (Tahmin yokken görünür) -->
+        <div id="emptyStateBox" class="flex flex-col items-center justify-center py-10 text-center text-slate-400">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl mb-3 shadow-inner">
+            🎤
+          </div>
+          <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
+          <p class="text-xs text-slate-400 max-w-xs">
+            Yukarıdaki kutudan bir T-Pop üyesi seçin. Her tahminde yeşil, sarı ve kırmızı kutular ile grubunu, yaşını, rolünü öğreneceksiniz.
+          </p>
         </div>
 
         <!-- Yapılan Tahminler Listesi (Responsive Kartlar) -->
         <div id="guessesList" class="flex flex-col space-y-3 pb-6">
-          <!-- Boş Durum Karşılama Kartı -->
-          <div id="emptyStateBox" class="flex flex-col items-center justify-center py-10 text-center text-slate-400">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl mb-3 shadow-inner">
-              🎤
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
-            <p class="text-xs text-slate-400 max-w-xs">
-              Yukarıdaki arama kutusuna tıklayarak T-Pop üyelerinden birini seçin. Yaptığınız her tahminde özelliklerin tutup tutmadığı renklerle gösterilecektir.
-            </p>
-          </div>
         </div>
 
       </section>
@@ -451,12 +452,21 @@
       guessedIds.clear();
       document.getElementById('attemptsNum').innerText = '0';
       document.getElementById('guessesList').innerHTML = '';
-      document.getElementById('emptyStateBox').style.display = 'flex';
-      document.getElementById('memberInput').value = '';
+      
+      const emptyBox = document.getElementById('emptyStateBox');
+      if (emptyBox) emptyBox.style.display = 'flex';
+      
+      const memberInput = document.getElementById('memberInput');
+      if (memberInput) memberInput.value = '';
+      
+      const autoList = document.getElementById('autocompleteList');
+      if (autoList) autoList.classList.add('hidden');
       
       const banner = document.getElementById('feedbackBanner');
-      banner.className = 'hidden mb-3 p-3 rounded-2xl text-xs font-bold';
-      banner.innerHTML = '';
+      if (banner) {
+        banner.className = 'hidden mb-3 p-3.5 rounded-2xl text-xs font-bold';
+        banner.innerHTML = '';
+      }
 
       if (mode === 'daily') {
         targetMember = getDailyMember();
@@ -477,6 +487,8 @@
       document.getElementById('clueAttemptsBadge').innerText = 'Kalan Hak: 5';
       document.getElementById('clueWrongList').innerText = '';
       document.getElementById('clueMemberInput').value = '';
+      const clueAutoList = document.getElementById('clueAutocompleteList');
+      if (clueAutoList) clueAutoList.classList.add('hidden');
 
       const sil = document.getElementById('silhouetteAvatar');
       sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-md brightness-50 transition-all duration-700 transform scale-110';
@@ -540,17 +552,18 @@
     }
 
     function getCardClass(status) {
-      if (status === 'correct') return 'bg-emerald-600 border-emerald-500 text-white shadow-sm shadow-emerald-500/20';
-      if (status === 'partial') return 'bg-amber-600 border-amber-500 text-white shadow-sm shadow-amber-500/20';
-      return 'bg-rose-600 border-rose-500 text-white shadow-sm shadow-rose-500/20';
+      if (status === 'correct') return 'bg-emerald-600 border-emerald-400 text-white shadow-md shadow-emerald-500/20';
+      if (status === 'partial') return 'bg-amber-600 border-amber-400 text-white shadow-md shadow-amber-500/20';
+      return 'bg-rose-700 border-rose-500 text-white shadow-md shadow-rose-500/20';
     }
 
     // === TAHMİN KARTINI AŞAĞIYA EKLE (RESPONSIVE & ANLAŞILIR TASARIM) ===
     function renderGuessRow(res) {
-      document.getElementById('emptyStateBox').style.display = 'none';
+      const emptyBox = document.getElementById('emptyStateBox');
+      if (emptyBox) emptyBox.style.display = 'none';
 
       const card = document.createElement('div');
-      card.className = 'bg-slate-800/95 border border-slate-700/80 rounded-2xl p-3.5 shadow-xl tile-flip space-y-3';
+      card.className = 'bg-slate-800/95 border border-slate-700/80 rounded-2xl p-4 shadow-xl tile-flip space-y-3';
       
       const statusBadge = res.isWin 
         ? `<span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">🎉 DOĞRU BİLDİNİZ!</span>`
@@ -607,7 +620,7 @@
               ${res.age.arrow ? `<span>${res.age.arrow}</span>` : ''}
               <span>${res.age.value}</span>
             </span>
-            <span class="text-[10px] mt-1 font-semibold">${res.age.status === 'correct' ? '✅ Doğru' : res.age.arrow === '▲' ? '▲ Daha Yaşlı' : '▼ Daha Genç'}</span>
+            <span class="text-[10px] mt-1 font-semibold">${res.age.status === 'correct' ? '✅ Doğru' : res.age.arrow === '▲' ? '▲ Daha Büyük' : '▼ Daha Küçük'}</span>
           </div>
 
           <!-- 5. ÇIKIŞ YILI -->
@@ -633,8 +646,9 @@
       const list = document.getElementById('guessesList');
       list.insertBefore(card, list.firstChild);
 
-      // Kartın ekran içine yumuşakça kaydırılması
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
     }
 
     // === TAHMİN GÖNDERME ===
@@ -642,6 +656,9 @@
       if (isGameOver) {
         alert('Bu oyun tamamlandı! Yeniden başlamak için pratik moduna geçebilir veya sayfayı yenileyebilirsiniz.');
         return;
+      }
+      if (!targetMember) {
+        targetMember = (currentMode === 'daily') ? getDailyMember() : getRandomMember();
       }
       
       const cleanName = name.trim().toLowerCase();
@@ -666,18 +683,18 @@
       const banner = document.getElementById('feedbackBanner');
       banner.classList.remove('hidden');
       if (evalRes.isWin) {
-        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-emerald-950/80 border border-emerald-500/60 text-emerald-200 flex items-center justify-between shadow-lg';
-        banner.innerHTML = `<span>🎉 <strong>TEBRİKLER!</strong> Doğru cevap <strong>${found.name}</strong> (${found.group})!</span><span>+${(attempts === 1) ? 1000 : 800} Puan</span>`;
+        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-emerald-950/90 border-2 border-emerald-500 text-emerald-200 flex items-center justify-between shadow-xl';
+        banner.innerHTML = `<span>🎉 <strong>TEBRİKLER!</strong> Doğru cevap <strong>${found.name}</strong> (${found.group})!</span><span class="bg-emerald-600 text-white px-2.5 py-1 rounded-xl text-xs font-black">+${(attempts === 1) ? 1000 : 800} Puan</span>`;
         handleWin(targetMember, attempts);
       } else {
-        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-rose-950/80 border border-rose-500/60 text-rose-200 flex flex-col gap-1 shadow-lg';
+        banner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-rose-950/90 border-2 border-rose-500 text-rose-200 flex flex-col gap-1.5 shadow-xl';
         banner.innerHTML = `
           <div class="flex items-center justify-between">
-            <span>❌ <strong>Yanlış Tahmin:</strong> ${found.name} (${found.group})</span>
-            <span class="text-rose-300">#${attempts}. Deneme</span>
+            <span class="text-sm">❌ <strong>${found.name}</strong> (${found.group}) değil!</span>
+            <span class="text-xs bg-rose-900/60 border border-rose-700 px-2 py-0.5 rounded-lg text-rose-300">#${attempts}. Deneme</span>
           </div>
-          <div class="text-[11px] text-slate-300 font-normal">
-            Aşağıdaki kutulardan Yeşil (Doğru), Sarı (Kısmi) ve Kırmızı (Yanlış) ipuçlarına bakarak yeni bir tahmin yapın!
+          <div class="text-[11px] text-slate-200 font-medium leading-relaxed">
+            Aşağıdaki kutulardan <strong>Yeşil</strong> (Doğru), <strong>Sarı</strong> (Yakın) ve <strong>Kırmızı</strong> (Yanlış) ipuçlarına bakarak yeni bir tahmin yapın!
           </div>
         `;
         playBeep(200, 'sawtooth', 0.15);
@@ -757,45 +774,67 @@
     inputEl.addEventListener('input', () => renderSuggestions(inputEl.value));
 
     // Sayfa boşluğuna tıklayınca listeyi kapat
-    document.addEventListener('click', (e) => {
-      if (!inputEl.contains(e.target) && !autoList.contains(e.target)) {
+    document.addEventListener('pointerdown', (e) => {
+      const btnSubmit = document.getElementById('btnSubmitGuess');
+      if (!inputEl.contains(e.target) && !autoList.contains(e.target) && (!btnSubmit || !btnSubmit.contains(e.target))) {
         autoList.classList.add('hidden');
       }
-      if (!clueInputEl.contains(e.target) && !clueAutoList.contains(e.target)) {
+      const btnClueSubmit = document.getElementById('btnSubmitClue');
+      if (!clueInputEl.contains(e.target) && !clueAutoList.contains(e.target) && (!btnClueSubmit || !btnClueSubmit.contains(e.target))) {
         clueAutoList.classList.add('hidden');
       }
     });
 
-    // Açılan listeden bir üyeye tıklanınca
-    autoList.addEventListener('mousedown', (e) => {
+    let lastSubmitTime = 0;
+    function selectAndSubmit(name) {
+      if (!name) return;
+      const now = Date.now();
+      if (now - lastSubmitTime < 350) return;
+      lastSubmitTime = now;
+
+      inputEl.value = '';
+      autoList.classList.add('hidden');
+      inputEl.blur();
+      submitGuess(name);
+    }
+
+    // Açılan listeden bir üyeye tıklanınca veya dokunulunca
+    autoList.addEventListener('click', (e) => {
       const item = e.target.closest('[data-name]');
       if (item) {
-        const name = item.getAttribute('data-name');
-        inputEl.value = '';
-        autoList.classList.add('hidden');
-        submitGuess(name);
+        selectAndSubmit(item.getAttribute('data-name'));
       }
     });
 
-    document.getElementById('btnSubmitGuess').addEventListener('click', () => {
+    autoList.addEventListener('touchend', (e) => {
+      const item = e.target.closest('[data-name]');
+      if (item) {
+        e.preventDefault();
+        selectAndSubmit(item.getAttribute('data-name'));
+      }
+    });
+
+    document.getElementById('btnSubmitGuess').addEventListener('click', (e) => {
+      e.preventDefault();
       const val = inputEl.value.trim();
       if (val) {
-        inputEl.value = '';
-        autoList.classList.add('hidden');
-        submitGuess(val);
+        selectAndSubmit(val);
       } else {
-        renderSuggestions('');
+        if (autoList.classList.contains('hidden')) {
+          renderSuggestions('');
+        } else {
+          autoList.classList.add('hidden');
+        }
       }
     });
 
     // Enter tuşuna basınca
     inputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
+        e.preventDefault();
         const val = inputEl.value.trim();
         if (val) {
-          inputEl.value = '';
-          autoList.classList.add('hidden');
-          submitGuess(val);
+          selectAndSubmit(val);
         }
       }
     });
@@ -832,34 +871,54 @@
     clueInputEl.addEventListener('click', () => renderClueSuggestions(clueInputEl.value));
     clueInputEl.addEventListener('input', () => renderClueSuggestions(clueInputEl.value));
 
-    clueAutoList.addEventListener('mousedown', (e) => {
+    let lastClueSubmitTime = 0;
+    function selectAndSubmitClue(name) {
+      if (!name) return;
+      const now = Date.now();
+      if (now - lastClueSubmitTime < 350) return;
+      lastClueSubmitTime = now;
+
+      clueInputEl.value = '';
+      clueAutoList.classList.add('hidden');
+      clueInputEl.blur();
+      submitClueGuess(name);
+    }
+
+    clueAutoList.addEventListener('click', (e) => {
       const item = e.target.closest('[data-clue-name]');
       if (item) {
-        const name = item.getAttribute('data-clue-name');
-        clueInputEl.value = '';
-        clueAutoList.classList.add('hidden');
-        submitClueGuess(name);
+        selectAndSubmitClue(item.getAttribute('data-clue-name'));
       }
     });
 
-    document.getElementById('btnSubmitClue').addEventListener('click', () => {
+    clueAutoList.addEventListener('touchend', (e) => {
+      const item = e.target.closest('[data-clue-name]');
+      if (item) {
+        e.preventDefault();
+        selectAndSubmitClue(item.getAttribute('data-clue-name'));
+      }
+    });
+
+    document.getElementById('btnSubmitClue').addEventListener('click', (e) => {
+      e.preventDefault();
       const val = clueInputEl.value.trim();
       if (val) {
-        clueInputEl.value = '';
-        clueAutoList.classList.add('hidden');
-        submitClueGuess(val);
+        selectAndSubmitClue(val);
       } else {
-        renderClueSuggestions('');
+        if (clueAutoList.classList.contains('hidden')) {
+          renderClueSuggestions('');
+        } else {
+          clueAutoList.classList.add('hidden');
+        }
       }
     });
 
     clueInputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
+        e.preventDefault();
         const val = clueInputEl.value.trim();
         if (val) {
-          clueInputEl.value = '';
-          clueAutoList.classList.add('hidden');
-          submitClueGuess(val);
+          selectAndSubmitClue(val);
         }
       }
     });
