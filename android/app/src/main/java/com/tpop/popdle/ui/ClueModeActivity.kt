@@ -39,15 +39,19 @@ class ClueModeActivity : AppCompatActivity() {
         setupListeners()
     }
 
+    private lateinit var currentSong: com.tpop.popdle.data.model.TPopSong
+
     private fun initGame() {
-        targetMember = DailyChallengeManager.getRandomTargetMember()
+        currentSong = TPopDatabase.songs.random()
+        val matchingMember = TPopDatabase.members.filter { it.group.equals(currentSong.group, true) }.randomOrNull()
+        targetMember = matchingMember ?: DailyChallengeManager.getRandomTargetMember()
         wrongAttempts = 0
         isGameOver = false
         triedNames.clear()
     }
 
     private fun setupUI() {
-        binding.tvQuoteClue.text = "“${targetMember.clueQuote}”"
+        binding.tvQuoteClue.text = "“${currentSong.lyrics}”"
         updateAttemptsUI()
 
         // Autocomplete
@@ -131,17 +135,17 @@ class ClueModeActivity : AppCompatActivity() {
     private fun revealNextClueStage() {
         when (wrongAttempts) {
             1 -> {
-                binding.tvClueStage1.text = "💡 İpucu 1: Cinsiyet: ${targetMember.gender} | Burç: ${targetMember.zodiac}"
+                binding.tvClueStage1.text = "💡 İpucu 1: Şarkı ${currentSong.year} yılında yayınlandı! (Burç: ${targetMember.zodiac})"
                 binding.tvClueStage1.setBackgroundResource(R.drawable.bg_card_partial)
                 binding.tvClueStage1.setTextColor(getColor(R.color.white))
             }
             2 -> {
-                binding.tvClueStage2.text = "💡 İpucu 2: Grup: ${targetMember.group} | Rol: ${targetMember.roleDisplay}"
+                binding.tvClueStage2.text = "💡 İpucu 2: Grup: ${currentSong.group} | Rol: ${targetMember.roleDisplay}"
                 binding.tvClueStage2.setBackgroundResource(R.drawable.bg_card_partial)
                 binding.tvClueStage2.setTextColor(getColor(R.color.white))
             }
             3 -> {
-                binding.tvClueStage3.text = "💡 İpucu 3: ${targetMember.funFact}"
+                binding.tvClueStage3.text = "💡 İpucu 3: ${currentSong.clue} • (${targetMember.name})"
                 binding.tvClueStage3.setBackgroundResource(R.drawable.bg_card_partial)
                 binding.tvClueStage3.setTextColor(getColor(R.color.white))
             }

@@ -51,15 +51,18 @@
     </header>
 
     <!-- Mod Seçim Sekmeleri (Tabs) -->
-    <div class="grid grid-cols-3 bg-slate-950 p-1 border-b border-slate-800 text-xs font-bold">
-      <button id="tabDaily" class="py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1.5 shadow">
+    <div class="grid grid-cols-4 bg-slate-950 p-1 border-b border-slate-800 text-[11px] sm:text-xs font-bold">
+      <button id="tabDaily" class="py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow">
         <span>⭐</span> Günlük
       </button>
-      <button id="tabClassic" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5">
+      <button id="tabClassic" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
         <span>♾️</span> Pratik
       </button>
-      <button id="tabClue" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5">
-        <span>🖼️</span> Silüet & İpucu
+      <button id="tabClue" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+        <span>🖼️</span> Silüet
+      </button>
+      <button id="tabLyrics" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+        <span>🎵</span> Şarkı Sözü
       </button>
     </div>
 
@@ -200,6 +203,99 @@
         <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-1"></div>
       </section>
 
+      <!-- 4. ŞARKI SÖZÜNDEN ŞARKI VE GRUP BİLMECE MODU -->
+      <section id="lyricsSection" class="flex flex-col flex-1 hidden">
+        <div class="flex items-center justify-between mb-3 text-xs">
+          <span class="bg-amber-950 text-amber-300 border border-amber-800 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
+            <span>🎵</span> Şarkı Sözü Bilmece
+          </span>
+          <div class="flex items-center gap-2">
+            <span class="text-slate-400 font-medium">Kalan Hak: <strong id="lyricsAttemptsLeft" class="text-pink-400">5</strong></span>
+            <span class="text-orange-400 font-bold bg-slate-800/80 px-2 py-0.5 rounded-lg border border-slate-700">🔥 <span id="lyricsStreakNum">0</span></span>
+          </div>
+        </div>
+
+        <!-- ŞARKI SÖZÜ ALINTI KARTI -->
+        <div class="bg-gradient-to-br from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-4 sm:p-5 mb-3 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-28 h-28 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+              <span>🎧</span> Bu Sözler Hangi Şarkıya Ait?
+            </span>
+            <button id="btnSkipLyrics" class="text-[10px] text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1" title="Başka bir rastgele şarkı getir">
+              <span>🎲</span> Başka Şarkı
+            </button>
+          </div>
+
+          <!-- Alıntı Metni Göstergesi -->
+          <div class="relative py-2 px-1">
+            <div class="text-2xl text-purple-400/30 font-serif leading-none select-none">“</div>
+            <p id="lyricsQuoteDisplay" class="text-sm sm:text-base font-semibold text-slate-100 italic text-center px-2 leading-relaxed drop-shadow-sm min-h-[58px] flex items-center justify-center whitespace-pre-line">
+              "Zamansızdık ilk başta, sandım hep iyi kalıcaz..."
+            </p>
+            <div class="text-2xl text-purple-400/30 font-serif leading-none text-right select-none">”</div>
+          </div>
+
+          <!-- İpucu Çubuğu -->
+          <div id="lyricsHintBox" class="mt-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between transition-all">
+            <span id="lyricsHintText">🔒 İpucu 1: 1. Yanlışta Yayın Yılı Açılır</span>
+            <button id="btnRevealLyricsHint" class="text-[10px] text-amber-400 hover:text-amber-300 font-bold underline cursor-pointer">
+              İpucu Aç
+            </button>
+          </div>
+        </div>
+
+        <!-- Şarkı Arama ve Tahmin Girişi -->
+        <div class="relative mb-3 z-30">
+          <div class="flex gap-2">
+            <input 
+              id="lyricsInput" 
+              type="text" 
+              placeholder="Şarkı veya grup adı seçin / arayın..." 
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition shadow-inner cursor-pointer"
+              autocomplete="off"
+            />
+            <button 
+              id="btnSubmitLyrics" 
+              class="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm px-4 rounded-xl shadow-lg shadow-pink-600/30 transition transform active:scale-95 whitespace-nowrap"
+            >
+              Tahmin Et
+            </button>
+          </div>
+
+          <!-- Canlı Şarkı Autocomplete Açılır Listesi -->
+          <div id="lyricsAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-60 overflow-y-auto hidden divide-y divide-slate-700/60">
+            <!-- Dinamik doldurulacak -->
+          </div>
+        </div>
+
+        <!-- Canlı Şarkı Geri Bildirim Banner'ı -->
+        <div id="lyricsFeedbackBanner" class="hidden mb-3 p-3.5 rounded-2xl text-xs font-bold transition-all duration-300 shadow-md">
+          <!-- Dinamik doldurulacak -->
+        </div>
+
+        <!-- Sonraki Şarkı Butonu (Kazanıldığında veya Hak Bittiğinde Görünür) -->
+        <div id="lyricsNextSongContainer" class="hidden mb-3">
+          <button id="btnNextLyricsSong" class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-black text-sm shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
+            <span>⏭️</span> Sıradaki Rastgele Şarkı Sözü
+          </button>
+        </div>
+
+        <!-- Yapılan Şarkı Tahminleri Listesi -->
+        <div id="lyricsGuessesList" class="flex flex-col space-y-2 pb-6">
+          <!-- Boş Durum -->
+          <div id="lyricsEmptyState" class="flex flex-col items-center justify-center py-6 text-center text-slate-400">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-2xl mb-2">
+              🎶
+            </div>
+            <p class="text-xs text-slate-400 max-w-xs">
+              Yukarıdaki şarkı sözünü okuyup hangi şarkıya ve gruba ait olduğunu tahmin edin!
+            </p>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- Sade Alt Çubuk -->
@@ -276,6 +372,10 @@
         <div class="flex items-center gap-2.5 bg-slate-800/60 p-2 rounded-xl">
           <div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center font-bold text-white text-[11px] flex-shrink-0">▲ / ▼</div>
           <div><strong class="text-white">Oklar:</strong> Hedef üyenin yaşı veya çıkış yılı daha büyük (▲) ya da daha küçük (▼).</div>
+        </div>
+        <div class="flex items-center gap-2.5 bg-purple-950/40 border border-purple-800/50 p-2 rounded-xl">
+          <div class="text-sm">🎵</div>
+          <div><strong class="text-purple-300">Şarkı Sözü Modu:</strong> Rastgele şarkı sözlerinden şarkı adı ve grubu tahmin edin!</div>
         </div>
       </div>
 
@@ -367,6 +467,63 @@
       { id: "radikal_yusa", name: "Yuşa Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Hayran', 'Yalancı'", clueQuote: "Yalancı sözlere inat gerçek ve keskin adımlar!", emoji: "🔥", color: "#9F1239" },
       { id: "radikal_yusuf", name: "Yusuf Emre Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Yardımcı Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Yardımcı Vokalist • 'Korkmam Ben'", clueQuote: "Korkmam Ben teklisinde vokal desteği!", emoji: "🔥", color: "#881337" },
       { id: "radikal_ibrahim", name: "İbrahim Can Kaya", group: "Radikal", gender: "Erkek", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Hayran'", clueQuote: "Hayran şarkısının merkezinde patlayan dans performansı!", emoji: "🔥", color: "#4C0519" }
+    ];
+
+    // === RESMİ ŞARKILAR VE İKONİK ŞARKI SÖZLERİ (42 ŞARKI LİSTESİ) ===
+    const TPOP_SONGS = [
+      // 1. MANIFEST (11 Şarkı)
+      { id: "man_zamansizdik", title: "Zamansızdık", group: "Manifest", year: 2025, lyrics: "Zamansızdık ilk başta, sandım hep iyi kalıcaz\nYetmiyo' hiçbi' iltifat hissettirmiyosan\nBoşa dökülen yaşlar, artık üzülmem asla\nHoşsun, başkasını bulursun, kafana takma", clue: "Manifest'in 2025 çıkış teklisi, duygusal ve akılda kalıcı pop marşı." },
+      { id: "man_ruya", title: "Rüya", group: "Manifest", year: 2025, lyrics: "Rüyasında beni arıyormuş\nGüçlüyüz ve bunu biliyorsun\nSen vazgeçtin bizden\nTek sen kaybettin cidden", clue: "Manifest'in 'Tek sen kaybettin cidden' nakaratlı 2025 hiti." },
+      { id: "man_toz_pembe", title: "Toz Pembe", group: "Manifest", year: 2026, lyrics: "Bakıyosun niye çok toz pembe hislerle?\nKafayı bozdun sen o düşlerle\nKoz bende, acele etme\nYasak aşkın emin ellerde", clue: "Manifest'in 2026 ritmik ve renkli dans parçası." },
+      { id: "man_amator", title: "Amatör", group: "Manifest", year: 2025, lyrics: "Acemi duygularla başladık aşka\nAmatör bir kalple sevdik güya\nArtık çok daha iyi, amatör hislere elveda!", clue: "Manifest'in 2025 albümünden pop ritimli teklisi." },
+      { id: "man_basrol_sensin", title: "Başrol Sensin", group: "Manifest", year: 2026, lyrics: "Bu filmin senaryosu baştan yazıldı\nBaşrol sensin sanıyordun ama perde kapandı\nAlkışlar sustu, ışıklar söndü!", clue: "Manifest'in sinematik konseptli 2026 şarkısı." },
+      { id: "man_tralala", title: "TRALALA", group: "Manifest", year: 2026, lyrics: "Tralala dillerde yine aynı melodi\nDinlemem artık senin o eski hikayeni\nDans et ritimle, unut dertleri!", clue: "Manifest'in enerjik festival hiti." },
+      { id: "man_hileli", title: "Hileli", group: "Manifest", year: 2026, lyrics: "Oyunun kuralı hileli baştan\nKazananı yok bu sessiz savaştan\nAteşe at bizi, bizim aşkımız zehirli!", clue: "Ajda Pekkan ile iş birliği yapılan ikonik Manifest parçası." },
+      { id: "man_daha_iyi", title: "Daha İyi", group: "Manifest", year: 2026, lyrics: "Bensiz daha iyi olduğunu sanıyorsan yanılıyorsun\nHer köşe başında dönüp beni arıyorsun\nYalan söyleme kalbine!", clue: "Manifest'in 2026 duygusal ayrılık parçası." },
+      { id: "man_snap", title: "Snap", group: "Manifest", year: 2025, lyrics: "Tek bir snap ile silindi geçmiş\nKim kimi daha çok derinden sevmiş\nBak bakalım kim kimi geride itmiş!", clue: "Manifest'in hızlı tempolu 2025 şarkısı." },
+      { id: "man_ariyo", title: "Arıyo", group: "Manifest", year: 2025, lyrics: "Gecenin köründe yine numaramı arıyo\nAçmıyorum diye içi içini yanıyo\nCevap yok sana artık nafile!", clue: "Manifest'in telefon melodisi sample'lı parçası." },
+      { id: "man_kts", title: "KTS", group: "Manifest", year: 2025, lyrics: "KTS çalar yine ritimler hızlanır\nSahneye çıktık mı gözler kamaşır\nBizi durduramaz hiçbir sınır!", clue: "Manifest'in sahne koreografi marşı." },
+
+      // 2. CRUSH (2 Şarkı)
+      { id: "cru_crush", title: "CRUSH!", group: "Crush", year: 2026, lyrics: "Gülümsemek ister misin?\nYoksa durup izler misin?\nBildiklerim çok değil ama\nSenin gibileri bilmez miyim?\nDene hadi ama bizden olmaz!", clue: "7 erkek üyeli Crush grubunun çıkış parçası." },
+      { id: "cru_benim_olsana", title: "Benim Olsana", group: "Crush", year: 2026, lyrics: "Geceden sabaha uyumuşum düşlerimde seni beklerken\nDöndüm arkama kokun kalmış üzerimde onu koklarken\nNeden acaba? Artık benim ol ya da kimselerin olma\nBenim olsana!", clue: "Crush grubunun romantik ve vokal ağırlıklı hit parçası." },
+
+      // 3. KARMA / KARM6 (8 Şarkı)
+      { id: "kar_keske_benim_olsa", title: "Keşke Benim Olsa", group: "Karma", year: 2026, lyrics: "Derdim var geceler uzar da uzar\nSaymadım bi' gece kaç ömür yutar\nZor da mecalim, en güçlü ihtimalim\nHep yanımda kalsa, keşke benim olsa!", clue: "KARM6'nın serotonin dolu, co-ed vokal ve rap patlamalı hit parçası." },
+      { id: "kar_sirra_kadem", title: "Sırra Kadem", group: "Karma", year: 2026, lyrics: "Bir anda sırra kadem\nMuhtemelen vazgeçtin benden dinlemeden\nÇekip vurdun kalbimden\nYüreğim acıyor inkar edemem", clue: "Karma grubunun 2026 duygusal T-Pop balladı." },
+      { id: "kar_crop_top", title: "Crop Top", group: "Karma", year: 2026, lyrics: "Crop top üstümde, ritim kalbimde\nDönüp bakarlar her adımımda geriye\nIşıklar altında sahne bizimle!", clue: "Karma grubunun yaz konseptli yüksek tempolu parçası." },
+      { id: "kar_onumuz_yaz", title: "Önümüz Yaz", group: "Karma", year: 2026, lyrics: "Hadi topla bavulu önümüz yaz\nGüneş tenimizde dertleri biraz arkada bırak\nDalgalar eşlik etsin dansımıza!", clue: "Karma grubunun enerjik yaz hiti." },
+      { id: "kar_blok_blok", title: "Blok Blok", group: "Karma", year: 2026, lyrics: "Blok blok ördün duvarları aramıza\nŞimdi geçemezsin o kapıdan asla\nTelefonu sessize aldım, arama boşuna!", clue: "Karma grubunun trap-pop beat'li parçası." },
+      { id: "kar_ihtimal", title: "İhtimal", group: "Karma", year: 2026, lyrics: "En zayıf ihtimal bile tutar bazen\nSen vazgeçtin ama ben gitmedim ruhen\nKalbim atar yine aynı heyecanla!", clue: "Karma grubunun vokal uyumuyla öne çıkan parçası." },
+      { id: "kar_ta_burama", title: "Ta Burama", group: "Karma", year: 2026, lyrics: "Ta burama kadar geldi artık yetti\nSabrımın sınırları çoktan tükendi\nNe halin varsa gör hadi yoluna git!", clue: "Karma grubunun isyankar pop-rock esintili şarkısı." },
+      { id: "kar_karma", title: "KARMA", group: "Karma", year: 2026, lyrics: "Karmadır adı döner dolaşır bulur\nYaptığın her kötülük önüne dikilip durur\nKaçamazsın kendinden asla!", clue: "Karma grubunun kendi adını taşıyan marşı." },
+
+      // 4. AURA (12 Şarkı)
+      { id: "aur_yuh", title: "YUH!", group: "Aura", year: 2026, lyrics: "Yuhh! Sana gönülden inanana\nYuhh! Bir sözüne bel bağlayana\nYuhh! Hevesine kapılana\nYuh ki ne yuhh! Yuh ki ne yuhh!\nKızlarım sahnede beni bekler!", clue: "4 kadın üyeli Aura grubunun ortalığı kasıp kavuran viral çıkış şarkısı." },
+      { id: "aur_pes", title: "PES", group: "Aura", year: 2026, lyrics: "Bu kadarına pes! Bitti son heves\nBağıra çağıra kalmadı nefes!\nYalana dolana alışkın olana!\nRüzgarınla deli deli es!\nI don't wanna dude anymore stress!", clue: "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti." },
+      { id: "aur_tuzak", title: "Tuzak", group: "Aura", year: 2026, lyrics: "Gözlerin en tatlı tuzak\nBenden kilometrelerce uzak\nDüşerim sanma sakın ağına\nKendi yoluma giderim baka baka!", clue: "Aura grubunun elektro-pop tarzındaki 2026 parçası." },
+      { id: "aur_2036", title: "2036", group: "Aura", year: 2026, lyrics: "Zamanın ötesindeyiz 2036\nBizim devrimiz başladı ışıklar yansın\nGelecek avucumuzun içinde parıldasın!", clue: "Aura'nın fütüristik T-Pop konseptli parçası." },
+      { id: "aur_we_are_aura", title: "We Are Aura!", group: "Aura", year: 2026, lyrics: "Kızlarım sahnede beni bekler\nWe are Aura! Gücümüzü görecekler\nIşık saçıyoruz her adımda teker teker!", clue: "Aura'nın sahne intro marşı." },
+      { id: "aur_masum_kedi", title: "Masum Kedi", group: "Aura", year: 2026, lyrics: "Görünüşe aldanma öyle masum kedi gibi\nTırnaklarını çıkarır bir anda kaplan gibi\nOyuncak sanma kalbimi!", clue: "Aura'nın tatlı ve sert vokal geçişli şarkısı." },
+      { id: "aur_tempo", title: "Tempo", group: "Aura", year: 2026, lyrics: "Tempoyu arttır, durmak yok bu gece\nRitim kalbimize işlesin hece hece\nDans pistinde kuralları biz koyarız!", clue: "Aura'nın kulüp ve dans hiti." },
+      { id: "aur_aura", title: "AURA", group: "Aura", year: 2026, lyrics: "Parlayan ışığımız kapatır gölgeleri\nİşte bu AURA, aşar tüm engelleri\nBakışlarımız büyüler herkesi!", clue: "Aura grubunun imza şarkısı." },
+      { id: "aur_red_flag_aura", title: "Red Flag!", group: "Aura", year: 2026, lyrics: "Her hareketin açıkça bir red flag\nUyarmıştı herkes beni tek tek\nKaçıyorum arkama bile bakmadan!", clue: "Aura grubunun modern flört kültürünü eleştiren şarkısı." },
+      { id: "aur_iltifatlar", title: "İltifatlar", group: "Aura", year: 2026, lyrics: "Dökülür dilinden boş iltifatlar\nArkasında gizli sahte niyetler var\nKanmam artık güzel sözlerine!", clue: "Aura grubunun güçlü vokal melodisi." },
+      { id: "aur_derbeder", title: "Derbeder", group: "Aura", year: 2026, lyrics: "Derbeder ettin arkana bakmadan\nGeçer bu günler yüreğim yanmadan\nGözyaşlarımı sildim çoktan!", clue: "Aura'nın dramatik pop parçası." },
+      { id: "aur_parcali_bulutlu", title: "Parçalı Bulutlu", group: "Aura", year: 2026, lyrics: "Ruh halim bugün parçalı bulutlu\nGittiğinden beri bu kalp seni unuttu\nGüneş açar yine elbet yarın!", clue: "Aura'nın melodik orta tempolu şarkısı." },
+
+      // 5. MANTRA (7 Şarkı)
+      { id: "man_bi_kiss", title: "Bi Kiss", group: "Mantra", year: 2026, lyrics: "Hadi bi' kiss, bi' kiss\nYolun sonu belli, içimde bi' his\nDökülür o dudaklarından zehir\nYanıyorum, kalmadı akıl fikir\nTek istediğim gelsin bi' kiss, bi' kiss!", clue: "Mantra'nın dillerden düşmeyen kanca nakaratlı pop hiti." },
+      { id: "man_toysun", title: "Toysun", group: "Mantra", year: 2026, lyrics: "Hoş, ambalajın paketin\nFazla çaban var nedir derdin\nHenüz toysun, daha pişeceksin\nBebeğim düşe kalka öğreneceksin!", clue: "Mantra'nın iğneleyici ve havalı pop nakaratı." },
+      { id: "man_tuttu_firlatti", title: "Tuttu Fırlattı", group: "Mantra", year: 2026, lyrics: "Aşkı çabuk söndü\nBeni pabucunun ucuyla eze eze geçti ve gitti...\nTuttu fırlattı kalbimi\nEzdi, üstünü çiğnedi\n'Zamanla geçer', dedi!", clue: "Mantra'nın nostaljik popu modern T-Pop beat'leriyle harmanladığı şarkı." },
+      { id: "man_goygoy", title: "Goygoy", group: "Mantra", year: 2026, lyrics: "Goygoy yapma bana ciddi konuş biraz\nAşk bu oyun değil geçer kış ve yaz\nCesaretin varsa çık karşıma!", clue: "Mantra'nın eğlenceli ve laf sokucu şarkısı." },
+      { id: "man_red_flag_man", title: "Red Flag", group: "Mantra", year: 2026, lyrics: "Göz göre göre yürüdüm tehlikeye\nBütün işaretler red flag diye diye\nKendimi kurtardım son anda!", clue: "Mantra'nın dinamik tempo ve bas yüklü parçası." },
+      { id: "man_tek_basima", title: "Tek Başıma", group: "Mantra", year: 2026, lyrics: "Tek başıma da gülerim kaderime\nİhtiyacım yok senin o sahte sevgine\nKendi ışığımla aydınlatırım geceyi!", clue: "Mantra'nın özgüven marşı." },
+      { id: "man_kaldim_ellerinde", title: "Kaldım Ellerinde", group: "Mantra", year: 2026, lyrics: "Kaldım ellerinde bir yaprak gibi\nSavurma beni sonbahar yeli gibi\nTut elimden bırakma!", clue: "Mantra'nın duygusal baladı." },
+
+      // 6. RADİKAL (2 Şarkı)
+      { id: "rad_hayran", title: "Hayran", group: "Radikal", year: 2026, lyrics: "Kalbim kapalı, bana dokunma daha\nDedim sana bi' değil iki defa\nHayran, hiç boşuna çabalama\nOlmam Mecnun'un, Leyla'm!\nSana benden olmaz bi' hayran!", clue: "4 erkek üyeli Radikal grubunun maskülen ve ritmik vokal hiti." },
+      { id: "rad_korkmam_ben", title: "Korkmam Ben", group: "Radikal", year: 2026, lyrics: "Geceleri hep unuturum\nTıpış tıpış geldim ayağına\nKorkmam ben senin yalanlarından\nİşlemez anılarıma\nYalancılar giremez rüyalarıma!", clue: "Radikal grubunun güçlü nakaratıyla akıllara kazınan parçası." }
     ];
 
     // === SES SENTEZLEYİCİ ===
@@ -783,6 +940,12 @@
       if (!clueInputEl.contains(e.target) && !clueAutoList.contains(e.target) && (!btnClueSubmit || !btnClueSubmit.contains(e.target))) {
         clueAutoList.classList.add('hidden');
       }
+      const btnLyricsSubmit = document.getElementById('btnSubmitLyrics');
+      const lyrInput = document.getElementById('lyricsInput');
+      const lyrAutoList = document.getElementById('lyricsAutocompleteList');
+      if (lyrInput && lyrAutoList && !lyrInput.contains(e.target) && !lyrAutoList.contains(e.target) && (!btnLyricsSubmit || !btnLyricsSubmit.contains(e.target))) {
+        lyrAutoList.classList.add('hidden');
+      }
     });
 
     let lastSubmitTime = 0;
@@ -963,41 +1126,378 @@
       }
     }
 
+    // ==========================================
+    // === 4. ŞARKI SÖZÜ BİLMECE MOTORU (LYRICS GAME) ===
+    // ==========================================
+    let currentLyricsSong = null;
+    let lyricsAttempts = 0;
+    let lyricsWrongCount = 0;
+    let isLyricsGameOver = false;
+    let lyricsGuessedIds = new Set();
+    let lyricsStreak = 0;
+
+    const lyricsInputEl = document.getElementById('lyricsInput');
+    const lyricsAutoList = document.getElementById('lyricsAutocompleteList');
+    const lyricsQuoteDisplay = document.getElementById('lyricsQuoteDisplay');
+    const lyricsHintText = document.getElementById('lyricsHintText');
+    const lyricsAttemptsLeft = document.getElementById('lyricsAttemptsLeft');
+    const lyricsStreakNum = document.getElementById('lyricsStreakNum');
+    const lyricsFeedbackBanner = document.getElementById('lyricsFeedbackBanner');
+    const lyricsGuessesList = document.getElementById('lyricsGuessesList');
+    const lyricsEmptyState = document.getElementById('lyricsEmptyState');
+    const lyricsNextSongContainer = document.getElementById('lyricsNextSongContainer');
+
+    function getRandomSong() {
+      if (TPOP_SONGS.length === 0) return null;
+      if (!currentLyricsSong) {
+        return TPOP_SONGS[Math.floor(Math.random() * TPOP_SONGS.length)];
+      }
+      const candidates = TPOP_SONGS.filter(s => s.id !== currentLyricsSong.id);
+      return candidates[Math.floor(Math.random() * candidates.length)];
+    }
+
+    function initLyricsGame() {
+      currentMode = 'lyrics';
+      currentLyricsSong = getRandomSong();
+      lyricsAttempts = 0;
+      lyricsWrongCount = 0;
+      isLyricsGameOver = false;
+      lyricsGuessedIds.clear();
+
+      if (lyricsQuoteDisplay && currentLyricsSong) {
+        lyricsQuoteDisplay.innerText = `“${currentLyricsSong.lyrics}”`;
+      }
+      if (lyricsAttemptsLeft) lyricsAttemptsLeft.innerText = '5';
+      if (lyricsStreakNum) lyricsStreakNum.innerText = lyricsStreak;
+      if (lyricsHintText) {
+        lyricsHintText.innerHTML = '🔒 <strong>İpucu:</strong> Yanlış tahminlerde açılır (Yayın Yılı / Grup)';
+        lyricsHintText.className = 'text-slate-400 font-medium';
+      }
+      if (lyricsInputEl) lyricsInputEl.value = '';
+      if (lyricsAutoList) lyricsAutoList.classList.add('hidden');
+      if (lyricsFeedbackBanner) {
+        lyricsFeedbackBanner.className = 'hidden mb-3 p-3.5 rounded-2xl text-xs font-bold';
+        lyricsFeedbackBanner.innerHTML = '';
+      }
+      if (lyricsGuessesList) lyricsGuessesList.innerHTML = '';
+      if (lyricsEmptyState) lyricsEmptyState.style.display = 'flex';
+      if (lyricsNextSongContainer) lyricsNextSongContainer.classList.add('hidden');
+    }
+
+    function renderLyricsSuggestions(query = '') {
+      const q = query.trim().toLowerCase();
+      const matches = TPOP_SONGS.filter(s => 
+        !lyricsGuessedIds.has(s.id) &&
+        (!q || s.title.toLowerCase().includes(q) || s.group.toLowerCase().includes(q))
+      );
+
+      if (matches.length === 0) {
+        lyricsAutoList.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center font-medium">Eşleşen şarkı bulunamadı</div>`;
+      } else {
+        lyricsAutoList.innerHTML = matches.map(s => `
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-song-id="${s.id}">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+              <span class="w-7 h-7 rounded-lg bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center justify-center text-xs font-bold">
+                🎵
+              </span>
+              <div>
+                <div class="text-xs font-black text-white group-hover:text-pink-300 transition">${s.title}</div>
+                <div class="text-[10px] text-slate-400">${s.group} • ${s.year}</div>
+              </div>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300 pointer-events-none">
+              ${s.group}
+            </span>
+          </div>
+        `).join('');
+      }
+      lyricsAutoList.classList.remove('hidden');
+    }
+
+    lyricsInputEl.addEventListener('focus', () => renderLyricsSuggestions(lyricsInputEl.value));
+    lyricsInputEl.addEventListener('click', () => renderLyricsSuggestions(lyricsInputEl.value));
+    lyricsInputEl.addEventListener('input', () => renderLyricsSuggestions(lyricsInputEl.value));
+
+    let lastLyricsSubmitTime = 0;
+    function selectAndSubmitLyrics(songIdOrTitle) {
+      if (!songIdOrTitle) return;
+      const now = Date.now();
+      if (now - lastLyricsSubmitTime < 350) return;
+      lastLyricsSubmitTime = now;
+
+      lyricsInputEl.value = '';
+      lyricsAutoList.classList.add('hidden');
+      lyricsInputEl.blur();
+      submitLyricsGuess(songIdOrTitle);
+    }
+
+    lyricsAutoList.addEventListener('click', (e) => {
+      const item = e.target.closest('[data-song-id]');
+      if (item) {
+        selectAndSubmitLyrics(item.getAttribute('data-song-id'));
+      }
+    });
+
+    lyricsAutoList.addEventListener('touchend', (e) => {
+      const item = e.target.closest('[data-song-id]');
+      if (item) {
+        e.preventDefault();
+        selectAndSubmitLyrics(item.getAttribute('data-song-id'));
+      }
+    });
+
+    document.getElementById('btnSubmitLyrics').addEventListener('click', (e) => {
+      e.preventDefault();
+      const val = lyricsInputEl.value.trim();
+      if (val) {
+        selectAndSubmitLyrics(val);
+      } else {
+        if (lyricsAutoList.classList.contains('hidden')) {
+          renderLyricsSuggestions('');
+        } else {
+          lyricsAutoList.classList.add('hidden');
+        }
+      }
+    });
+
+    lyricsInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const val = lyricsInputEl.value.trim();
+        if (val) {
+          selectAndSubmitLyrics(val);
+        }
+      }
+    });
+
+    document.getElementById('btnSkipLyrics').addEventListener('click', () => {
+      initLyricsGame();
+    });
+
+    document.getElementById('btnNextLyricsSong').addEventListener('click', () => {
+      initLyricsGame();
+    });
+
+    document.getElementById('btnRevealLyricsHint').addEventListener('click', () => {
+      if (!currentLyricsSong) return;
+      lyricsWrongCount++;
+      revealLyricsHint();
+    });
+
+    function getGroupMemberInfo(groupName) {
+      if (groupName === 'Manifest') return '6 Kadın Üyeli Yeni Nesil T-Pop Grubu';
+      if (groupName === 'Crush') return '7 Erkek Üyeli Idol House Grubu';
+      if (groupName === 'Karma') return '6 Üyeli Karma (Co-ed) T-Pop Grubu';
+      if (groupName === 'Aura') return '4 Kadın Üyeli Vokal & Dans Grubu';
+      if (groupName === 'Mantra') return '5 Kadın Üyeli Pop Grubu';
+      if (groupName === 'Radikal') return '4 Erkek Üyeli Güçlü Vokal Grubu';
+      return 'T-Pop Grubu';
+    }
+
+    function revealLyricsHint() {
+      if (!currentLyricsSong) return;
+      if (lyricsWrongCount === 1) {
+        lyricsHintText.innerHTML = `💡 <strong>İpucu 1:</strong> Şarkı <strong>${currentLyricsSong.year}</strong> yılında yayınlandı!`;
+        lyricsHintText.className = 'text-amber-300 font-semibold text-xs';
+      } else if (lyricsWrongCount === 2) {
+        lyricsHintText.innerHTML = `💡 <strong>İpucu 2:</strong> Grup: <strong>${getGroupMemberInfo(currentLyricsSong.group)}</strong>!`;
+        lyricsHintText.className = 'text-amber-300 font-semibold text-xs';
+      } else if (lyricsWrongCount >= 3) {
+        lyricsHintText.innerHTML = `💡 <strong>İpucu 3:</strong> Şarkı adı <strong>"${currentLyricsSong.title.substring(0, 2)}..."</strong> ile başlıyor! (${currentLyricsSong.clue})`;
+        lyricsHintText.className = 'text-cyan-300 font-semibold text-xs';
+      }
+    }
+
+    function submitLyricsGuess(inputVal) {
+      if (isLyricsGameOver) {
+        alert('Bu tur bitti! "Sıradaki Rastgele Şarkı Sözü" butonuna basarak yeni bir şarkıya geçebilirsiniz.');
+        return;
+      }
+      if (!currentLyricsSong) currentLyricsSong = getRandomSong();
+
+      const clean = inputVal.trim().toLowerCase();
+      const guessed = TPOP_SONGS.find(s => s.id.toLowerCase() === clean || s.title.toLowerCase() === clean);
+      if (!guessed) {
+        alert(`'${inputVal}' şarkı listesinde bulunamadı. Lütfen açılan listeden geçerli bir şarkı seçiniz!`);
+        return;
+      }
+      if (lyricsGuessedIds.has(guessed.id)) {
+        alert(`'${guessed.title}' şarkısını zaten tahmin ettiniz!`);
+        return;
+      }
+
+      lyricsGuessedIds.add(guessed.id);
+      lyricsAttempts++;
+      if (lyricsEmptyState) lyricsEmptyState.style.display = 'none';
+
+      const isExactMatch = (guessed.id === currentLyricsSong.id);
+      const isGroupMatch = (guessed.group.toLowerCase() === currentLyricsSong.group.toLowerCase());
+      const isYearMatch = (guessed.year === currentLyricsSong.year);
+
+      // Kart Üret
+      const card = document.createElement('div');
+      card.className = 'bg-slate-800/90 border border-slate-700/80 rounded-2xl p-3 shadow-lg tile-flip space-y-2';
+      
+      const badgeClass = isExactMatch 
+        ? 'bg-emerald-600/20 text-emerald-300 border-emerald-500/40' 
+        : (isGroupMatch ? 'bg-amber-600/20 text-amber-300 border-amber-500/40' : 'bg-rose-600/20 text-rose-300 border-rose-500/40');
+      const badgeText = isExactMatch 
+        ? '🎉 ŞARKI & GRUP DOĞRU!' 
+        : (isGroupMatch ? '🟨 GRUP DOĞRU, ŞARKI YANLIŞ' : '❌ ŞARKI VE GRUP YANLIŞ');
+
+      card.innerHTML = `
+        <div class="flex items-center justify-between pb-1.5 border-b border-slate-700/60">
+          <div class="flex items-center gap-2">
+            <span class="text-base">${isExactMatch ? '🏆' : isGroupMatch ? '🎯' : '❌'}</span>
+            <div>
+              <div class="text-xs font-black text-white">${guessed.title}</div>
+              <div class="text-[10px] text-slate-400">${guessed.group} • ${guessed.year}</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${badgeClass}">${badgeText}</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center text-[11px] font-bold">
+          <div class="p-2 rounded-xl border flex flex-col items-center justify-center ${isExactMatch ? 'bg-emerald-600 border-emerald-500 text-white shadow-sm' : 'bg-rose-700 border-rose-600 text-white'}">
+            <span class="text-[9px] opacity-75 uppercase">Şarkı Adı</span>
+            <span class="text-xs font-black truncate w-full mt-0.5">${guessed.title}</span>
+            <span class="text-[9px] mt-0.5 font-semibold">${isExactMatch ? '✅ Doğru Şarkı' : '❌ Farklı Şarkı'}</span>
+          </div>
+
+          <div class="p-2 rounded-xl border flex flex-col items-center justify-center ${isGroupMatch ? 'bg-emerald-600 border-emerald-500 text-white shadow-sm' : 'bg-rose-700 border-rose-600 text-white'}">
+            <span class="text-[9px] opacity-75 uppercase">Grup</span>
+            <span class="text-xs font-black truncate w-full mt-0.5">${guessed.group}</span>
+            <span class="text-[9px] mt-0.5 font-semibold">${isGroupMatch ? '✅ Doğru Grup' : '❌ Farklı Grup'}</span>
+          </div>
+
+          <div class="p-2 rounded-xl border flex flex-col items-center justify-center ${isYearMatch ? 'bg-emerald-600 border-emerald-500 text-white shadow-sm' : 'bg-amber-600 border-amber-500 text-white'}">
+            <span class="text-[9px] opacity-75 uppercase">Yıl</span>
+            <span class="text-xs font-black mt-0.5">${guessed.year}</span>
+            <span class="text-[9px] mt-0.5 font-semibold">${isYearMatch ? '✅ Eşleşti' : (currentLyricsSong.year > guessed.year ? '▲ Daha Yeni' : '▼ Daha Eski')}</span>
+          </div>
+        </div>
+      `;
+
+      lyricsGuessesList.insertBefore(card, lyricsGuessesList.firstChild);
+
+      if (isExactMatch) {
+        isLyricsGameOver = true;
+        lyricsStreak++;
+        if (lyricsStreakNum) lyricsStreakNum.innerText = lyricsStreak;
+        playWinSound();
+        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+
+        const st = getStorage();
+        st.played++;
+        st.won++;
+        st.points += (lyricsAttempts === 1 ? 1000 : lyricsAttempts === 2 ? 800 : 600);
+        saveStorage(st);
+
+        lyricsFeedbackBanner.classList.remove('hidden');
+        lyricsFeedbackBanner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-emerald-950/90 border-2 border-emerald-500 text-emerald-200 flex items-center justify-between shadow-xl';
+        lyricsFeedbackBanner.innerHTML = `
+          <span>🎉 <strong>TEBRİKLER! BİLDİNİZ!</strong> "${currentLyricsSong.title}" — <strong>${currentLyricsSong.group}</strong> (${currentLyricsSong.year})</span>
+          <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-lg text-xs font-black">+${lyricsAttempts === 1 ? 1000 : 750} Puan</span>
+        `;
+
+        lyricsNextSongContainer.classList.remove('hidden');
+      } else {
+        lyricsWrongCount++;
+        playBeep(220, 'sawtooth', 0.15);
+        revealLyricsHint();
+
+        const remaining = 5 - lyricsAttempts;
+        if (lyricsAttemptsLeft) lyricsAttemptsLeft.innerText = remaining;
+
+        lyricsFeedbackBanner.classList.remove('hidden');
+        if (isGroupMatch) {
+          lyricsFeedbackBanner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-amber-950/90 border-2 border-amber-500 text-amber-200 flex flex-col gap-1 shadow-xl';
+          lyricsFeedbackBanner.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span>🎯 <strong>Grup Doğru: ${guessed.group}!</strong></span>
+              <span class="text-amber-300">Kalan Hak: ${remaining}</span>
+            </div>
+            <div class="text-[11px] text-slate-200 font-normal">
+              Ama şarkı "${guessed.title}" değil. Başka bir <strong>${guessed.group}</strong> şarkısı deneyin!
+            </div>
+          `;
+        } else {
+          lyricsFeedbackBanner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-rose-950/90 border-2 border-rose-500 text-rose-200 flex flex-col gap-1 shadow-xl';
+          lyricsFeedbackBanner.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span>❌ <strong>Yanlış Tahmin:</strong> ${guessed.title} (${guessed.group})</span>
+              <span class="text-rose-300">Kalan Hak: ${remaining}</span>
+            </div>
+            <div class="text-[11px] text-slate-200 font-normal">
+              Yukarıdaki ipucunu inceleyin ve sözlerin hangi gruba ait olabileceğini düşünün!
+            </div>
+          `;
+        }
+
+        if (lyricsAttempts >= 5) {
+          isLyricsGameOver = true;
+          lyricsStreak = 0;
+          if (lyricsStreakNum) lyricsStreakNum.innerText = '0';
+          lyricsFeedbackBanner.className = 'mb-3 p-3.5 rounded-2xl text-xs font-bold bg-rose-950/90 border-2 border-rose-500 text-rose-200 shadow-xl';
+          lyricsFeedbackBanner.innerHTML = `
+            <div>❌ <strong>Haklarınız Bitti!</strong></div>
+            <div class="text-sm font-black text-white mt-1">Doğru Cevap: "${currentLyricsSong.title}" — ${currentLyricsSong.group} (${currentLyricsSong.year})</div>
+            <div class="text-[11px] text-slate-300 mt-1">${currentLyricsSong.clue}</div>
+          `;
+          lyricsNextSongContainer.classList.remove('hidden');
+        }
+      }
+    }
+
     // === TAB DEĞİŞTİRME ===
     const tabDaily = document.getElementById('tabDaily');
     const tabClassic = document.getElementById('tabClassic');
     const tabClue = document.getElementById('tabClue');
+    const tabLyrics = document.getElementById('tabLyrics');
     const classicSection = document.getElementById('classicSection');
     const clueSection = document.getElementById('clueSection');
+    const lyricsSection = document.getElementById('lyricsSection');
 
     function resetTabStyles() {
-      [tabDaily, tabClassic, tabClue].forEach(t => {
-        t.className = 'py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5';
+      [tabDaily, tabClassic, tabClue, tabLyrics].forEach(t => {
+        if (t) t.className = 'py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1';
       });
     }
 
     tabDaily.addEventListener('click', () => {
       resetTabStyles();
-      tabDaily.className = 'py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1.5 shadow';
+      tabDaily.className = 'py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow';
       classicSection.classList.remove('hidden');
       clueSection.classList.add('hidden');
+      lyricsSection.classList.add('hidden');
       initClassicGame('daily');
     });
 
     tabClassic.addEventListener('click', () => {
       resetTabStyles();
-      tabClassic.className = 'py-2.5 rounded-xl bg-amber-600 text-white transition flex items-center justify-center gap-1.5 shadow';
+      tabClassic.className = 'py-2.5 rounded-xl bg-amber-600 text-white transition flex items-center justify-center gap-1 shadow';
       classicSection.classList.remove('hidden');
       clueSection.classList.add('hidden');
+      lyricsSection.classList.add('hidden');
       initClassicGame('classic');
     });
 
     tabClue.addEventListener('click', () => {
       resetTabStyles();
-      tabClue.className = 'py-2.5 rounded-xl bg-cyan-600 text-white transition flex items-center justify-center gap-1.5 shadow';
+      tabClue.className = 'py-2.5 rounded-xl bg-cyan-600 text-white transition flex items-center justify-center gap-1 shadow';
       classicSection.classList.add('hidden');
       clueSection.classList.remove('hidden');
+      lyricsSection.classList.add('hidden');
       initClueGame();
+    });
+
+    tabLyrics.addEventListener('click', () => {
+      resetTabStyles();
+      tabLyrics.className = 'py-2.5 rounded-xl bg-pink-600 text-white transition flex items-center justify-center gap-1 shadow';
+      classicSection.classList.add('hidden');
+      clueSection.classList.add('hidden');
+      lyricsSection.classList.remove('hidden');
+      initLyricsGame();
     });
 
     // === MODALLAR ===

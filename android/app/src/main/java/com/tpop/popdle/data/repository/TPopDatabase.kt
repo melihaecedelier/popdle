@@ -1,6 +1,7 @@
 package com.tpop.popdle.data.repository
 
 import com.tpop.popdle.data.model.TPopMember
+import com.tpop.popdle.data.model.TPopSong
 
 object TPopDatabase {
 
@@ -593,5 +594,71 @@ object TPopDatabase {
             it.name.lowercase().contains(clean) ||
             it.group.lowercase().contains(clean)
         }
+    }
+
+    // ==========================================
+    // 42 RESMİ T-POP ŞARKISI VE İKONİK ŞARKI SÖZLERİ
+    // ==========================================
+    val songs: List<TPopSong> = listOf(
+        // 1. MANIFEST (11 Şarkı)
+        TPopSong("man_zamansizdik", "Zamansızdık", "Manifest", 2025, "Zamansızdık ilk başta, sandım hep iyi kalıcaz\nYetmiyo' hiçbi' iltifat hissettirmiyosan\nBoşa dökülen yaşlar, artık üzülmem asla", "Manifest'in 2025 çıkış teklisi."),
+        TPopSong("man_ruya", "Rüya", "Manifest", 2025, "Rüyasında beni arıyormuş\nGüçlüyüz ve bunu biliyorsun\nSen vazgeçtin bizden\nTek sen kaybettin cidden", "Manifest'in 2025 hiti."),
+        TPopSong("man_toz_pembe", "Toz Pembe", "Manifest", 2026, "Bakıyosun niye çok toz pembe hislerle?\nKafayı bozdun sen o düşlerle\nKoz bende, acele etme\nYasak aşkın emin ellerde", "Manifest'in 2026 ritmik dans parçası."),
+        TPopSong("man_amator", "Amatör", "Manifest", 2025, "Acemi duygularla başladık aşka\nAmatör bir kalple sevdik güya\nArtık çok daha iyi, amatör hislere elveda!", "Manifest'in 2025 albümünden pop ritimli teklisi."),
+        TPopSong("man_basrol_sensin", "Başrol Sensin", "Manifest", 2026, "Bu filmin senaryosu baştan yazıldı\nBaşrol sensin sanıyordun ama perde kapandı\nAlkışlar sustu, ışıklar söndü!", "Manifest'in sinematik konseptli 2026 şarkısı."),
+        TPopSong("man_tralala", "TRALALA", "Manifest", 2026, "Tralala dillerde yine aynı melodi\nDinlemem artık senin o eski hikayeni\nDans et ritimle, unut dertleri!", "Manifest'in enerjik festival hiti."),
+        TPopSong("man_hileli", "Hileli", "Manifest", 2026, "Oyunun kuralı hileli baştan\nKazananı yok bu sessiz savaştan\nAteşe at bizi, bizim aşkımız zehirli!", "Ajda Pekkan ile iş birliği yapılan ikonik Manifest parçası."),
+        TPopSong("man_daha_iyi", "Daha İyi", "Manifest", 2026, "Bensiz daha iyi olduğunu sanıyorsan yanılıyorsun\nHer köşe başında dönüp beni arıyorsun\nYalan söyleme kalbine!", "Manifest'in 2026 duygusal ayrılık parçası."),
+        TPopSong("man_snap", "Snap", "Manifest", 2025, "Tek bir snap ile silindi geçmiş\nKim kimi daha çok derinden sevmiş\nBak bakalım kim kimi geride itmiş!", "Manifest'in hızlı tempolu 2025 şarkısı."),
+        TPopSong("man_ariyo", "Arıyo", "Manifest", 2025, "Gecenin köründe yine numaramı arıyo\nAçmıyorum diye içi içini yanıyo\nCevap yok sana artık nafile!", "Manifest'in telefon melodisi sample'lı parçası."),
+        TPopSong("man_kts", "KTS", "Manifest", 2025, "KTS çalar yine ritimler hızlanır\nSahneye çıktık mı gözler kamaşır\nBizi durduramaz hiçbir sınır!", "Manifest'in sahne koreografi marşı."),
+
+        // 2. CRUSH (2 Şarkı)
+        TPopSong("cru_crush", "CRUSH!", "Crush", 2026, "Gülümsemek ister misin?\nYoksa durup izler misin?\nBildiklerim çok değil ama\nSenin gibileri bilmez miyim?\nDene hadi ama bizden olmaz!", "7 erkek üyeli Crush grubunun çıkış parçası."),
+        TPopSong("cru_benim_olsana", "Benim Olsana", "Crush", 2026, "Geceden sabaha uyumuşum düşlerimde seni beklerken\nDöndüm arkama kokun kalmış üzerimde onu koklarken\nNeden acaba? Artık benim ol ya da kimselerin olma\nBenim olsana!", "Crush grubunun romantik hit parçası."),
+
+        // 3. KARMA / KARM6 (8 Şarkı)
+        TPopSong("kar_keske_benim_olsa", "Keşke Benim Olsa", "Karma", 2026, "Derdim var geceler uzar da uzar\nSaymadım bi' gece kaç ömür yutar\nZor da mecalim, en güçlü ihtimalim\nHep yanımda kalsa, keşke benim olsa!", "KARM6'nın serotonin dolu hit parçası."),
+        TPopSong("kar_sirra_kadem", "Sırra Kadem", "Karma", 2026, "Bir anda sırra kadem\nMuhtemelen vazgeçtin benden dinlemeden\nÇekip vurdun kalbimden\nYüreğim acıyor inkar edemem", "Karma grubunun duygusal T-Pop balladı."),
+        TPopSong("kar_crop_top", "Crop Top", "Karma", 2026, "Crop top üstümde, ritim kalbimde\nDönüp bakarlar her adımımda geriye\nIşıklar altında sahne bizimle!", "Karma grubunun yaz konseptli yüksek tempolu parçası."),
+        TPopSong("kar_onumuz_yaz", "Önümüz Yaz", "Karma", 2026, "Hadi topla bavulu önümüz yaz\nGüneş tenimizde dertleri biraz arkada bırak\nDalgalar eşlik etsin dansımıza!", "Karma grubunun enerjik yaz hiti."),
+        TPopSong("kar_blok_blok", "Blok Blok", "Karma", 2026, "Blok blok ördün duvarları aramıza\nŞimdi geçemezsin o kapıdan asla\nTelefonu sessize aldım, arama boşuna!", "Karma grubunun trap-pop beat'li parçası."),
+        TPopSong("kar_ihtimal", "İhtimal", "Karma", 2026, "En zayıf ihtimal bile tutar bazen\nSen vazgeçtin ama ben gitmedim ruhen\nKalbim atar yine aynı heyecanla!", "Karma grubunun vokal uyumuyla öne çıkan parçası."),
+        TPopSong("kar_ta_burama", "Ta Burama", "Karma", 2026, "Ta burama kadar geldi artık yetti\nSabrımın sınırları çoktan tükendi\nNe halin varsa gör hadi yoluna git!", "Karma grubunun isyankar şarkısı."),
+        TPopSong("kar_karma", "KARMA", "Karma", 2026, "Karmadır adı döner dolaşır bulur\nYaptığın her kötülük önüne dikilip durur\nKaçamazsın kendinden asla!", "Karma grubunun kendi adını taşıyan marşı."),
+
+        // 4. AURA (12 Şarkı)
+        TPopSong("aur_yuh", "YUH!", "Aura", 2026, "Yuhh! Sana gönülden inanana\nYuhh! Bir sözüne bel bağlayana\nYuhh! Hevesine kapılana\nYuh ki ne yuhh! Yuh ki ne yuhh!\nKızlarım sahnede beni bekler!", "4 kadın üyeli Aura grubunun viral çıkış şarkısı."),
+        TPopSong("aur_pes", "PES", "Aura", 2026, "Bu kadarına pes! Bitti son heves\nBağıra çağıra kalmadı nefes!\nYalana dolana alışkın olana!\nRüzgarınla deli deli es!\nI don't wanna dude anymore stress!", "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti."),
+        TPopSong("aur_tuzak", "Tuzak", "Aura", 2026, "Gözlerin en tatlı tuzak\nBenden kilometrelerce uzak\nDüşerim sanma sakın ağına\nKendi yoluma giderim baka baka!", "Aura grubunun elektro-pop tarzındaki parçası."),
+        TPopSong("aur_2036", "2036", "Aura", 2026, "Zamanın ötesindeyiz 2036\nBizim devrimiz başladı ışıklar yansın\nGelecek avucumuzun içinde parıldasın!", "Aura'nın fütüristik T-Pop konseptli parçası."),
+        TPopSong("aur_we_are_aura", "We Are Aura!", "Aura", 2026, "Kızlarım sahnede beni bekler\nWe are Aura! Gücümüzü görecekler\nIşık saçıyoruz her adımda teker teker!", "Aura'nın sahne intro marşı."),
+        TPopSong("aur_masum_kedi", "Masum Kedi", "Aura", 2026, "Görünüşe aldanma öyle masum kedi gibi\nTırnaklarını çıkarır bir anda kaplan gibi\nOyuncak sanma kalbimi!", "Aura'nın tatlı ve sert vokal geçişli şarkısı."),
+        TPopSong("aur_tempo", "Tempo", "Aura", 2026, "Tempoyu arttır, durmak yok bu gece\nRitim kalbimize işlesin hece hece\nDans pistinde kuralları biz koyarız!", "Aura'nın kulüp ve dans hiti."),
+        TPopSong("aur_aura", "AURA", "Aura", 2026, "Parlayan ışığımız kapatır gölgeleri\nİşte bu AURA, aşar tüm engelleri\nBakışlarımız büyüler herkesi!", "Aura grubunun imza şarkısı."),
+        TPopSong("aur_red_flag_aura", "Red Flag!", "Aura", 2026, "Her hareketin açıkça bir red flag\nUyarmıştı herkes beni tek tek\nKaçıyorum arkama bile bakmadan!", "Aura grubunun modern flört şarkısı."),
+        TPopSong("aur_iltifatlar", "İltifatlar", "Aura", 2026, "Dökülür dilinden boş iltifatlar\nArkasında gizli sahte niyetler var\nKanmam artık güzel sözlerine!", "Aura grubunun güçlü vokal melodisi."),
+        TPopSong("aur_derbeder", "Derbeder", "Aura", 2026, "Derbeder ettin arkana bakmadan\nGeçer bu günler yüreğim yanmadan\nGözyaşlarımı sildim çoktan!", "Aura'nın dramatik pop parçası."),
+        TPopSong("aur_parcali_bulutlu", "Parçalı Bulutlu", "Aura", 2026, "Ruh halim bugün parçalı bulutlu\nGittiğinden beri bu kalp seni unuttu\nGüneş açar yine elbet yarın!", "Aura'nın melodik orta tempolu şarkısı."),
+
+        // 5. MANTRA (7 Şarkı)
+        TPopSong("man_bi_kiss", "Bi Kiss", "Mantra", 2026, "Hadi bi' kiss, bi' kiss\nYolun sonu belli, içimde bi' his\nDökülür o dudaklarından zehir\nYanıyorum, kalmadı akıl fikir\nTek istediğim gelsin bi' kiss, bi' kiss!", "Mantra'nın dillerden düşmeyen pop hiti."),
+        TPopSong("man_toysun", "Toysun", "Mantra", 2026, "Hoş, ambalajın paketin\nFazla çaban var nedir derdin\nHenüz toysun, daha pişeceksin\nBebeğim düşe kalka öğreneceksin!", "Mantra'nın havalı pop nakaratı."),
+        TPopSong("man_tuttu_firlatti", "Tuttu Fırlattı", "Mantra", 2026, "Aşkı çabuk söndü\nBeni pabucunun ucuyla eze eze geçti ve gitti...\nTuttu fırlattı kalbimi\nEzdi, üstünü çiğnedi\n'Zamanla geçer', dedi!", "Mantra'nın enerjik şarkısı."),
+        TPopSong("man_goygoy", "Goygoy", "Mantra", 2026, "Goygoy yapma bana ciddi konuş biraz\nAşk bu oyun değil geçer kış ve yaz\nCesaretin varsa çık karşıma!", "Mantra'nın eğlenceli şarkısı."),
+        TPopSong("man_red_flag_man", "Red Flag", "Mantra", 2026, "Göz göre göre yürüdüm tehlikeye\nBütün işaretler red flag diye diye\nKendimi kurtardım son anda!", "Mantra'nın dinamik tempo ve bas yüklü parçası."),
+        TPopSong("man_tek_basima", "Tek Başıma", "Mantra", 2026, "Tek başıma da gülerim kaderime\nİhtiyacım yok senin o sahte sevgine\nKendi ışığımla aydınlatırım geceyi!", "Mantra'nın özgüven marşı."),
+        TPopSong("man_kaldim_ellerinde", "Kaldım Ellerinde", "Mantra", 2026, "Kaldım ellerinde bir yaprak gibi\nSavurma beni sonbahar yeli gibi\nTut elimden bırakma!", "Mantra'nın duygusal baladı."),
+
+        // 6. RADİKAL (2 Şarkı)
+        TPopSong("rad_hayran", "Hayran", "Radikal", 2026, "Kalbim kapalı, bana dokunma daha\nDedim sana bi' değil iki defa\nHayran, hiç boşuna çabalama\nOlmam Mecnun'un, Leyla'm!\nSana benden olmaz bi' hayran!", "Radikal grubunun maskülen vokal hiti."),
+        TPopSong("rad_korkmam_ben", "Korkmam Ben", "Radikal", 2026, "Geceleri hep unuturum\nTıpış tıpış geldim ayağına\nKorkmam ben senin yalanlarından\nİşlemez anılarıma\nYalancılar giremez rüyalarıma!", "Radikal grubunun güçlü nakaratlı parçası.")
+    )
+
+    fun getRandomSong(): TPopSong = songs.random()
+
+    fun findSong(nameOrId: String): TPopSong? {
+        val clean = nameOrId.trim()
+        return songs.find { it.id.equals(clean, true) || it.title.equals(clean, true) }
     }
 }

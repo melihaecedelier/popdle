@@ -89,6 +89,14 @@ Her gün gece 00:00'da tarih değiştiğinde tüm oyuncular için ortak yeni bir
 * **Kırmızı (🟥):** Eşleşmeme durumu.
 * **Oklar (▲ / ▼):** Hedef üyenin yaşı/çıkış yılı daha büyük (▲) ya da daha küçük (▼).
 
+### 4.3. Şarkı Sözü (Lyrics) ve Diskografi Bilmece Modu
+* **42 Resmi Şarkı Havuzu:** Manifest (11), Crush (2), Karma (8), Aura (12), Mantra (7), Radikal (2) şarkılarından oluşan veri tabanı.
+* **Alıntı & Söz Eşleme:** Rastgele seçilen şarkı sözleri ekrana getirilir. Oyuncu şarkıyı ve grubu tahmin eder.
+* **Dinamik Geri Bildirim:**
+  - Grup doğru, şarkı farklıysa: 🟨 Sarı uyarı ile aynı gruptan diğer şarkılara yönlendirme.
+  - Şarkı ve grup tam eşleştiğinde: 🟩 Yeşil tebrik kartı, seri artışı ve puanlama.
+  - Yanlış denemelerde kademeli ipuçları: 1. Yanlışta çıkış yılı, 2. Yanlışta grup üye yapısı, 3. Yanlışta şarkı baş harfi.
+
 ---
 
 ## 5. Sonuç
