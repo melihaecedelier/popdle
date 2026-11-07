@@ -25,7 +25,9 @@ object TPopDatabase {
             funFact = "Manifest grubunun Ana Dansçısıdır. Grubun çıkış şarkısı 'Zamansızdık' ve 'Rüya' kliplerinde koreografiye liderlik etmiştir.",
             avatarBgColor = "#EC4899",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "esin"
+            avatarStyleSeed = "esin",
+            photoUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Esin%20Bahat"
         ),
         TPopMember(
             id = "manifest_hilal",
@@ -42,7 +44,9 @@ object TPopDatabase {
             funFact = "Manifest grubunun Baş Dansçısıdır. 'Başrol Sensin' ve 'KTS' teklilerinde dinamik dans çizgileriyle öne çıkmaktadır.",
             avatarBgColor = "#F43F5E",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "hilal"
+            avatarStyleSeed = "hilal",
+            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Hilal%20Yelek%C3%A7i"
         ),
         TPopMember(
             id = "manifest_lidya",
@@ -59,7 +63,9 @@ object TPopDatabase {
             funFact = "Manifest grubunun üyesidir. 'Snap' ve 'Arıyo' parçalarında enerjik sahne tavrıyla bilinir.",
             avatarBgColor = "#A855F7",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "lidya"
+            avatarStyleSeed = "lidya",
+            photoUrl = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Lidya%20P%C4%B1nar"
         ),
         TPopMember(
             id = "manifest_mina",
@@ -76,7 +82,9 @@ object TPopDatabase {
             funFact = "Manifest grubunun Yardımcı Vokalistidir (Sub Vocal). 'Daha İyi' ve 'Amatör' teklilerindeki melodik tınılarıyla dikkat çeker.",
             avatarBgColor = "#06B6D4",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "mina"
+            avatarStyleSeed = "mina",
+            photoUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Mina%20Solak"
         ),
         TPopMember(
             id = "manifest_sueda",
@@ -93,7 +101,9 @@ object TPopDatabase {
             funFact = "Manifest'in Ana Vokalistidir. Türk pop divası Ajda Pekkan ile seslendirdikleri 'Hileli' şarkısında ana vokalleri üstlenmiştir.",
             avatarBgColor = "#EC4899",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "sueda"
+            avatarStyleSeed = "sueda",
+            photoUrl = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Sueda%20Uluca"
         ),
         TPopMember(
             id = "manifest_zeynep",
@@ -110,7 +120,9 @@ object TPopDatabase {
             funFact = "Manifest grubunun Ana Rapçisidir (Main Rapper). 'Toz Pembe' parçasındaki keskin rap bölümlerini seslendirmiştir.",
             avatarBgColor = "#F59E0B",
             groupIconEmoji = "✨",
-            avatarStyleSeed = "zeynep"
+            avatarStyleSeed = "zeynep",
+            photoUrl = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Zeynep%20Sude%20Oktay"
         ),
 
         // ==========================================
@@ -132,7 +144,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Grubun 31 Temmuz 2026 tarihli çıkış teklisi 'CRUSH!' ve 'Benim Olsana' parçalarında yer almıştır.",
             avatarBgColor = "#DC2626",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "oguzhan"
+            avatarStyleSeed = "oguzhan",
+            photoUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_batu",
@@ -149,7 +163,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Grubun Eylül 2026'da yayımlanan ikinci teklisi 'Benim Olsana' klibinde öne çıkmaktadır.",
             avatarBgColor = "#EA580C",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "batu"
+            avatarStyleSeed = "batu",
+            photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_baris",
@@ -166,7 +182,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Grubun vokal harmonilerinin omurgasında yer alır.",
             avatarBgColor = "#B91C1C",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "baris_cagan"
+            avatarStyleSeed = "baris_cagan",
+            photoUrl = "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_mirac",
@@ -183,7 +201,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Canlı sahne performanslarında dans figürleriyle dikkat çeker.",
             avatarBgColor = "#D97706",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "mirac"
+            avatarStyleSeed = "mirac",
+            photoUrl = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_milan",
@@ -200,7 +220,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Fotoğraf çekimlerinde ve tanıtım materyallerinde grubun görsel yüzlerindendir.",
             avatarBgColor = "#991B1B",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "milan"
+            avatarStyleSeed = "milan",
+            photoUrl = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_arda",
@@ -217,7 +239,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Şarkılardaki dinamik geçiş kısımlarında yer alır.",
             avatarBgColor = "#C2410C",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "arda_soydogan"
+            avatarStyleSeed = "arda_soydogan",
+            photoUrl = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
             id = "crush_efe",
@@ -234,7 +258,9 @@ object TPopDatabase {
             funFact = "Crush grubunun üyesidir. Genç yaşı ve yüksek sahne enerjisiyle tanınır.",
             avatarBgColor = "#7F1D1D",
             groupIconEmoji = "⚡",
-            avatarStyleSeed = "efe"
+            avatarStyleSeed = "efe",
+            photoUrl = "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://wearecrushboys.com.tr/"
         ),
 
         // ==========================================
@@ -256,7 +282,9 @@ object TPopDatabase {
             funFact = "KARM6 (Karma) grubunun Ana Rapçisi ve Ana Dansçısıdır. 'Serotonin' EP'sinde ve 'KARMA' teklisinde yer almıştır.",
             avatarBgColor = "#7E22CE",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "cem_suha"
+            avatarStyleSeed = "cem_suha",
+            photoUrl = "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Cem%20Suha%20Kurt"
         ),
         TPopMember(
             id = "karma_ezgi",
@@ -273,7 +301,9 @@ object TPopDatabase {
             funFact = "Karma (KARM6) grubunun Ana Rapçisi ve Ana Dansçısıdır. Serotonin EP'sindeki 'Crop Top' ve 'Blok Blok' parçalarında başroldedir.",
             avatarBgColor = "#9333EA",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "ezgi"
+            avatarStyleSeed = "ezgi",
+            photoUrl = "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ezgi%20Akliman"
         ),
         TPopMember(
             id = "karma_ozlem",
@@ -290,7 +320,9 @@ object TPopDatabase {
             funFact = "Karma grubunun Ana Vokalistidir (Main Vocal). 'Sırra Kadem' ve 'İhtimal' parçalarındaki güçlü tizleriyle bilinir.",
             avatarBgColor = "#6B21A8",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "ozlem_naz"
+            avatarStyleSeed = "ozlem_naz",
+            photoUrl = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20%C3%96zlem%20Naz%20G%C3%B6zc%C3%BC"
         ),
         TPopMember(
             id = "karma_adilcan",
@@ -307,7 +339,9 @@ object TPopDatabase {
             funFact = "Karma grubunun Ana Vokalistidir. Ağustos 2026'da yayımlanan 'Ta Burama (feat. Serdar Ortaç)' teklisinde ana vokalleri üstlenmiştir.",
             avatarBgColor = "#581C87",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "adilcan"
+            avatarStyleSeed = "adilcan",
+            photoUrl = "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Adilcan%20Bilgin"
         ),
         TPopMember(
             id = "karma_erdeniz",
@@ -324,7 +358,9 @@ object TPopDatabase {
             funFact = "Karma grubunun Baş Vokalisti ve Baş Dansçısıdır. Karma'nın 19 Eylül 2026 tarihli grup adını taşıyan 'KARMA' teklisinde yer almıştır.",
             avatarBgColor = "#4C1D95",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "erdeniz"
+            avatarStyleSeed = "erdeniz",
+            photoUrl = "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Erdeniz%20Telli"
         ),
         TPopMember(
             id = "karma_ada",
@@ -341,7 +377,9 @@ object TPopDatabase {
             funFact = "Karma grubunun Baş Vokalisti ve Baş Dansçısıdır. Grubun renkli ve dinamik şarkısı 'Önümüz Yaz'da vokal sololarına sahiptir.",
             avatarBgColor = "#3B0764",
             groupIconEmoji = "🔮",
-            avatarStyleSeed = "ada_atilgan"
+            avatarStyleSeed = "ada_atilgan",
+            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ada%20At%C4%B1lgan"
         ),
 
         // ==========================================
@@ -363,7 +401,9 @@ object TPopDatabase {
             funFact = "Aura grubunun Baş Dansçısıdır (Lead Dancer). Grubun 15 Mayıs 2026'daki çıkış teklisi 'YUH!' ve Temmuz 2026 teklisi 'Tuzak'ta dansıyla öne çıkar.",
             avatarBgColor = "#0284C7",
             groupIconEmoji = "🌟",
-            avatarStyleSeed = "asli_goztasi"
+            avatarStyleSeed = "asli_goztasi",
+            photoUrl = "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Asl%C4%B1%20G%C3%B6zta%C5%9F%C4%B1"
         ),
         TPopMember(
             id = "aura_suzy",
@@ -380,7 +420,9 @@ object TPopDatabase {
             funFact = "Aura grubunun Baş Vokalistidir (Lead Vocal). Ağustos 2026 teklisi 'PES' ve Ekim 2026 teklisi '2036'da melodik vokalleri üstlenmiştir.",
             avatarBgColor = "#0369A1",
             groupIconEmoji = "🌟",
-            avatarStyleSeed = "suzy"
+            avatarStyleSeed = "suzy",
+            photoUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Suzy%20Roumenov"
         ),
         TPopMember(
             id = "aura_meri",
@@ -397,7 +439,9 @@ object TPopDatabase {
             funFact = "Aura grubunun Ana Vokalistidir (Main Vocal). 23 Ekim 2026'da yayımlanan ilk albümleri ELEMENTAL'daki 'We Are Aura!' ve 'AURA' şarkılarının ana sesidir.",
             avatarBgColor = "#0D9488",
             groupIconEmoji = "🌟",
-            avatarStyleSeed = "meri"
+            avatarStyleSeed = "meri",
+            photoUrl = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Meri%20Aslan"
         ),
         TPopMember(
             id = "aura_esra",
@@ -414,7 +458,9 @@ object TPopDatabase {
             funFact = "Aura grubunun Ana Dansçısıdır (Main Dancer). ELEMENTAL albümündeki 'Masum Kedi' ve 'Tempo' parçalarında ana koreografileri icra eder.",
             avatarBgColor = "#0F766E",
             groupIconEmoji = "🌟",
-            avatarStyleSeed = "esra_mutlu"
+            avatarStyleSeed = "esra_mutlu",
+            photoUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Esra%20Mutlu"
         ),
 
         // ==========================================
@@ -436,7 +482,9 @@ object TPopDatabase {
             funFact = "Mantra grubunun Baş Vokalistidir (Lead Vocal). Grubun 15 Mayıs 2026 çıkış teklisi 'Bi Kiss' ve 10 Temmuz 2026 tarihli 'New Era' albümünde yer alır.",
             avatarBgColor = "#D97706",
             groupIconEmoji = "🪷",
-            avatarStyleSeed = "delfin"
+            avatarStyleSeed = "delfin",
+            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20Delfin%20Kayra%20Uraz"
         ),
         TPopMember(
             id = "mantra_sila",
@@ -453,7 +501,9 @@ object TPopDatabase {
             funFact = "Mantra grubunun Baş Dansçısıdır (Lead Dancer). New Era albümündeki 'Toysun' ve 'Goygoy' parçalarındaki hareketli danslarıyla tanınır.",
             avatarBgColor = "#B45309",
             groupIconEmoji = "🪷",
-            avatarStyleSeed = "sila_nisa"
+            avatarStyleSeed = "sila_nisa",
+            photoUrl = "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20S%C4%B1la%20Nisa%20Bozkurt"
         ),
         TPopMember(
             id = "mantra_guniz",
@@ -470,7 +520,9 @@ object TPopDatabase {
             funFact = "Mantra grubunun Ana Dansçısıdır (Main Dancer). New Era albümündeki 'Tuttu Fırlattı' ve 'Red Flag' şarkılarının ana koreografisini yönetir.",
             avatarBgColor = "#92400E",
             groupIconEmoji = "🪷",
-            avatarStyleSeed = "guniz"
+            avatarStyleSeed = "guniz",
+            photoUrl = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20G%C3%BCniz%20Ok"
         ),
         TPopMember(
             id = "mantra_doga",
@@ -487,7 +539,9 @@ object TPopDatabase {
             funFact = "Mantra grubunun Ana Vokalistidir (Main Vocal). 'Tek Başıma' ve 'Kaldım Ellerinde' parçalarında güçlü tizleriyle grubu taşır.",
             avatarBgColor = "#78350F",
             groupIconEmoji = "🪷",
-            avatarStyleSeed = "doga"
+            avatarStyleSeed = "doga",
+            photoUrl = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20Do%C4%9Fa%20Bezek"
         ),
         TPopMember(
             id = "mantra_seyma",
@@ -504,7 +558,9 @@ object TPopDatabase {
             funFact = "Mantra grubunun Ana Rapçisidir (Main Rapper). New Era albümündeki hızlı rap partisyonlarının yazımına ve icrasına imza atmıştır.",
             avatarBgColor = "#CA8A04",
             groupIconEmoji = "🪷",
-            avatarStyleSeed = "seyma"
+            avatarStyleSeed = "seyma",
+            photoUrl = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20%C5%9Eeyma%20Akso"
         ),
 
         // ==========================================
@@ -526,7 +582,9 @@ object TPopDatabase {
             funFact = "Radikal grubunun Ana Vokalistidir (Main Vocal). 19 Haziran 2026 tarihli çıkış teklisi 'Hayran' ve Ekim 2026 teklisi 'Korkmam Ben'de ana vokalleri söyler.",
             avatarBgColor = "#BE123C",
             groupIconEmoji = "🔥",
-            avatarStyleSeed = "vedat"
+            avatarStyleSeed = "vedat",
+            photoUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Vedat%20%C3%87elik"
         ),
         TPopMember(
             id = "radikal_yusa",
@@ -543,7 +601,9 @@ object TPopDatabase {
             funFact = "Radikal grubunun Baş Dansçısıdır (Lead Dancer). Radikal'in koreografilerinde senkronize liderlik sergiler.",
             avatarBgColor = "#9F1239",
             groupIconEmoji = "🔥",
-            avatarStyleSeed = "yusa"
+            avatarStyleSeed = "yusa",
+            photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Yu%C5%9Fa%20Akb%C4%B1y%C4%B1k"
         ),
         TPopMember(
             id = "radikal_yusuf",
@@ -560,7 +620,9 @@ object TPopDatabase {
             funFact = "Radikal grubunun Yardımcı Vokalistidir (Sub Vocal). İkizi Yuşa Akbıyık ile birlikte grupta yer almaktadır.",
             avatarBgColor = "#881337",
             groupIconEmoji = "🔥",
-            avatarStyleSeed = "yusuf_emre"
+            avatarStyleSeed = "yusuf_emre",
+            photoUrl = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Yusuf%20Emre%20Akb%C4%B1y%C4%B1k"
         ),
         TPopMember(
             id = "radikal_ibrahim",
@@ -577,7 +639,9 @@ object TPopDatabase {
             funFact = "Radikal grubunun Ana Dansçısıdır (Main Dancer). Çıkış klibi 'Hayran'daki akrobatik dans sololarıyla dikkat çekmiştir.",
             avatarBgColor = "#4C0519",
             groupIconEmoji = "🔥",
-            avatarStyleSeed = "ibrahim_can"
+            avatarStyleSeed = "ibrahim_can",
+            photoUrl = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+            searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20%C4%B0brahim%20Can%20Kaya"
         )
     )
 

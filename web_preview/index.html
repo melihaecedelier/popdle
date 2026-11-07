@@ -138,19 +138,34 @@
         </div>
 
         <!-- GÖRSEL SİLÜET / BULANIK FOTOĞRAF KARTI -->
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 mb-4 flex flex-col items-center">
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-5 mb-4 flex flex-col items-center shadow-2xl relative overflow-hidden">
           
-          <div class="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-slate-700 bg-slate-950 shadow-xl flex items-center justify-center my-1">
-            <!-- Dinamik Avatar / Silüet -->
-            <div id="silhouetteAvatar" class="w-full h-full flex flex-col items-center justify-center text-4xl filter blur-md brightness-50 transition-all duration-700 transform scale-110">
-              🎤
-            </div>
-            <!-- Kilit İkonu -->
-            <div id="silhouetteLock" class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-xs font-bold text-white">
-              <span class="text-xl mb-1">🔒</span>
-              <span class="text-[10px] text-amber-300 font-medium">Bulanık Silüet</span>
+          <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-2 border-cyan-500/50 bg-slate-950 shadow-2xl flex items-center justify-center my-2">
+            <!-- Gerçek Fotoğraf Silüet Görüntüsü -->
+            <img 
+              id="silhouettePhoto" 
+              src="" 
+              alt="Silüet İdol" 
+              class="w-full h-full object-cover transition-all duration-700 select-none pointer-events-none" 
+            />
+            <!-- Kilit İkonu ve Göstergesi -->
+            <div id="silhouetteLock" class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col items-center justify-center text-xs font-bold text-white transition-opacity duration-500">
+              <span class="text-3xl mb-1 drop-shadow-lg">🔒</span>
+              <span class="text-[11px] text-amber-300 font-bold bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-amber-500/40">Gizli Silüet</span>
             </div>
           </div>
+
+          <!-- Excel Kaynak Linki (Google Görsel Arama) -->
+          <a 
+            id="silhouetteSourceBtn" 
+            href="#" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="mt-1 text-[11px] text-cyan-300 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/60 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 transition shadow"
+            title="Excel dosyasındaki görsel arama linki"
+          >
+            <span>🔍</span> <span id="silhouetteSourceLabel">Resmi Görsellerde İncele (Google)</span>
+          </a>
 
           <p class="text-[11px] text-slate-400 mt-2 text-center">
             Yanlış tahmin yaptıkça fotoğraf netleşir ve ipuçları açılır!
@@ -425,48 +440,48 @@
     // === 30 RESMİ T-POP ÜYESİ VE ŞARKILARI ===
     const TPOP_MEMBERS = [
       // 1. MANIFEST (Çıkış: 2025)
-      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2025, zodiac: "İkizler", iconicTrait: "Ana Dansçı • 'Zamansızdık'", clueQuote: "Zamansızdık ama sahnede ritmi asla kaçırmadık!", emoji: "✨", color: "#EC4899" },
-      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Boğa", iconicTrait: "Baş Dansçı • 'Başrol Sensin'", clueQuote: "Bu hikayede başrol sensin!", emoji: "✨", color: "#F43F5E" },
-      { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Rapçi", "Vokal"], birthYear: 2004, age: 22, debutYear: 2025, zodiac: "Aslan", iconicTrait: "Rapçi & Vokal • 'Snap', 'Arıyo'", clueQuote: "Arıyo ama nafile, Snap attım sahneden!", emoji: "✨", color: "#A855F7" },
-      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Yardımcı Vokalist"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Terazi", iconicTrait: "Yardımcı Vokalist • 'Daha İyi'", clueQuote: "Artık çok daha iyi, amatör hislere elveda!", emoji: "✨", color: "#06B6D4" },
-      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2002, age: 24, debutYear: 2025, zodiac: "Koç", iconicTrait: "Ana Vokalist • 'Hileli (feat. Ajda Pekkan)'", clueQuote: "Ajda Pekkan ile 'Hileli' düetinde parlayan ana vokal!", emoji: "✨", color: "#EC4899" },
-      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2005, age: 21, debutYear: 2025, zodiac: "Balık", iconicTrait: "Ana Rapçi • 'Toz Pembe'", clueQuote: "Toz pembe dünyaları yıkan hızlı flowlar!", emoji: "✨", color: "#F59E0B" },
+      { id: "manifest_esin", name: "Esin Bahat", group: "Manifest", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2025, zodiac: "İkizler", iconicTrait: "Ana Dansçı • 'Zamansızdık'", clueQuote: "Zamansızdık ama sahnede ritmi asla kaçırmadık!", emoji: "✨", color: "#EC4899", photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Esin%20Bahat" },
+      { id: "manifest_hilal", name: "Hilal Yelekçi", group: "Manifest", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Boğa", iconicTrait: "Baş Dansçı • 'Başrol Sensin'", clueQuote: "Bu hikayede başrol sensin!", emoji: "✨", color: "#F43F5E", photoUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Hilal%20Yelek%C3%A7i" },
+      { id: "manifest_lidya", name: "Lidya Pınar", group: "Manifest", gender: "Kadın", roles: ["Rapçi", "Vokal"], birthYear: 2004, age: 22, debutYear: 2025, zodiac: "Aslan", iconicTrait: "Rapçi & Vokal • 'Snap', 'Arıyo'", clueQuote: "Arıyo ama nafile, Snap attım sahneden!", emoji: "✨", color: "#A855F7", photoUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Lidya%20P%C4%B1nar" },
+      { id: "manifest_mina", name: "Mina Solak", group: "Manifest", gender: "Kadın", roles: ["Yardımcı Vokalist"], birthYear: 2003, age: 23, debutYear: 2025, zodiac: "Terazi", iconicTrait: "Yardımcı Vokalist • 'Daha İyi'", clueQuote: "Artık çok daha iyi, amatör hislere elveda!", emoji: "✨", color: "#06B6D4", photoUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Mina%20Solak" },
+      { id: "manifest_sueda", name: "Sueda Uluca", group: "Manifest", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2002, age: 24, debutYear: 2025, zodiac: "Koç", iconicTrait: "Ana Vokalist • 'Hileli (feat. Ajda Pekkan)'", clueQuote: "Ajda Pekkan ile 'Hileli' düetinde parlayan ana vokal!", emoji: "✨", color: "#EC4899", photoUrl: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Sueda%20Uluca" },
+      { id: "manifest_zeynep", name: "Zeynep Sude Oktay", group: "Manifest", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2005, age: 21, debutYear: 2025, zodiac: "Balık", iconicTrait: "Ana Rapçi • 'Toz Pembe'", clueQuote: "Toz pembe dünyaları yıkan hızlı flowlar!", emoji: "✨", color: "#F59E0B", photoUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Manifest%20Zeynep%20Sude%20Oktay" },
 
       // 2. CRUSH (Çıkış: 2026-07-31)
-      { id: "crush_oguzhan", name: "Oğuzhan Çifçi", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Crush Vokalisti • 'CRUSH!', 'Benim Olsana'", clueQuote: "CRUSH! Sahneye adım attığımız ilk an!", emoji: "⚡", color: "#DC2626" },
-      { id: "crush_batu", name: "Batu Cengiz", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Dans & Vokal • 'Benim Olsana'", clueQuote: "Kaçma benden, benim olsana!", emoji: "⚡", color: "#EA580C" },
-      { id: "crush_baris", name: "Barış Çağan Yüksekkaya", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Crush Güçlü Vokal • 'CRUSH!'", clueQuote: "İlk single ile T-Pop listelerini sarsan vokal!", emoji: "⚡", color: "#B91C1C" },
-      { id: "crush_mirac", name: "Miraç Fırat", group: "Crush", gender: "Erkek", roles: ["Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Sahne Koreografisi • 'CRUSH!'", clueQuote: "Senkronize adımlar ve patlayıcı sokak koreografisi!", emoji: "⚡", color: "#D97706" },
-      { id: "crush_milan", name: "Milan Önder", group: "Crush", gender: "Erkek", roles: ["Visual", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Visual Karizma • 'Benim Olsana'", clueQuote: "Kamera karşısında karizmatik duruş ve vokaller!", emoji: "⚡", color: "#991B1B" },
-      { id: "crush_arda", name: "Arda Soydoğan", group: "Crush", gender: "Erkek", roles: ["Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Hızlı Flow • 'CRUSH!'", clueQuote: "Ritimleri hızlandıran dinamik rap flowları!", emoji: "⚡", color: "#C2410C" },
-      { id: "crush_efe", name: "Efe Şan", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2005, age: 21, debutYear: 2026, zodiac: "Balık", iconicTrait: "Crush Genç Enerji • 'Benim Olsana'", clueQuote: "Crush grubunun taze ve enerjik sahne ritmi!", emoji: "⚡", color: "#7F1D1D" },
+      { id: "crush_oguzhan", name: "Oğuzhan Çifçi", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Crush Vokalisti • 'CRUSH!', 'Benim Olsana'", clueQuote: "CRUSH! Sahneye adım attığımız ilk an!", emoji: "⚡", color: "#DC2626", photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_batu", name: "Batu Cengiz", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Dans & Vokal • 'Benim Olsana'", clueQuote: "Kaçma benden, benim olsana!", emoji: "⚡", color: "#EA580C", photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_baris", name: "Barış Çağan Yüksekkaya", group: "Crush", gender: "Erkek", roles: ["Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Crush Güçlü Vokal • 'CRUSH!'", clueQuote: "İlk single ile T-Pop listelerini sarsan vokal!", emoji: "⚡", color: "#B91C1C", photoUrl: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_mirac", name: "Miraç Fırat", group: "Crush", gender: "Erkek", roles: ["Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Sahne Koreografisi • 'CRUSH!'", clueQuote: "Senkronize adımlar ve patlayıcı sokak koreografisi!", emoji: "⚡", color: "#D97706", photoUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_milan", name: "Milan Önder", group: "Crush", gender: "Erkek", roles: ["Visual", "Vokal"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Visual Karizma • 'Benim Olsana'", clueQuote: "Kamera karşısında karizmatik duruş ve vokaller!", emoji: "⚡", color: "#991B1B", photoUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_arda", name: "Arda Soydoğan", group: "Crush", gender: "Erkek", roles: ["Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Hızlı Flow • 'CRUSH!'", clueQuote: "Ritimleri hızlandıran dinamik rap flowları!", emoji: "⚡", color: "#C2410C", photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
+      { id: "crush_efe", name: "Efe Şan", group: "Crush", gender: "Erkek", roles: ["Dansçı", "Vokal"], birthYear: 2005, age: 21, debutYear: 2026, zodiac: "Balık", iconicTrait: "Crush Genç Enerji • 'Benim Olsana'", clueQuote: "Crush grubunun taze ve enerjik sahne ritmi!", emoji: "⚡", color: "#7F1D1D", photoUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80", searchUrl: "https://wearecrushboys.com.tr/" },
 
       // 3. KARMA (KARM6 - Çıkış: 2026-05-22)
-      { id: "karma_cem", name: "Cem Suha Kurt", group: "Karma", gender: "Erkek", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Keşke Benim Olsa'", clueQuote: "Keşke benim olsa dediğin an sahnedeyiz!", emoji: "🔮", color: "#7E22CE" },
-      { id: "karma_ezgi", name: "Ezgi Akliman", group: "Karma", gender: "Kadın", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Crop Top'", clueQuote: "Crop Top giydik, blok blok vurduk ritimleri!", emoji: "🔮", color: "#9333EA" },
-      { id: "karma_ozlem", name: "Özlem Naz Gözcü", group: "Karma", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Yengeç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Sırra Kadem'", clueQuote: "Sırra kadem bastık, başka bir ihtimal yok!", emoji: "🔮", color: "#6B21A8" },
-      { id: "karma_adilcan", name: "Adilcan Bilgin", group: "Karma", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Başak", iconicTrait: "Ana Vokalist • 'Ta Burama (feat. Serdar Ortaç)'", clueQuote: "Ta burama geldi dedirten Serdar Ortaç düeti!", emoji: "🔮", color: "#581C87" },
-      { id: "karma_erdeniz", name: "Erdeniz Telli", group: "Karma", gender: "Erkek", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Baş Vokalist & Baş Dansçı • 'KARMA'", clueQuote: "Serotonin salgılatan dengeli ve akıcı sahne şovu!", emoji: "🔮", color: "#4C1D95" },
-      { id: "karma_ada", name: "Ada Atılgan", group: "Karma", gender: "Kadın", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Balık", iconicTrait: "Baş Vokalist & Baş Dansçı • 'Önümüz Yaz'", clueQuote: "Önümüz yaz, enerjimiz yüksek!", emoji: "🔮", color: "#3B0764" },
+      { id: "karma_cem", name: "Cem Suha Kurt", group: "Karma", gender: "Erkek", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Keşke Benim Olsa'", clueQuote: "Keşke benim olsa dediğin an sahnedeyiz!", emoji: "🔮", color: "#7E22CE", photoUrl: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Cem%20Suha%20Kurt" },
+      { id: "karma_ezgi", name: "Ezgi Akliman", group: "Karma", gender: "Kadın", roles: ["Ana Rapçi", "Ana Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Rapçi & Ana Dansçı • 'Crop Top'", clueQuote: "Crop Top giydik, blok blok vurduk ritimleri!", emoji: "🔮", color: "#9333EA", photoUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ezgi%20Akliman" },
+      { id: "karma_ozlem", name: "Özlem Naz Gözcü", group: "Karma", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Yengeç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Sırra Kadem'", clueQuote: "Sırra kadem bastık, başka bir ihtimal yok!", emoji: "🔮", color: "#6B21A8", photoUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20%C3%96zlem%20Naz%20G%C3%B6zc%C3%BC" },
+      { id: "karma_adilcan", name: "Adilcan Bilgin", group: "Karma", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Başak", iconicTrait: "Ana Vokalist • 'Ta Burama (feat. Serdar Ortaç)'", clueQuote: "Ta burama geldi dedirten Serdar Ortaç düeti!", emoji: "🔮", color: "#581C87", photoUrl: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Adilcan%20Bilgin" },
+      { id: "karma_erdeniz", name: "Erdeniz Telli", group: "Karma", gender: "Erkek", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Baş Vokalist & Baş Dansçı • 'KARMA'", clueQuote: "Serotonin salgılatan dengeli ve akıcı sahne şovu!", emoji: "🔮", color: "#4C1D95", photoUrl: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Erdeniz%20Telli" },
+      { id: "karma_ada", name: "Ada Atılgan", group: "Karma", gender: "Kadın", roles: ["Baş Vokalist", "Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Balık", iconicTrait: "Baş Vokalist & Baş Dansçı • 'Önümüz Yaz'", clueQuote: "Önümüz yaz, enerjimiz yüksek!", emoji: "🔮", color: "#3B0764", photoUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ada%20At%C4%B1lgan" },
 
       // 4. AURA (AURA - Çıkış: 2026-05-15)
-      { id: "aura_asli", name: "Aslı Göztaşı", group: "Aura", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Baş Dansçı (Lead Dancer) • 'YUH!', 'Tuzak'", clueQuote: "YUH! Dedirten çıkış parçası ve tuzak dolu ritimler!", emoji: "🌟", color: "#0284C7" },
-      { id: "aura_suzy", name: "Suzy Roumenov", group: "Aura", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Kova", iconicTrait: "Baş Vokalist (Lead Vocal) • 'PES', '2036'", clueQuote: "PES etmeyen 2036 fütüristik vokal melodisi!", emoji: "🌟", color: "#0369A1" },
-      { id: "aura_meri", name: "Meri Aslan", group: "Aura", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Ana Vokalist (Main Vocal) • 'We Are Aura!'", clueQuote: "We Are Aura! ELEMENTAL albümünün doruk noktası!", emoji: "🌟", color: "#0D9488" },
-      { id: "aura_esra", name: "Esra Mutlu", group: "Aura", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Masum Kedi'", clueQuote: "Masum Kedi gibi zarif, yüksek Tempo ile sahnede!", emoji: "🌟", color: "#0F766E" },
+      { id: "aura_asli", name: "Aslı Göztaşı", group: "Aura", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Yay", iconicTrait: "Baş Dansçı (Lead Dancer) • 'YUH!', 'Tuzak'", clueQuote: "YUH! Dedirten çıkış parçası ve tuzak dolu ritimler!", emoji: "🌟", color: "#0284C7", photoUrl: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Aura%20Asl%C4%B1%20G%C3%B6zta%C5%9F%C4%B1" },
+      { id: "aura_suzy", name: "Suzy Roumenov", group: "Aura", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Kova", iconicTrait: "Baş Vokalist (Lead Vocal) • 'PES', '2036'", clueQuote: "PES etmeyen 2036 fütüristik vokal melodisi!", emoji: "🌟", color: "#0369A1", photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Aura%20Suzy%20Roumenov" },
+      { id: "aura_meri", name: "Meri Aslan", group: "Aura", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Aslan", iconicTrait: "Ana Vokalist (Main Vocal) • 'We Are Aura!'", clueQuote: "We Are Aura! ELEMENTAL albümünün doruk noktası!", emoji: "🌟", color: "#0D9488", photoUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Aura%20Meri%20Aslan" },
+      { id: "aura_esra", name: "Esra Mutlu", group: "Aura", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Masum Kedi'", clueQuote: "Masum Kedi gibi zarif, yüksek Tempo ile sahnede!", emoji: "🌟", color: "#0F766E", photoUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Aura%20Esra%20Mutlu" },
 
       // 5. MANTRA (Çıkış: 2026-05-15)
-      { id: "mantra_delfin", name: "Delfin Kayra Uraz", group: "Mantra", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Baş Vokalist (Lead Vocal) • 'Bi Kiss'", clueQuote: "Bi Kiss gönderdim sahneden, New Era başladı!", emoji: "🪷", color: "#D97706" },
-      { id: "mantra_sila", name: "Sıla Nisa Bozkurt", group: "Mantra", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Koç", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Toysun'", clueQuote: "Toysun daha sen, sahnede goygoy yok ciddiyet var!", emoji: "🪷", color: "#B45309" },
-      { id: "mantra_guniz", name: "Güniz Ok", group: "Mantra", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Dansçı (Main Dancer) • 'Tuttu Fırlattı'", clueQuote: "Tuttu Fırlattı kalbimi, Red Flag çaldı sahnede!", emoji: "🪷", color: "#92400E" },
-      { id: "mantra_doga", name: "Doğa Bezek", group: "Mantra", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Vokalist (Main Vocal) • 'Tek Başıma'", clueQuote: "Tek Başıma kalsam bile sesim tüm salonu doldurur!", emoji: "🪷", color: "#78350F" },
-      { id: "mantra_seyma", name: "Şeyma Akso", group: "Mantra", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Ana Rapçi (Main Rapper) • 'Kaldım Ellerinde'", clueQuote: "Kaldım ellerinde ama flowlarım özgür!", emoji: "🪷", color: "#CA8A04" },
+      { id: "mantra_delfin", name: "Delfin Kayra Uraz", group: "Mantra", gender: "Kadın", roles: ["Baş Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "İkizler", iconicTrait: "Baş Vokalist (Lead Vocal) • 'Bi Kiss'", clueQuote: "Bi Kiss gönderdim sahneden, New Era başladı!", emoji: "🪷", color: "#D97706", photoUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Mantra%20Delfin%20Kayra%20Uraz" },
+      { id: "mantra_sila", name: "Sıla Nisa Bozkurt", group: "Mantra", gender: "Kadın", roles: ["Baş Dansçı"], birthYear: 2003, age: 23, debutYear: 2026, zodiac: "Koç", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Toysun'", clueQuote: "Toysun daha sen, sahnede goygoy yok ciddiyet var!", emoji: "🪷", color: "#B45309", photoUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Mantra%20S%C4%B1la%20Nisa%20Bozkurt" },
+      { id: "mantra_guniz", name: "Güniz Ok", group: "Mantra", gender: "Kadın", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Akrep", iconicTrait: "Ana Dansçı (Main Dancer) • 'Tuttu Fırlattı'", clueQuote: "Tuttu Fırlattı kalbimi, Red Flag çaldı sahnede!", emoji: "🪷", color: "#92400E", photoUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Mantra%20G%C3%BCniz%20Ok" },
+      { id: "mantra_doga", name: "Doğa Bezek", group: "Mantra", gender: "Kadın", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Oğlak", iconicTrait: "Ana Vokalist (Main Vocal) • 'Tek Başıma'", clueQuote: "Tek Başıma kalsam bile sesim tüm salonu doldurur!", emoji: "🪷", color: "#78350F", photoUrl: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Mantra%20Do%C4%9Fa%20Bezek" },
+      { id: "mantra_seyma", name: "Şeyma Akso", group: "Mantra", gender: "Kadın", roles: ["Ana Rapçi"], birthYear: 2004, age: 22, debutYear: 2026, zodiac: "Terazi", iconicTrait: "Ana Rapçi (Main Rapper) • 'Kaldım Ellerinde'", clueQuote: "Kaldım ellerinde ama flowlarım özgür!", emoji: "🪷", color: "#CA8A04", photoUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Mantra%20%C5%9Eeyma%20Akso" },
 
       // 6. RADİKAL (Çıkış: 2026-06-19)
-      { id: "radikal_vedat", name: "Vedat Çelik", group: "Radikal", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Hayran'", clueQuote: "Hayran bırakan ses tonu, korkmam ben bu yolda!", emoji: "🔥", color: "#BE123C" },
-      { id: "radikal_yusa", name: "Yuşa Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Hayran', 'Yalancı'", clueQuote: "Yalancı sözlere inat gerçek ve keskin adımlar!", emoji: "🔥", color: "#9F1239" },
-      { id: "radikal_yusuf", name: "Yusuf Emre Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Yardımcı Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Yardımcı Vokalist • 'Korkmam Ben'", clueQuote: "Korkmam Ben teklisinde vokal desteği!", emoji: "🔥", color: "#881337" },
-      { id: "radikal_ibrahim", name: "İbrahim Can Kaya", group: "Radikal", gender: "Erkek", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Hayran'", clueQuote: "Hayran şarkısının merkezinde patlayan dans performansı!", emoji: "🔥", color: "#4C0519" }
+      { id: "radikal_vedat", name: "Vedat Çelik", group: "Radikal", gender: "Erkek", roles: ["Ana Vokalist"], birthYear: 2000, age: 26, debutYear: 2026, zodiac: "Koç", iconicTrait: "Ana Vokalist (Main Vocal) • 'Hayran'", clueQuote: "Hayran bırakan ses tonu, korkmam ben bu yolda!", emoji: "🔥", color: "#BE123C", photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Radikal%20Vedat%20%C3%87elik" },
+      { id: "radikal_yusa", name: "Yuşa Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Baş Dansçı"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Baş Dansçı (Lead Dancer) • 'Hayran', 'Yalancı'", clueQuote: "Yalancı sözlere inat gerçek ve keskin adımlar!", emoji: "🔥", color: "#9F1239", photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Radikal%20Yu%C5%9Fa%20Akb%C4%B1y%C4%B1k" },
+      { id: "radikal_yusuf", name: "Yusuf Emre Akbıyık", group: "Radikal", gender: "Erkek", roles: ["Yardımcı Vokalist"], birthYear: 2002, age: 24, debutYear: 2026, zodiac: "Başak", iconicTrait: "Yardımcı Vokalist • 'Korkmam Ben'", clueQuote: "Korkmam Ben teklisinde vokal desteği!", emoji: "🔥", color: "#881337", photoUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Radikal%20Yusuf%20Emre%20Akb%C4%B1y%C4%B1k" },
+      { id: "radikal_ibrahim", name: "İbrahim Can Kaya", group: "Radikal", gender: "Erkek", roles: ["Ana Dansçı"], birthYear: 2001, age: 25, debutYear: 2026, zodiac: "Boğa", iconicTrait: "Ana Dansçı (Main Dancer) • 'Hayran'", clueQuote: "Hayran şarkısının merkezinde patlayan dans performansı!", emoji: "🔥", color: "#4C0519", photoUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80", searchUrl: "https://www.google.com/search?tbm=isch&q=Radikal%20%C4%B0brahim%20Can%20Kaya" }
     ];
 
     // === RESMİ ŞARKILAR VE İKONİK ŞARKI SÖZLERİ (42 ŞARKI LİSTESİ) ===
@@ -647,11 +662,21 @@
       const clueAutoList = document.getElementById('clueAutocompleteList');
       if (clueAutoList) clueAutoList.classList.add('hidden');
 
-      const sil = document.getElementById('silhouetteAvatar');
-      sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-md brightness-50 transition-all duration-700 transform scale-110';
-      sil.style.backgroundColor = targetMember.color;
-      sil.innerText = targetMember.emoji;
-      document.getElementById('silhouetteLock').classList.remove('hidden');
+      const photoEl = document.getElementById('silhouettePhoto');
+      if (photoEl) {
+        photoEl.src = targetMember.photoUrl;
+        photoEl.style.filter = 'blur(16px) brightness(0.22) contrast(170%) grayscale(40%)';
+        photoEl.style.transform = 'scale(1.15)';
+      }
+      const lockEl = document.getElementById('silhouetteLock');
+      if (lockEl) lockEl.classList.remove('hidden');
+
+      const sourceBtn = document.getElementById('silhouetteSourceBtn');
+      const sourceLabel = document.getElementById('silhouetteSourceLabel');
+      if (sourceBtn && targetMember.searchUrl) {
+        sourceBtn.href = targetMember.searchUrl;
+        if (sourceLabel) sourceLabel.innerText = `${targetMember.name} Görselleri (Google)`;
+      }
 
       document.getElementById('clueStage1').innerText = '🔒 İpucu 1: 1. Yanlışta Açılır (Cinsiyet & Burç)';
       document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
@@ -730,8 +755,9 @@
         <!-- Üye Başlığı ve Sonuç Durumu -->
         <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
           <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold text-white shadow-md border border-white/20" style="background-color: ${res.guessed.color}">
-              ${res.guessed.emoji}
+            <div class="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center font-bold text-white shadow-md border border-white/20 bg-slate-800" style="background-color: ${res.guessed.color}">
+              <img src="${res.guessed.photoUrl}" alt="${res.guessed.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+              <span class="absolute bottom-0 right-0 text-[9px] bg-slate-950/80 px-1 rounded-tl-md leading-tight">${res.guessed.emoji}</span>
             </div>
             <div>
               <div class="text-sm font-black text-white flex items-center gap-1.5">
@@ -876,7 +902,11 @@
 
       // Win Modalını Doldur
       const winAvatar = document.getElementById('winAvatarBox');
-      winAvatar.innerText = member.emoji;
+      if (member.photoUrl) {
+        winAvatar.innerHTML = `<img src="${member.photoUrl}" alt="${member.name}" class="w-full h-full object-cover rounded-2xl shadow-md border border-white/20" onerror="this.onerror=null; this.parentElement.innerText='${member.emoji}'">`;
+      } else {
+        winAvatar.innerText = member.emoji;
+      }
       winAvatar.style.backgroundColor = member.color;
 
       document.getElementById('winName').innerText = member.name;
@@ -908,8 +938,9 @@
         autoList.innerHTML = matches.map(m => `
           <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-name="${m.name}">
             <div class="flex items-center gap-2.5 pointer-events-none">
-              <span class="w-8 h-8 rounded-xl text-white text-sm flex items-center justify-center font-bold shadow-sm border border-white/20" style="background-color: ${m.color}">
-                ${m.emoji}
+              <span class="relative w-8 h-8 rounded-xl overflow-hidden text-white text-sm flex items-center justify-center font-bold shadow-sm border border-white/20 bg-slate-800" style="background-color: ${m.color}">
+                <img src="${m.photoUrl}" alt="${m.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                <span class="absolute text-[10px] bottom-0 right-0 bg-slate-950/80 px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
               </span>
               <div>
                 <div class="text-xs font-black text-white group-hover:text-purple-300 transition">${m.name}</div>
@@ -1016,12 +1047,16 @@
         clueAutoList.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center font-medium">Eşleşen üye bulunamadı</div>`;
       } else {
         clueAutoList.innerHTML = matches.map(m => `
-          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition" data-clue-name="${m.name}">
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-clue-name="${m.name}">
             <div class="flex items-center gap-2.5 pointer-events-none">
-              <span class="w-7 h-7 rounded-lg text-white text-xs flex items-center justify-center font-bold" style="background-color: ${m.color}">
-                ${m.emoji}
+              <span class="relative w-8 h-8 rounded-lg overflow-hidden text-white text-xs flex items-center justify-center font-bold bg-slate-800 border border-white/20" style="background-color: ${m.color}">
+                <img src="${m.photoUrl}" alt="${m.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                <span class="absolute text-[9px] bottom-0 right-0 bg-slate-950/80 px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
               </span>
-              <span class="text-xs font-bold text-white">${m.name}</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-cyan-300 transition">${m.name}</div>
+                <div class="text-[10px] text-slate-400">${m.roles.join(', ')}</div>
+              </div>
             </div>
             <span class="text-[10px] text-slate-400 font-semibold pointer-events-none">${m.group}</span>
           </div>
@@ -1090,10 +1125,15 @@
       const found = TPOP_MEMBERS.find(m => m.name.toLowerCase() === name.trim().toLowerCase());
       if (!found) return;
 
+      const photoEl = document.getElementById('silhouettePhoto');
+      const lockEl = document.getElementById('silhouetteLock');
+
       if (found.id === targetMember.id) {
-        const sil = document.getElementById('silhouetteAvatar');
-        sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-none brightness-100 transition-all duration-500 transform scale-100';
-        document.getElementById('silhouetteLock').classList.add('hidden');
+        if (photoEl) {
+          photoEl.style.filter = 'none';
+          photoEl.style.transform = 'scale(1.0)';
+        }
+        if (lockEl) lockEl.classList.add('hidden');
         handleWin(targetMember, clueWrongCount + 1);
       } else {
         clueWrongCount++;
@@ -1103,23 +1143,36 @@
         const wrongList = document.getElementById('clueWrongList');
         wrongList.innerText = (wrongList.innerText ? wrongList.innerText + ', ' : 'Denenenler: ') + `${found.name} ❌`;
 
-        const sil = document.getElementById('silhouetteAvatar');
         if (clueWrongCount === 1) {
-          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-sm brightness-75 transition-all duration-500';
+          if (photoEl) {
+            photoEl.style.filter = 'blur(9px) brightness(0.55) contrast(140%) grayscale(20%)';
+            photoEl.style.transform = 'scale(1.1)';
+          }
           document.getElementById('clueStage1').innerText = `💡 İpucu 1: Cinsiyet: ${targetMember.gender} | Burç: ${targetMember.zodiac}`;
           document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 2) {
-          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-[2px] brightness-90 transition-all duration-500';
+          if (photoEl) {
+            photoEl.style.filter = 'blur(4.5px) brightness(0.75) contrast(120%) grayscale(0%)';
+            photoEl.style.transform = 'scale(1.05)';
+          }
           document.getElementById('clueStage2').innerText = `💡 İpucu 2: Grup: ${targetMember.group} | Rol: ${targetMember.roles.join(', ')}`;
           document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 3) {
-          sil.className = 'w-full h-full flex flex-col items-center justify-center text-4xl filter blur-none brightness-100 transition-all duration-500';
-          document.getElementById('silhouetteLock').classList.add('hidden');
+          if (photoEl) {
+            photoEl.style.filter = 'blur(1.5px) brightness(0.92) contrast(105%)';
+            photoEl.style.transform = 'scale(1.0)';
+          }
+          if (lockEl) lockEl.classList.add('hidden');
           document.getElementById('clueStage3').innerText = `💡 İpucu 3: ${targetMember.iconicTrait}`;
           document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         }
 
         if (clueWrongCount >= 5) {
+          if (photoEl) {
+            photoEl.style.filter = 'none';
+            photoEl.style.transform = 'scale(1.0)';
+          }
+          if (lockEl) lockEl.classList.add('hidden');
           alert(`Haklarınız bitti! Gizli yıldız: ${targetMember.name} (${targetMember.group})`);
           initClueGame();
         }

@@ -15,7 +15,9 @@ data class TPopMember(
     val funFact: String, // İlginç bilgi
     val avatarBgColor: String = "#8B5CF6",
     val groupIconEmoji: String = "✨",
-    val avatarStyleSeed: String = "" // Görsel avatar oluşturucu tohumu
+    val avatarStyleSeed: String = "", // Görsel avatar oluşturucu tohumu
+    val photoUrl: String = "",
+    val searchUrl: String = ""
 ) {
     val roleDisplay: String
         get() = roles.joinToString(", ")
