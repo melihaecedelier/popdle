@@ -26,7 +26,7 @@ object TPopDatabase {
             avatarBgColor = "#EC4899",
             groupIconEmoji = "✨",
             avatarStyleSeed = "esin",
-            photoUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfsrAAnUFEBJfhzsbNj6Mqc5vJhf6ApggdxP5LDv-BIoZgTv3usjhZReUW&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Esin%20Bahat"
         ),
         TPopMember(
@@ -45,7 +45,7 @@ object TPopDatabase {
             avatarBgColor = "#F43F5E",
             groupIconEmoji = "✨",
             avatarStyleSeed = "hilal",
-            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9iq6frer9g29Iq8Qc7eYejlpBcvYutbA1_6C7qTYFrNCf1kS9EOwl6Ot3&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Hilal%20Yelek%C3%A7i"
         ),
         TPopMember(
@@ -64,7 +64,7 @@ object TPopDatabase {
             avatarBgColor = "#A855F7",
             groupIconEmoji = "✨",
             avatarStyleSeed = "lidya",
-            photoUrl = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1kH6m_IwsXVBSQK0uxk5KeE_sLCE-AnAiANAyClDGc3p7ggLJISrEI5iK&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Lidya%20P%C4%B1nar"
         ),
         TPopMember(
@@ -83,7 +83,7 @@ object TPopDatabase {
             avatarBgColor = "#06B6D4",
             groupIconEmoji = "✨",
             avatarStyleSeed = "mina",
-            photoUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4cI297iGgfqLvZOuAu0E4fbY_LKhMNc0EdD-LGmxtPJ_HhkAB1NspSt2-&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Mina%20Solak"
         ),
         TPopMember(
@@ -102,7 +102,7 @@ object TPopDatabase {
             avatarBgColor = "#EC4899",
             groupIconEmoji = "✨",
             avatarStyleSeed = "sueda",
-            photoUrl = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFl0W1d3W7bDtIdhJw7hZT_klB2HUJPDqEU_AJjLOityghT3iu-biTzjvh&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Sueda%20Uluca"
         ),
         TPopMember(
@@ -121,7 +121,7 @@ object TPopDatabase {
             avatarBgColor = "#F59E0B",
             groupIconEmoji = "✨",
             avatarStyleSeed = "zeynep",
-            photoUrl = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA7PYtghEP8shejqLEfxFLeYTvHSuSw6a5-WMuLbvOZ250yWewye-XWV2c&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Manifest%20Zeynep%20Sude%20Oktay"
         ),
 
@@ -145,7 +145,7 @@ object TPopDatabase {
             avatarBgColor = "#DC2626",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "oguzhan",
-            photoUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://biyografi.co/wp-content/uploads/2026/08/Oguzhan-Cifci-kimdir.webp",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -164,7 +164,7 @@ object TPopDatabase {
             avatarBgColor = "#EA580C",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "batu",
-            photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://pbs.twimg.com/media/HM8tfg2XkAAME84?format=webp&name=large",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -183,7 +183,7 @@ object TPopDatabase {
             avatarBgColor = "#B91C1C",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "baris_cagan",
-            photoUrl = "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://images.genius.com/77e85a6617f4dd2f2bd62f6cdff7341c.1000x1000x1.png",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -202,7 +202,7 @@ object TPopDatabase {
             avatarBgColor = "#D97706",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "mirac",
-            photoUrl = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://img-s2.onedio.com/id-6a840c68800d697c4e63cc27/rev-0/w-600/h-770/f-jpg/s-1e71d6b444118c503add45cdd008a7f108d8c27e.jpg",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -221,7 +221,7 @@ object TPopDatabase {
             avatarBgColor = "#991B1B",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "milan",
-            photoUrl = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://img-s1.onedio.com/id-6a8410d74341ce048f727f5b/rev-0/w-600/h-796/f-jpg/s-01db963f1a71d85b528ea30c23d27dfaf21b4cfc.jpg",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -240,7 +240,7 @@ object TPopDatabase {
             avatarBgColor = "#C2410C",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "arda_soydogan",
-            photoUrl = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://i.tgrthaber.com/images/2026/8/5/crush-arda-soydogan-kimdir-kac-yasinda-crush-uyesi-ardanin-meslegi-3351760_202608051912_2.png",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
         TPopMember(
@@ -259,7 +259,7 @@ object TPopDatabase {
             avatarBgColor = "#7F1D1D",
             groupIconEmoji = "⚡",
             avatarStyleSeed = "efe",
-            photoUrl = "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqg4NUaCgih8LFpePXiDyWeVg0O6Xk23Zjf8ce6q4WzgF0NtLIaYUnRp9&s=10",
             searchUrl = "https://wearecrushboys.com.tr/"
         ),
 
@@ -283,7 +283,7 @@ object TPopDatabase {
             avatarBgColor = "#7E22CE",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "cem_suha",
-            photoUrl = "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsCjglvLwVR70U92CZwFsjpmN47tYlZQygWOJjDmB7Z-B71ESgZVeOvPeg&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Cem%20Suha%20Kurt"
         ),
         TPopMember(
@@ -302,7 +302,7 @@ object TPopDatabase {
             avatarBgColor = "#9333EA",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "ezgi",
-            photoUrl = "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://pbs.twimg.com/media/HSQkPkAXYAAbmmu?format=webp&name=large",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ezgi%20Akliman"
         ),
         TPopMember(
@@ -321,7 +321,7 @@ object TPopDatabase {
             avatarBgColor = "#6B21A8",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "ozlem_naz",
-            photoUrl = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://images.genius.com/d224cf5ff13b727591f4763cf41d264f.1000x1000x1.png",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20%C3%96zlem%20Naz%20G%C3%B6zc%C3%BC"
         ),
         TPopMember(
@@ -340,7 +340,7 @@ object TPopDatabase {
             avatarBgColor = "#581C87",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "adilcan",
-            photoUrl = "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://i.pinimg.com/474x/db/55/28/db552879d5e2aa63f837dfd2a652377d.jpg",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Adilcan%20Bilgin"
         ),
         TPopMember(
@@ -359,7 +359,7 @@ object TPopDatabase {
             avatarBgColor = "#4C1D95",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "erdeniz",
-            photoUrl = "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZMN4mTgwKBaMp3OEP46okKlCAVIhpCWxy3-C9hzi_c4IeNN_Sq_ZBFFs&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Erdeniz%20Telli"
         ),
         TPopMember(
@@ -378,7 +378,7 @@ object TPopDatabase {
             avatarBgColor = "#3B0764",
             groupIconEmoji = "🔮",
             avatarStyleSeed = "ada_atilgan",
-            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKhZ3E9mb3GZKQIfi74wyTs1PWf_eHzF2plvwRT_33glSLlD_1ud7pGBFj&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Karma%20%28KARM6%29%20Ada%20At%C4%B1lgan"
         ),
 
@@ -402,7 +402,7 @@ object TPopDatabase {
             avatarBgColor = "#0284C7",
             groupIconEmoji = "🌟",
             avatarStyleSeed = "asli_goztasi",
-            photoUrl = "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://www.oncasey.com/wp-content/uploads/2026/07/hangi-aura-kizisin-test-asli.jpg",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Asl%C4%B1%20G%C3%B6zta%C5%9F%C4%B1"
         ),
         TPopMember(
@@ -421,7 +421,7 @@ object TPopDatabase {
             avatarBgColor = "#0369A1",
             groupIconEmoji = "🌟",
             avatarStyleSeed = "suzy",
-            photoUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://img-s1.onedio.com/id-6a0720ca64814839bedbba0a/rev-0/w-600/h-899/f-jpg/s-b40256c91a74c540680cd1568316eef44b8c7192.jpg",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Suzy%20Roumenov"
         ),
         TPopMember(
@@ -440,7 +440,7 @@ object TPopDatabase {
             avatarBgColor = "#0D9488",
             groupIconEmoji = "🌟",
             avatarStyleSeed = "meri",
-            photoUrl = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ8uld8ZeSqupxscokEInS9H-pLJ-PeJ7AraTuB2hDrYtprzgvTVnaiyU&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Meri%20Aslan"
         ),
         TPopMember(
@@ -459,7 +459,7 @@ object TPopDatabase {
             avatarBgColor = "#0F766E",
             groupIconEmoji = "🌟",
             avatarStyleSeed = "esra_mutlu",
-            photoUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJlhD3fY451m6BRTexvJ0_lUPCUWuaEvemfqxApUbJ5wQJN3grMjT31V0A&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Aura%20Esra%20Mutlu"
         ),
 
@@ -483,7 +483,7 @@ object TPopDatabase {
             avatarBgColor = "#D97706",
             groupIconEmoji = "🪷",
             avatarStyleSeed = "delfin",
-            photoUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://trpop.com/wp-content/uploads/2026/07/mantra-delfin-kayra-uraz.jpg.webp",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20Delfin%20Kayra%20Uraz"
         ),
         TPopMember(
@@ -502,7 +502,7 @@ object TPopDatabase {
             avatarBgColor = "#B45309",
             groupIconEmoji = "🪷",
             avatarStyleSeed = "sila_nisa",
-            photoUrl = "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://trpop.com/wp-content/uploads/2026/07/mantra-sila-nisa-bozkurt.jpg",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20S%C4%B1la%20Nisa%20Bozkurt"
         ),
         TPopMember(
@@ -521,7 +521,7 @@ object TPopDatabase {
             avatarBgColor = "#92400E",
             groupIconEmoji = "🪷",
             avatarStyleSeed = "guniz",
-            photoUrl = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSS1T20rruslZSYuRzGZq-rTZBM_yQvIBTaREgTcQtHCWi4kRPbzJbynuZ&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20G%C3%BCniz%20Ok"
         ),
         TPopMember(
@@ -540,7 +540,7 @@ object TPopDatabase {
             avatarBgColor = "#78350F",
             groupIconEmoji = "🪷",
             avatarStyleSeed = "doga",
-            photoUrl = "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTguyJdKXkwW6XQaEUifWexhep8BFO4iXXzf4BMaXMnUKPCzOSmSwoS5vs&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20Do%C4%9Fa%20Bezek"
         ),
         TPopMember(
@@ -559,7 +559,7 @@ object TPopDatabase {
             avatarBgColor = "#CA8A04",
             groupIconEmoji = "🪷",
             avatarStyleSeed = "seyma",
-            photoUrl = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9xBBA3hEpS96ddH8YTAc069p9bWhVyOTfD1R8Yevt5iKWs_ZccUQxDhji&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Mantra%20%C5%9Eeyma%20Akso"
         ),
 
@@ -583,7 +583,7 @@ object TPopDatabase {
             avatarBgColor = "#BE123C",
             groupIconEmoji = "🔥",
             avatarStyleSeed = "vedat",
-            photoUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHl6_ZjQxgvMWdObaZQGmbumgy0G7MTCQDsjO8fGcMgm3P7ko50ML5TAO5&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Vedat%20%C3%87elik"
         ),
         TPopMember(
@@ -602,7 +602,7 @@ object TPopDatabase {
             avatarBgColor = "#9F1239",
             groupIconEmoji = "🔥",
             avatarStyleSeed = "yusa",
-            photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw2wBu3KypGaozVKeGIbWHEwIxJgHiYdgnW3j9ZM2ojcyZF1r2ckVmHhCS&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Yu%C5%9Fa%20Akb%C4%B1y%C4%B1k"
         ),
         TPopMember(
@@ -621,7 +621,7 @@ object TPopDatabase {
             avatarBgColor = "#881337",
             groupIconEmoji = "🔥",
             avatarStyleSeed = "yusuf_emre",
-            photoUrl = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtvJuCqErwyRXQE2Bx4_r9BkOnYvF0r74K0Fy-1q7hD7360KoOfq7ngU&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20Yusuf%20Emre%20Akb%C4%B1y%C4%B1k"
         ),
         TPopMember(
@@ -640,7 +640,7 @@ object TPopDatabase {
             avatarBgColor = "#4C0519",
             groupIconEmoji = "🔥",
             avatarStyleSeed = "ibrahim_can",
-            photoUrl = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BXYvBBxX541f9GQTprjuRttpHwaQrPxQZzSFJ9ie4Ro4EEnlFDTg4uUZ&s=10",
             searchUrl = "https://www.google.com/search?tbm=isch&q=Radikal%20%C4%B0brahim%20Can%20Kaya"
         )
     )
