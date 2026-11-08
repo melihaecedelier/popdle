@@ -149,9 +149,8 @@
               class="w-full h-full object-cover transition-all duration-700 select-none pointer-events-none" 
             />
             <!-- Kilit İkonu ve Göstergesi -->
-            <div id="silhouetteLock" class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col items-center justify-center text-xs font-bold text-white transition-opacity duration-500">
-              <span class="text-3xl mb-1 drop-shadow-lg">🔒</span>
-              <span class="text-[11px] text-amber-300 font-bold bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-amber-500/40">Gizli Silüet</span>
+            <div id="silhouetteLock" class="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-300 border border-amber-500/40 flex items-center gap-1 transition-all duration-500 shadow-lg">
+              <span>🔒</span> <span>Hafif Bulanık</span>
             </div>
           </div>
 
@@ -654,11 +653,11 @@
       const photoEl = document.getElementById('silhouettePhoto');
       if (photoEl) {
         photoEl.src = targetMember.photoUrl;
-        photoEl.style.filter = 'blur(16px) brightness(0.22) contrast(170%) grayscale(40%)';
-        photoEl.style.transform = 'scale(1.15)';
+        photoEl.style.filter = 'blur(6px)';
+        photoEl.style.transform = 'scale(1.03)';
       }
       const lockEl = document.getElementById('silhouetteLock');
-      if (lockEl) lockEl.classList.remove('hidden');
+      if (lockEl) { lockEl.classList.remove('hidden'); lockEl.innerHTML = '<span>🔒</span> <span>Hafif Bulanık</span>'; }
 
       document.getElementById('clueStage1').innerText = '🔒 İpucu 1: 1. Yanlışta Açılır (Cinsiyet & Burç)';
       document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500';
@@ -1127,26 +1126,34 @@
 
         if (clueWrongCount === 1) {
           if (photoEl) {
-            photoEl.style.filter = 'blur(9px) brightness(0.55) contrast(140%) grayscale(20%)';
-            photoEl.style.transform = 'scale(1.1)';
+            photoEl.style.filter = 'blur(4.5px)';
+            photoEl.style.transform = 'scale(1.02)';
           }
+          if (lockEl) lockEl.innerHTML = '<span>🔓</span> <span>Netleşiyor (%40)</span>';
           document.getElementById('clueStage1').innerText = `💡 İpucu 1: Cinsiyet: ${targetMember.gender} | Burç: ${targetMember.zodiac}`;
           document.getElementById('clueStage1').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 2) {
           if (photoEl) {
-            photoEl.style.filter = 'blur(4.5px) brightness(0.75) contrast(120%) grayscale(0%)';
-            photoEl.style.transform = 'scale(1.05)';
+            photoEl.style.filter = 'blur(3px)';
+            photoEl.style.transform = 'scale(1.01)';
           }
+          if (lockEl) lockEl.innerHTML = '<span>🔓</span> <span>Netleşiyor (%65)</span>';
           document.getElementById('clueStage2').innerText = `💡 İpucu 2: Grup: ${targetMember.group} | Rol: ${targetMember.roles.join(', ')}`;
           document.getElementById('clueStage2').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
         } else if (clueWrongCount === 3) {
           if (photoEl) {
-            photoEl.style.filter = 'blur(1.5px) brightness(0.92) contrast(105%)';
+            photoEl.style.filter = 'blur(1.5px)';
             photoEl.style.transform = 'scale(1.0)';
           }
           if (lockEl) lockEl.classList.add('hidden');
           document.getElementById('clueStage3').innerText = `💡 İpucu 3: ${targetMember.iconicTrait}`;
           document.getElementById('clueStage3').className = 'p-2 rounded-lg bg-amber-950/70 border border-amber-600 text-amber-200 font-semibold';
+        } else if (clueWrongCount === 4) {
+          if (photoEl) {
+            photoEl.style.filter = 'blur(0.6px)';
+            photoEl.style.transform = 'scale(1.0)';
+          }
+          if (lockEl) lockEl.classList.add('hidden');
         }
 
         if (clueWrongCount >= 5) {
