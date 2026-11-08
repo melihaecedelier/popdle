@@ -6,5 +6,6 @@ data class TPopSong(
     val group: String,
     val year: Int,
     val lyrics: String,
-    val clue: String
+    val clue: String,
+    val lyricsUrl: String = ""
 )
