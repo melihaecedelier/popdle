@@ -54,204 +54,159 @@
       touch-action: manipulation !important;
     }
 
-    /* === AÇIK PEMBE (LIGHT CANDY PINK & MINT) ANA TEMASI (VARSAYILAN) === */
-    body {
-      background: linear-gradient(180deg, #fdf2f8 0%, #fce7f3 35%, #fff1f2 70%, #ecfdf5 100%) !important;
+    /* === GÜNDÜZ MODU (LIGHT THEME) PEMBE & NANE YEŞİLİ PALETİ === */
+    body.light-theme {
+      background: linear-gradient(180deg, #fdf2f8 0%, #ecfdf5 45%, #fdf4ff 100%) !important;
       color: #1e293b !important;
-      min-height: 100vh;
     }
-    #appContainer {
+    body.light-theme #appContainer {
       background-color: rgba(255, 255, 255, 0.98) !important;
-      border: 2px solid rgba(244, 114, 182, 0.4) !important;
-      box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.18), 0 0 35px rgba(52, 211, 153, 0.12) !important;
+      border-color: rgba(244, 114, 182, 0.45) !important;
+      box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.18), 0 0 35px rgba(52, 211, 153, 0.15) !important;
     }
-    header, footer {
+    body.light-theme header,
+    body.light-theme footer {
       background-color: rgba(255, 255, 255, 0.96) !important;
       border-color: rgba(244, 114, 182, 0.25) !important;
     }
-    #headerTitle {
+    body.light-theme #headerTitle {
       background: linear-gradient(to right, #db2777, #ec4899, #059669) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
     }
-    #headerSubtitle {
+    body.light-theme #headerSubtitle {
       color: #64748b !important;
     }
-    #tabBar {
-      background-color: #fdf2f8 !important;
+    body.light-theme #tabBar {
+      background-color: #f8fafc !important;
       border-color: rgba(244, 114, 182, 0.25) !important;
     }
-    .tab-inactive {
+    body.light-theme .tab-inactive {
       color: #64748b !important;
     }
-    .tab-inactive:hover {
+    body.light-theme .tab-inactive:hover {
       color: #db2777 !important;
       background-color: rgba(236, 72, 153, 0.08) !important;
     }
-
-    /* === AÇILIR LİSTE VE MOBİL PARMAKLA KAYDIRMA (SCROLL) === */
-    #autocompleteList,
-    #clueAutocompleteList,
-    #lyricsAutocompleteList {
-      touch-action: pan-y !important;
-      -webkit-overflow-scrolling: touch !important;
-      overscroll-behavior-y: contain !important;
-      overflow-y: scroll !important;
-      max-height: 320px !important;
-      background-color: rgba(255, 255, 255, 0.99) !important;
-      border: 2px solid #f472b6 !important;
-      border-radius: 1.25rem !important;
-      box-shadow: 0 25px 50px -12px rgba(236, 72, 153, 0.25) !important;
-    }
-    #autocompleteList::-webkit-scrollbar,
-    #clueAutocompleteList::-webkit-scrollbar,
-    #lyricsAutocompleteList::-webkit-scrollbar {
-      width: 7px !important;
-      display: block !important;
-    }
-    #autocompleteList::-webkit-scrollbar-track,
-    #clueAutocompleteList::-webkit-scrollbar-track,
-    #lyricsAutocompleteList::-webkit-scrollbar-track {
-      background: #fdf2f8 !important;
-      border-radius: 9999px !important;
-    }
-    #autocompleteList::-webkit-scrollbar-thumb,
-    #clueAutocompleteList::-webkit-scrollbar-thumb,
-    #lyricsAutocompleteList::-webkit-scrollbar-thumb {
-      background: #f472b6 !important;
-      border-radius: 9999px !important;
-    }
-    #autocompleteList::-webkit-scrollbar-thumb:hover,
-    #clueAutocompleteList::-webkit-scrollbar-thumb:hover,
-    #lyricsAutocompleteList::-webkit-scrollbar-thumb:hover {
-      background: #ec4899 !important;
-    }
-
-    /* Açılır listedeki satırlar */
-    .auto-item-row {
-      touch-action: pan-y !important;
-      border-bottom: 1px solid rgba(244, 114, 182, 0.15) !important;
-      background-color: #ffffff;
-      color: #0f172a;
-    }
-    .auto-item-row:hover,
-    .auto-item-row:active {
-      background-color: #fdf2f8 !important;
-    }
-
-    /* Tahmin Kartları (Açık Pembe & Beyaz) */
-    .guess-card {
-      background-color: rgba(255, 255, 255, 0.98) !important;
-      border: 1.5px solid rgba(244, 114, 182, 0.35) !important;
-      box-shadow: 0 10px 30px -5px rgba(236, 72, 153, 0.12) !important;
-    }
-    .guess-card .border-slate-700\/60,
-    .guess-card .border-pink-500\/20 {
-      border-color: rgba(244, 114, 182, 0.2) !important;
-    }
-
-    /* Silüet ve Şarkı Kartları */
-    #silhouetteCard,
-    #lyricsCard {
-      background: linear-gradient(135deg, rgba(254, 242, 242, 0.95) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(236, 253, 245, 0.95) 100%) !important;
-      border: 2px solid rgba(244, 114, 182, 0.4) !important;
-      box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.15) !important;
-    }
-    #lyricsQuoteDisplay,
-    #clueQuoteText {
+    body.light-theme input {
+      background-color: #ffffff !important;
       color: #0f172a !important;
+      border-color: rgba(244, 114, 182, 0.45) !important;
     }
-    #lyricsHintBox {
-      background-color: #f8fafc !important;
-      border-color: #e2e8f0 !important;
-      color: #334155 !important;
-    }
-
-    /* Modallar */
-    .modal-dialog {
-      background: #ffffff !important;
-      border: 2px solid rgba(244, 114, 182, 0.45) !important;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2) !important;
-      color: #0f172a !important;
-    }
-
-    /* === İSTEĞE BAĞLI GECE MODU (DARK THEME) === */
-    body.dark-theme {
-      background: linear-gradient(180deg, #090616 0%, #120a2e 50%, #080516 100%) !important;
-      color: #f8fafc !important;
-    }
-    body.dark-theme #appContainer {
-      background-color: rgba(19, 13, 42, 0.96) !important;
-      border-color: rgba(244, 114, 182, 0.35) !important;
-      box-shadow: 0 0 60px -15px rgba(236, 72, 153, 0.3) !important;
-    }
-    body.dark-theme header,
-    body.dark-theme footer {
-      background-color: rgba(19, 13, 42, 0.92) !important;
-      border-color: rgba(244, 114, 182, 0.2) !important;
-    }
-    body.dark-theme #tabBar {
-      background-color: #0e0921 !important;
-      border-color: rgba(244, 114, 182, 0.2) !important;
-    }
-    body.dark-theme input {
-      background-color: #1b143a !important;
-      color: #ffffff !important;
-      border-color: rgba(244, 114, 182, 0.35) !important;
-    }
-    body.dark-theme #autocompleteList,
-    body.dark-theme #clueAutocompleteList,
-    body.dark-theme #lyricsAutocompleteList {
-      background-color: rgba(27, 20, 58, 0.99) !important;
-      border-color: rgba(244, 114, 182, 0.4) !important;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
-    }
-    body.dark-theme .auto-item-row {
-      background-color: rgba(27, 20, 58, 0.99) !important;
-      border-color: rgba(244, 114, 182, 0.15) !important;
-      color: #ffffff !important;
-    }
-    body.dark-theme .auto-item-row:hover,
-    body.dark-theme .auto-item-row:active {
-      background-color: rgba(236, 72, 153, 0.18) !important;
-    }
-    body.dark-theme .guess-card {
-      background-color: rgba(24, 19, 51, 0.95) !important;
-      border-color: rgba(244, 114, 182, 0.25) !important;
-    }
-    body.dark-theme #silhouetteCard,
-    body.dark-theme #lyricsCard {
-      background: linear-gradient(135deg, rgba(26, 18, 56, 0.95) 0%, rgba(20, 14, 43, 0.95) 100%) !important;
-      border-color: rgba(244, 114, 182, 0.35) !important;
-    }
-    body.dark-theme #lyricsQuoteDisplay,
-    body.dark-theme #clueQuoteText {
-      color: #ffffff !important;
-    }
-    body.dark-theme #lyricsHintBox {
-      background-color: #0e0921 !important;
-      border-color: #334155 !important;
+    body.light-theme input::placeholder {
       color: #94a3b8 !important;
     }
-    body.dark-theme .modal-dialog {
-      background: #0f172a !important;
-      color: #ffffff !important;
+    body.light-theme input:focus {
+      border-color: #10b981 !important;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+    }
+    body.light-theme #autocompleteList,
+    body.light-theme #clueAutocompleteList,
+    body.light-theme #lyricsAutocompleteList {
+      background-color: rgba(255, 255, 255, 0.99) !important;
       border-color: rgba(244, 114, 182, 0.4) !important;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12) !important;
+    }
+    body.light-theme #autocompleteList > div,
+    body.light-theme #clueAutocompleteList > div,
+    body.light-theme #lyricsAutocompleteList > div {
+      border-color: rgba(244, 114, 182, 0.15) !important;
+    }
+    body.light-theme #autocompleteList > div:hover,
+    body.light-theme #clueAutocompleteList > div:hover,
+    body.light-theme #lyricsAutocompleteList > div:hover {
+      background-color: rgba(236, 72, 153, 0.08) !important;
+    }
+    body.light-theme .text-white {
+      color: #0f172a !important;
+    }
+    body.light-theme .text-slate-100 {
+      color: #1e293b !important;
+    }
+    body.light-theme .text-slate-200 {
+      color: #334155 !important;
+    }
+    body.light-theme .text-slate-300 {
+      color: #475569 !important;
+    }
+    body.light-theme .text-slate-400 {
+      color: #64748b !important;
+    }
+    body.light-theme .text-purple-200,
+    body.light-theme .text-purple-200\/70,
+    body.light-theme .text-purple-200\/60,
+    body.light-theme .text-purple-300\/50 {
+      color: #64748b !important;
+    }
+    body.light-theme #emptyStateBox,
+    body.light-theme #lyricsEmptyState {
+      color: #64748b !important;
+    }
+    body.light-theme #emptyStateBox h3,
+    body.light-theme #lyricsEmptyState h4 {
+      color: #0f172a !important;
+    }
+    body.light-theme .guess-card {
+      background-color: rgba(255, 255, 255, 0.96) !important;
+      border-color: rgba(244, 114, 182, 0.35) !important;
+      box-shadow: 0 10px 30px -5px rgba(236, 72, 153, 0.1) !important;
+    }
+    body.light-theme .guess-card .border-slate-700\/60 {
+      border-color: rgba(244, 114, 182, 0.2) !important;
+    }
+    body.light-theme #silhouetteCard {
+      background: linear-gradient(135deg, rgba(254, 242, 242, 0.95) 0%, rgba(236, 253, 245, 0.95) 100%) !important;
+      border-color: rgba(52, 211, 153, 0.5) !important;
+      box-shadow: 0 15px 35px -5px rgba(52, 211, 153, 0.15) !important;
+    }
+    body.light-theme #lyricsCard {
+      background: linear-gradient(135deg, rgba(253, 242, 248, 0.95) 0%, rgba(236, 253, 245, 0.95) 100%) !important;
+      border-color: rgba(244, 114, 182, 0.5) !important;
+      box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.15) !important;
+    }
+    body.light-theme #lyricsQuoteDisplay,
+    body.light-theme #clueQuoteText {
+      color: #0f172a !important;
+    }
+    body.light-theme #lyricsHintBox {
+      background-color: #f1f5f9 !important;
+      border-color: #cbd5e1 !important;
+      color: #334155 !important;
+    }
+    body.light-theme .modal-dialog {
+      background: #ffffff !important;
+      border-color: rgba(244, 114, 182, 0.45) !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25) !important;
+      color: #0f172a !important;
+    }
+    body.light-theme .modal-dialog h2,
+    body.light-theme .modal-dialog h3 {
+      color: #0f172a !important;
+    }
+    body.light-theme .modal-dialog p {
+      color: #475569 !important;
+    }
+    body.light-theme .stat-box {
+      background-color: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+    body.light-theme .stat-box-val {
+      color: #0f172a !important;
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-[#fdf2f8] via-[#fce7f3] to-[#fff1f2] text-slate-800 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 font-sans relative">
+<body class="bg-gradient-to-b from-[#090616] via-[#120a2e] to-[#080516] text-slate-100 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 font-sans relative">
 
   <!-- Eğlenceli Arka Plan Sahne Işıkları / Neon Parıltılar -->
-  <div class="fixed top-[-10%] left-[-15%] w-[420px] h-[420px] rounded-full bg-pink-300/35 blur-[120px] pointer-events-none -z-10 animate-pulse-glow"></div>
-  <div class="fixed bottom-[-10%] right-[-15%] w-[460px] h-[460px] rounded-full bg-rose-300/30 blur-[130px] pointer-events-none -z-10 animate-pulse-glow"></div>
-  <div class="fixed top-[45%] right-[5%] w-[320px] h-[320px] rounded-full bg-emerald-200/35 blur-[100px] pointer-events-none -z-10"></div>
+  <div class="fixed top-[-10%] left-[-15%] w-[420px] h-[420px] rounded-full bg-purple-600/15 blur-[120px] pointer-events-none -z-10 animate-pulse-glow"></div>
+  <div class="fixed bottom-[-10%] right-[-15%] w-[460px] h-[460px] rounded-full bg-pink-600/15 blur-[130px] pointer-events-none -z-10 animate-pulse-glow"></div>
+  <div class="fixed top-[45%] right-[5%] w-[320px] h-[320px] rounded-full bg-cyan-600/10 blur-[100px] pointer-events-none -z-10"></div>
 
   <!-- Mobil Çerçeve / Ana Konteyner -->
-  <div id="appContainer" class="w-full max-w-md bg-white/98 backdrop-blur-2xl border-2 border-pink-300/60 rounded-[32px] shadow-[0_20px_50px_-10px_rgba(236,72,153,0.18),0_0_35px_rgba(52,211,153,0.12)] flex flex-col min-h-screen sm:min-h-0 sm:my-4 transition-colors duration-300">
+  <div id="appContainer" class="w-full max-w-md bg-[#130d2a]/95 backdrop-blur-2xl border border-pink-400/35 rounded-[32px] shadow-[0_0_60px_-15px_rgba(244,114,182,0.25),0_0_35px_rgba(52,211,153,0.15)] flex flex-col min-h-screen sm:min-h-0 sm:my-4 transition-colors duration-300">
     
     <!-- Üst Bar: Sade ve Profesyonel Başlık -->
-    <header class="bg-white/95 backdrop-blur-xl border-b border-pink-200 px-4 sm:px-5 py-3.5 flex items-center justify-between sticky top-0 z-20 transition-colors duration-300">
+    <header class="bg-[#130d2a]/90 backdrop-blur-xl border-b border-pink-500/20 px-4 sm:px-5 py-3.5 flex items-center justify-between sticky top-0 z-20 transition-colors duration-300">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 via-rose-500 to-emerald-400 flex items-center justify-center font-black text-white text-xl shadow-[0_0_20px_rgba(236,72,153,0.45)] border border-white/20 animate-float">
           🎤
@@ -280,7 +235,7 @@
     </header>
 
     <!-- Mod Seçim Sekmeleri (Tabs) -->
-    <div id="tabBar" class="grid grid-cols-4 bg-[#fdf2f8] p-1.5 border-b border-pink-200 text-[11px] sm:text-xs font-black gap-1 transition-colors duration-300">
+    <div id="tabBar" class="grid grid-cols-4 bg-[#0e0921]/90 p-1.5 border-b border-pink-500/20 text-[11px] sm:text-xs font-black gap-1 transition-colors duration-300">
       <button id="tabDaily" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-emerald-500 text-white font-black shadow-lg shadow-pink-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1">
         <span>⭐</span> Günlük
       </button>
@@ -318,7 +273,7 @@
               id="memberInput" 
               type="text" 
               placeholder="Bir T-Pop üyesi seçin veya arayın..." 
-              class="w-full bg-white text-slate-900 placeholder-pink-300/80 border-2 border-pink-300 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/25 transition shadow-sm select-text"
+              class="w-full bg-[#1b143a]/90 text-white placeholder-pink-300/40 border border-pink-500/35 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/25 transition shadow-inner select-text"
               autocomplete="off"
               inputmode="search"
               enterkeyhint="search"
@@ -335,7 +290,7 @@
           </div>
 
           <!-- Canlı Açılır Üye Listesi (Tıklayınca ve Yazınca Anında Gelir) -->
-          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-white/99 backdrop-blur-2xl border-2 border-pink-300 rounded-2xl shadow-[0_20px_45px_rgba(236,72,153,0.2)] z-40 max-h-72 overflow-y-scroll hidden divide-y divide-pink-100">
+          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-[#1b143a]/98 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-40 max-h-64 overflow-y-auto hidden divide-y divide-purple-500/20">
             <!-- Dinamik doldurulacak -->
           </div>
         </div>
@@ -426,7 +381,7 @@
               id="clueMemberInput" 
               type="text" 
               placeholder="Bu T-Pop üyesi kim? Yazın veya arayın..." 
-              class="w-full bg-white text-slate-900 placeholder-emerald-400/80 border-2 border-pink-300 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/25 transition shadow-sm select-text"
+              class="w-full bg-[#1b143a]/90 text-white placeholder-emerald-300/40 border border-emerald-500/35 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-400/25 transition shadow-inner select-text"
               autocomplete="off"
               inputmode="search"
               enterkeyhint="search"
@@ -441,7 +396,7 @@
               Cevapla
             </button>
           </div>
-          <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-white/99 backdrop-blur-2xl border-2 border-pink-300 rounded-2xl shadow-[0_20px_45px_rgba(236,72,153,0.2)] z-40 max-h-72 overflow-y-scroll hidden divide-y divide-pink-100"></div>
+          <div id="clueAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-56 overflow-y-auto hidden divide-y divide-slate-700/60"></div>
         </div>
 
         <div id="clueWrongList" class="text-xs text-rose-400 font-semibold mt-1"></div>
@@ -499,7 +454,7 @@
               id="lyricsInput" 
               type="text" 
               placeholder="Şarkı veya grup adı seçin / arayın..." 
-              class="w-full bg-white text-slate-900 placeholder-pink-300/80 border-2 border-pink-300 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/25 transition shadow-sm select-text"
+              class="w-full bg-[#1b143a]/90 text-white placeholder-pink-300/40 border border-pink-500/35 rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/25 transition shadow-inner select-text"
               autocomplete="off"
               inputmode="search"
               enterkeyhint="search"
@@ -516,7 +471,7 @@
           </div>
 
           <!-- Canlı Şarkı Autocomplete Açılır Listesi -->
-          <div id="lyricsAutocompleteList" class="absolute left-0 right-0 top-12 bg-white/99 backdrop-blur-2xl border-2 border-pink-300 rounded-2xl shadow-[0_20px_45px_rgba(236,72,153,0.2)] z-40 max-h-72 overflow-y-scroll hidden divide-y divide-pink-100">
+          <div id="lyricsAutocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-60 overflow-y-auto hidden divide-y divide-slate-700/60">
             <!-- Dinamik doldurulacak -->
           </div>
         </div>
@@ -550,7 +505,7 @@
     </main>
 
     <!-- Sade Alt Çubuk -->
-    <footer class="bg-white/95 border-t border-pink-200 px-4 py-2.5 text-center text-[11px] text-pink-500 font-medium flex items-center justify-center gap-1.5">
+    <footer class="bg-[#0e0921]/90 border-t border-purple-500/20 px-4 py-2.5 text-center text-[11px] text-purple-300/50 font-medium flex items-center justify-center gap-1.5">
       <span>✨</span> Popdle • T-Pop Müzik ve İdol Tahmin Oyunu <span>✨</span>
     </footer>
 
@@ -976,7 +931,7 @@
       if (emptyBox) emptyBox.style.display = 'none';
 
       const card = document.createElement('div');
-      card.className = 'guess-card bg-white border-2 border-pink-200/90 rounded-3xl p-4 shadow-xl tile-flip space-y-3 relative overflow-hidden transition-colors duration-300';
+      card.className = 'guess-card bg-[#181333]/90 backdrop-blur-md border border-pink-500/25 rounded-3xl p-4 shadow-2xl tile-flip space-y-3 relative overflow-hidden transition-colors duration-300';
       
       const statusBadge = res.isWin 
         ? `<span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">🎉 DOĞRU BİLDİNİZ!</span>`
@@ -984,20 +939,20 @@
 
       card.innerHTML = `
         <!-- Üye Başlığı ve Sonuç Durumu -->
-        <div class="flex items-center justify-between pb-2 border-b border-pink-100">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
           <div class="flex items-center gap-2.5">
             <div class="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center font-bold text-white shadow-md border border-white/20 bg-slate-800" style="background-color: ${res.guessed.color}">
               <img src="${res.guessed.photoUrl}" alt="${res.guessed.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
               <span class="absolute bottom-0 right-0 text-[9px] bg-slate-950/80 px-1 rounded-tl-md leading-tight">${res.guessed.emoji}</span>
             </div>
             <div>
-              <div class="text-sm font-black text-slate-800 flex items-center gap-1.5">
+              <div class="text-sm font-black text-white flex items-center gap-1.5">
                 ${res.guessed.name}
-                <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-pink-100 border border-pink-200 text-pink-700">
+                <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300">
                   ${res.guessed.group}
                 </span>
               </div>
-              <div class="text-[11px] text-slate-500 font-medium">${res.guessed.roles.join(', ')} • ${res.guessed.iconicTrait}</div>
+              <div class="text-[11px] text-slate-400 font-medium">${res.guessed.roles.join(', ')} • ${res.guessed.iconicTrait}</div>
             </div>
           </div>
           ${statusBadge}
@@ -1169,28 +1124,28 @@
       );
 
       let header = `
-        <div class="sticky top-0 z-10 px-3 py-2 bg-pink-50/98 backdrop-blur border-b border-pink-200 flex items-center justify-between text-[11px] font-bold text-pink-700 shadow-sm">
-          <span>✨ T-Pop Sanatçıları (${matches.length}) — Kaydırın 👇</span>
-          <button type="button" class="px-2.5 py-1 rounded-lg bg-pink-200 hover:bg-pink-300 text-pink-800 text-[10px] font-bold transition active:scale-95" onclick="document.getElementById('autocompleteList').classList.add('hidden')">✕ Kapat</button>
+        <div class="sticky top-0 z-10 px-3 py-1.5 bg-[#170e30]/95 backdrop-blur border-b border-pink-500/20 flex items-center justify-between text-[11px] font-bold text-pink-300">
+          <span>✨ T-Pop Sanatçıları (${matches.length})</span>
+          <button type="button" class="px-2 py-0.5 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-200 text-[10px] transition" onclick="document.getElementById('autocompleteList').classList.add('hidden')">✕ Kapat</button>
         </div>
       `;
 
       if (matches.length === 0) {
-        autoList.innerHTML = header + `<div class="p-4 text-xs text-slate-500 text-center font-medium">Eşleşen sanatçı bulunamadı</div>`;
+        autoList.innerHTML = header + `<div class="p-4 text-xs text-slate-400 text-center font-medium">Eşleşen sanatçı bulunamadı</div>`;
       } else {
         autoList.innerHTML = header + matches.map(m => `
-          <div class="auto-item-row px-3.5 py-3 hover:bg-pink-50 active:bg-pink-100 cursor-pointer flex items-center justify-between transition group" data-name="${m.name}" style="touch-action: pan-y;">
+          <div class="px-3.5 py-2.5 hover:bg-pink-500/10 active:bg-pink-500/20 cursor-pointer flex items-center justify-between transition group" data-name="${m.name}">
             <div class="flex items-center gap-2.5 pointer-events-none">
-              <span class="relative w-9 h-9 rounded-xl overflow-hidden text-white text-sm flex items-center justify-center font-bold shadow-sm border border-pink-200 bg-pink-100 shrink-0" style="background-color: ${m.color}">
+              <span class="relative w-8 h-8 rounded-xl overflow-hidden text-white text-sm flex items-center justify-center font-bold shadow-sm border border-white/20 bg-slate-800" style="background-color: ${m.color}">
                 <img src="${m.photoUrl}" alt="${m.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
-                <span class="absolute text-[10px] bottom-0 right-0 bg-slate-900/80 text-white px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
+                <span class="absolute text-[10px] bottom-0 right-0 bg-slate-950/80 px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
               </span>
               <div>
-                <div class="text-xs font-black text-slate-800 group-hover:text-pink-600 transition">${m.name}</div>
-                <div class="text-[10px] text-slate-500">${m.roles.join(', ')} • ${m.iconicTrait}</div>
+                <div class="text-xs font-black text-white group-hover:text-pink-300 transition">${m.name}</div>
+                <div class="text-[10px] text-slate-400">${m.roles.join(', ')} • ${m.iconicTrait}</div>
               </div>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-pink-100 border border-pink-200 text-pink-700 pointer-events-none shrink-0">
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300 pointer-events-none">
               ${m.group}
             </span>
           </div>
@@ -1222,37 +1177,44 @@
       }
     });
 
-    // Kesintisiz mobil dokunmatik kaydırma ve seçim yardımcısı
+    // Touch-safe helper: mobil listede parmakla kaydırırken (scroll) yanlışlıkla seçim yapılmasını önler!
     function setupTouchSafeList(listEl, dataAttr, onSelect) {
       if (!listEl) return;
-      let startY = 0;
-      let startX = 0;
-      let isScrolling = false;
+      let startX = 0, startY = 0;
+      let isDragging = false;
 
-      // passive: true sayesinde tarayıcı dokunma kaydırmasını (scroll) sıfır gecikmeyle akıcı şekilde yapar!
       listEl.addEventListener('touchstart', (e) => {
         if (e.touches && e.touches[0]) {
-          startY = e.touches[0].clientY;
           startX = e.touches[0].clientX;
-          isScrolling = false;
+          startY = e.touches[0].clientY;
+          isDragging = false;
         }
       }, { passive: true });
 
       listEl.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) {
-          const dy = Math.abs(e.touches[0].clientY - startY);
           const dx = Math.abs(e.touches[0].clientX - startX);
-          if (dy > 8 || dx > 8) {
-            isScrolling = true;
+          const dy = Math.abs(e.touches[0].clientY - startY);
+          if (dx > 8 || dy > 8) {
+            isDragging = true;
           }
         }
       }, { passive: true });
 
-      listEl.addEventListener('click', (e) => {
-        if (isScrolling) {
-          isScrolling = false;
+      listEl.addEventListener('touchend', (e) => {
+        if (isDragging) {
+          // Kullanıcı listeyi parmağıyla yukarı/aşağı kaydırıyordu; tahmin yapma!
           return;
         }
+        const item = e.target.closest(`[${dataAttr}]`);
+        if (item) {
+          e.preventDefault();
+          const val = item.getAttribute(dataAttr);
+          if (val) onSelect(val);
+        }
+      });
+
+      listEl.addEventListener('click', (e) => {
         const item = e.target.closest(`[${dataAttr}]`);
         if (item) {
           const val = item.getAttribute(dataAttr);
@@ -1312,28 +1274,28 @@
       );
 
       const header = `
-        <div class="sticky top-0 z-10 px-3 py-2 bg-teal-50/98 backdrop-blur border-b border-teal-200 flex items-center justify-between text-[11px] font-bold text-teal-800 shadow-sm">
-          <span>🖼️ Silüet Tahmini (${matches.length}) — Kaydırın 👇</span>
-          <button type="button" class="px-2.5 py-1 rounded-lg bg-teal-200 hover:bg-teal-300 text-teal-900 text-[10px] font-bold transition active:scale-95" onclick="document.getElementById('clueAutocompleteList').classList.add('hidden')">✕ Kapat</button>
+        <div class="sticky top-0 z-10 px-3 py-1.5 bg-[#170e30]/95 backdrop-blur border-b border-teal-500/20 flex items-center justify-between text-[11px] font-bold text-teal-300">
+          <span>🖼️ Silüet Tahmini (${matches.length})</span>
+          <button type="button" class="px-2 py-0.5 rounded-lg bg-teal-500/20 hover:bg-teal-500/30 text-teal-200 text-[10px] transition" onclick="document.getElementById('clueAutocompleteList').classList.add('hidden')">✕ Kapat</button>
         </div>
       `;
 
       if (matches.length === 0) {
-        clueAutoList.innerHTML = header + `<div class="p-4 text-xs text-slate-500 text-center font-medium">Eşleşen üye bulunamadı</div>`;
+        clueAutoList.innerHTML = header + `<div class="p-3 text-xs text-slate-400 text-center font-medium">Eşleşen üye bulunamadı</div>`;
       } else {
         clueAutoList.innerHTML = header + matches.map(m => `
-          <div class="auto-item-row px-3.5 py-3 hover:bg-teal-50 active:bg-teal-100 cursor-pointer flex items-center justify-between transition group" data-clue-name="${m.name}" style="touch-action: pan-y;">
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-clue-name="${m.name}">
             <div class="flex items-center gap-2.5 pointer-events-none">
-              <span class="relative w-9 h-9 rounded-xl overflow-hidden text-white text-xs flex items-center justify-center font-bold bg-teal-100 border border-teal-200 shrink-0" style="background-color: ${m.color}">
+              <span class="relative w-8 h-8 rounded-lg overflow-hidden text-white text-xs flex items-center justify-center font-bold bg-slate-800 border border-white/20" style="background-color: ${m.color}">
                 <img src="${m.photoUrl}" alt="${m.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
-                <span class="absolute text-[9px] bottom-0 right-0 bg-slate-900/80 text-white px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
+                <span class="absolute text-[9px] bottom-0 right-0 bg-slate-950/80 px-0.5 rounded-tl-sm pointer-events-none leading-none">${m.emoji}</span>
               </span>
               <div>
-                <div class="text-xs font-bold text-slate-800 group-hover:text-teal-600 transition">${m.name}</div>
-                <div class="text-[10px] text-slate-500">${m.roles.join(', ')}</div>
+                <div class="text-xs font-bold text-white group-hover:text-cyan-300 transition">${m.name}</div>
+                <div class="text-[10px] text-slate-400">${m.roles.join(', ')}</div>
               </div>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-teal-100 border border-teal-200 text-teal-800 pointer-events-none shrink-0">${m.group}</span>
+            <span class="text-[10px] text-slate-400 font-semibold pointer-events-none">${m.group}</span>
           </div>
         `).join('');
       }
@@ -1515,27 +1477,27 @@
       );
 
       const header = `
-        <div class="sticky top-0 z-10 px-3 py-2 bg-pink-50/98 backdrop-blur border-b border-pink-200 flex items-center justify-between text-[11px] font-bold text-pink-700 shadow-sm">
-          <span>🎵 Şarkı Seçin (${matches.length}) — Kaydırın 👇</span>
-          <button type="button" class="px-2.5 py-1 rounded-lg bg-pink-200 hover:bg-pink-300 text-pink-800 text-[10px] font-bold transition active:scale-95" onclick="document.getElementById('lyricsAutocompleteList').classList.add('hidden')">✕ Kapat</button>
+        <div class="sticky top-0 z-10 px-3 py-1.5 bg-[#170e30]/95 backdrop-blur border-b border-pink-500/20 flex items-center justify-between text-[11px] font-bold text-pink-300">
+          <span>🎵 Şarkı Seçin (${matches.length})</span>
+          <button type="button" class="px-2 py-0.5 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-200 text-[10px] transition" onclick="document.getElementById('lyricsAutocompleteList').classList.add('hidden')">✕ Kapat</button>
         </div>
       `;
 
       if (matches.length === 0) {
-        lyricsAutoList.innerHTML = header + `<div class="p-4 text-xs text-slate-500 text-center font-medium">Eşleşen şarkı bulunamadı</div>`;
+        lyricsAutoList.innerHTML = header + `<div class="p-3 text-xs text-slate-400 text-center font-medium">Eşleşen şarkı bulunamadı</div>`;
       } else {
         lyricsAutoList.innerHTML = header + matches.map(s => `
-          <div class="auto-item-row px-3.5 py-3 hover:bg-pink-50 active:bg-pink-100 cursor-pointer flex items-center justify-between transition group" data-song-id="${s.id}" style="touch-action: pan-y;">
+          <div class="px-3.5 py-2.5 hover:bg-slate-700/70 active:bg-slate-700 cursor-pointer flex items-center justify-between transition group" data-song-id="${s.id}">
             <div class="flex items-center gap-2.5 pointer-events-none">
-              <span class="w-8 h-8 rounded-xl bg-pink-100 text-pink-600 border border-pink-200 flex items-center justify-center text-xs font-bold shrink-0">
+              <span class="w-7 h-7 rounded-lg bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center justify-center text-xs font-bold">
                 🎵
               </span>
               <div>
-                <div class="text-xs font-black text-slate-800 group-hover:text-pink-600 transition">${s.title}</div>
-                <div class="text-[10px] text-slate-500">${s.group} • ${s.year}</div>
+                <div class="text-xs font-black text-white group-hover:text-pink-300 transition">${s.title}</div>
+                <div class="text-[10px] text-slate-400">${s.group} • ${s.year}</div>
               </div>
             </div>
-            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-pink-100 border border-pink-200 text-pink-700 pointer-events-none shrink-0">
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-900 border border-slate-700 text-slate-300 pointer-events-none">
               ${s.group}
             </span>
           </div>
@@ -1781,18 +1743,18 @@
     // ==========================================
     // === GECE / GÜNDÜZ MODU (DARK / LIGHT THEME) ===
     // ==========================================
-    let currentTheme = localStorage.getItem('popdle_theme') || 'light';
+    let currentTheme = localStorage.getItem('popdle_theme') || 'dark';
 
     function applyTheme(theme) {
       currentTheme = theme;
       localStorage.setItem('popdle_theme', theme);
       const icon = document.getElementById('themeToggleIcon');
-      if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if (icon) icon.innerText = '☀️';
-      } else {
-        document.body.classList.remove('dark-theme');
+      if (theme === 'light') {
+        document.body.classList.add('light-theme');
         if (icon) icon.innerText = '🌙';
+      } else {
+        document.body.classList.remove('light-theme');
+        if (icon) icon.innerText = '☀️';
       }
     }
 
@@ -1801,10 +1763,9 @@
     const btnThemeToggle = document.getElementById('btnThemeToggle');
     if (btnThemeToggle) {
       btnThemeToggle.addEventListener('click', () => {
-        const nextTheme = (currentTheme === 'light') ? 'dark' : 'light';
+        const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
         applyTheme(nextTheme);
       });
-    }
     }
 
     // Mobil cihazlarda arama kutusuna dokunulduğunda sanal klavyenin anında açılmasını sağla
