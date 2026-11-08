@@ -10,59 +10,85 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     @keyframes flipIn {
-      0% { transform: scale(0.95) translateY(-8px); opacity: 0; }
+      0% { transform: scale(0.92) translateY(-10px); opacity: 0; }
       100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(2deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.06); }
+    }
+    @keyframes sparkleGlow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(236,72,153,0.6)); }
+      50% { filter: drop-shadow(0 0 16px rgba(168,85,247,0.9)); }
     }
     .tile-flip {
       animation: flipIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-float {
+      animation: floatSlow 3.5s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    .animate-sparkle {
+      animation: sparkleGlow 3s ease-in-out infinite;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 select-none font-sans">
+<body class="bg-gradient-to-b from-[#090616] via-[#120a2e] to-[#080516] text-slate-100 min-h-screen flex flex-col items-center justify-start p-2 sm:p-4 select-none font-sans relative overflow-x-hidden">
+
+  <!-- Eğlenceli Arka Plan Sahne Işıkları / Neon Parıltılar -->
+  <div class="fixed top-[-10%] left-[-15%] w-[420px] h-[420px] rounded-full bg-purple-600/15 blur-[120px] pointer-events-none -z-10 animate-pulse-glow"></div>
+  <div class="fixed bottom-[-10%] right-[-15%] w-[460px] h-[460px] rounded-full bg-pink-600/15 blur-[130px] pointer-events-none -z-10 animate-pulse-glow"></div>
+  <div class="fixed top-[45%] right-[5%] w-[320px] h-[320px] rounded-full bg-cyan-600/10 blur-[100px] pointer-events-none -z-10"></div>
 
   <!-- Mobil Çerçeve / Ana Konteyner -->
-  <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden min-h-[92vh]">
+  <div class="w-full max-w-md bg-[#130d2a]/95 backdrop-blur-2xl border border-purple-500/30 rounded-[32px] shadow-[0_0_60px_-15px_rgba(168,85,247,0.3)] flex flex-col overflow-hidden min-h-[92vh]">
     
     <!-- Üst Bar: Sade ve Profesyonel Başlık -->
-    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 px-5 py-3.5 flex items-center justify-between sticky top-0 z-20">
-      <div class="flex items-center space-x-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-purple-500/25">
-          P
+    <header class="bg-[#130d2a]/90 backdrop-blur-xl border-b border-purple-500/20 px-5 py-3.5 flex items-center justify-between sticky top-0 z-20">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 flex items-center justify-center font-black text-white text-xl shadow-[0_0_20px_rgba(236,72,153,0.5)] border border-white/20 animate-float">
+          🎤
         </div>
         <div>
-          <h1 class="text-xl font-black tracking-wider text-white flex items-center gap-1.5">
-            POPDLE <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded-full font-bold">T-POP</span>
+          <h1 class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 flex items-center gap-1.5 drop-shadow-[0_2px_8px_rgba(236,72,153,0.3)]">
+            POPDLE <span class="text-[10px] bg-gradient-to-r from-pink-500/30 to-purple-500/30 text-pink-300 border border-pink-400/50 px-2 py-0.5 rounded-full font-black tracking-normal shadow-sm">T-POP</span>
           </h1>
-          <p class="text-[11px] text-slate-400 font-medium">Yeni Nesil T-Pop Tahmin Oyunu</p>
+          <p class="text-[11px] text-purple-200/70 font-medium">Sahnenin Yıldızını Keşfet! ✨🎶</p>
         </div>
       </div>
 
       <div class="flex items-center space-x-2">
-        <button id="btnHowToPlay" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 text-sm font-bold border border-slate-700 transition" title="Nasıl Oynanır?">
+        <button id="btnHowToPlay" class="w-8 h-8 rounded-full bg-purple-950/80 hover:bg-purple-900/80 flex items-center justify-center text-purple-200 text-sm font-black border border-purple-500/40 shadow-sm transition active:scale-95" title="Nasıl Oynanır?">
           ?
         </button>
-        <button id="btnStats" class="px-2.5 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center space-x-1 border border-slate-700 transition" title="İstatistikler">
-          <span class="text-orange-500">🔥</span>
-          <span id="headerStreakText" class="text-xs font-bold text-slate-200">0</span>
+        <button id="btnStats" class="px-3 h-8 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 flex items-center space-x-1.5 border border-amber-500/40 shadow-sm transition active:scale-95" title="İstatistikler">
+          <span class="text-orange-400 text-sm">🔥</span>
+          <span id="headerStreakText" class="text-xs font-black text-amber-200">0</span>
         </button>
       </div>
     </header>
 
     <!-- Mod Seçim Sekmeleri (Tabs) -->
-    <div class="grid grid-cols-4 bg-slate-950 p-1 border-b border-slate-800 text-[11px] sm:text-xs font-bold">
-      <button id="tabDaily" class="py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow">
+    <div class="grid grid-cols-4 bg-[#0e0921]/90 p-1.5 border-b border-purple-500/20 text-[11px] sm:text-xs font-black gap-1">
+      <button id="tabDaily" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black shadow-lg shadow-purple-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1">
         <span>⭐</span> Günlük
       </button>
-      <button id="tabClassic" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+      <button id="tabClassic" class="py-2.5 rounded-2xl text-purple-200/60 hover:text-white hover:bg-white/5 transition-all flex items-center justify-center gap-1">
         <span>♾️</span> Pratik
       </button>
-      <button id="tabClue" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
+      <button id="tabClue" class="py-2.5 rounded-2xl text-purple-200/60 hover:text-white hover:bg-white/5 transition-all flex items-center justify-center gap-1">
         <span>🖼️</span> Silüet
       </button>
-      <button id="tabLyrics" class="py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1">
-        <span>🎵</span> Şarkı Sözü
+      <button id="tabLyrics" class="py-2.5 rounded-2xl text-purple-200/60 hover:text-white hover:bg-white/5 transition-all flex items-center justify-center gap-1">
+        <span>🎵</span> Şarkı
       </button>
     </div>
 
@@ -89,19 +115,19 @@
               id="memberInput" 
               type="text" 
               placeholder="Bir T-Pop üyesi seçin veya arayın..." 
-              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition shadow-inner cursor-pointer"
+              class="w-full bg-[#1b143a]/90 border border-purple-500/30 rounded-2xl px-4 py-2.5 text-sm text-white placeholder-purple-300/40 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition shadow-inner cursor-pointer"
               autocomplete="off"
             />
             <button 
               id="btnSubmitGuess" 
-              class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm px-4 rounded-xl shadow-lg shadow-purple-600/30 transition transform active:scale-95 whitespace-nowrap"
+              class="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 hover:from-pink-400 hover:to-indigo-500 text-white font-black text-sm px-5 rounded-2xl shadow-lg shadow-pink-500/30 transition transform active:scale-95 whitespace-nowrap flex items-center gap-1"
             >
-              Tahmin
+              <span>✨</span> Tahmin
             </button>
           </div>
 
           <!-- Canlı Açılır Üye Listesi (Tıklayınca ve Yazınca Anında Gelir) -->
-          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-slate-800/98 backdrop-blur border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-64 overflow-y-auto hidden divide-y divide-slate-700/60">
+          <div id="autocompleteList" class="absolute left-0 right-0 top-12 bg-[#1b143a]/98 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-40 max-h-64 overflow-y-auto hidden divide-y divide-purple-500/20">
             <!-- Dinamik doldurulacak -->
           </div>
         </div>
@@ -112,13 +138,13 @@
         </div>
 
         <!-- Boş Durum Karşılama Kartı (Tahmin yokken görünür) -->
-        <div id="emptyStateBox" class="flex flex-col items-center justify-center py-10 text-center text-slate-400">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl mb-3 shadow-inner">
+        <div id="emptyStateBox" class="flex flex-col items-center justify-center py-10 text-center text-purple-200/70">
+          <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-pink-500/25 via-purple-500/30 to-cyan-500/25 border border-purple-400/40 flex items-center justify-center text-3xl mb-3 shadow-[0_0_30px_rgba(168,85,247,0.25)] animate-float">
             🎤
           </div>
-          <h3 class="text-sm font-bold text-white mb-1">İlk Tahmininizi Yapın!</h3>
-          <p class="text-xs text-slate-400 max-w-xs">
-            Yukarıdaki kutudan bir T-Pop üyesi seçin. Her tahminde yeşil, sarı ve kırmızı kutular ile grubunu, yaşını, rolünü öğreneceksiniz.
+          <h3 class="text-sm font-black text-white mb-1">Sahneye İlk Adımı Atın! ✨</h3>
+          <p class="text-xs text-purple-200/60 max-w-xs leading-relaxed">
+            Yukarıdan bir T-Pop üyesi seçin. Her tahminde rengarenk kutularla grubunu, yaşını, burcunu ve rolünü keşfedin!
           </p>
         </div>
 
@@ -138,9 +164,11 @@
         </div>
 
         <!-- GÖRSEL SİLÜET / BULANIK FOTOĞRAF KARTI -->
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-5 mb-4 flex flex-col items-center shadow-2xl relative overflow-hidden">
+        <div class="bg-gradient-to-br from-[#1a1238]/90 via-[#140e2b]/95 to-[#0e0921]/95 border border-cyan-500/40 rounded-3xl p-5 mb-4 flex flex-col items-center shadow-[0_0_35px_rgba(6,182,212,0.15)] relative overflow-hidden">
+          <div class="absolute -top-12 -left-12 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
           
-          <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-2 border-cyan-500/50 bg-slate-950 shadow-2xl flex items-center justify-center my-2">
+          <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-2 border-cyan-400/60 bg-slate-950 shadow-[0_0_25px_rgba(6,182,212,0.3)] flex items-center justify-center my-2">
             <!-- Gerçek Fotoğraf Silüet Görüntüsü -->
             <img 
               id="silhouettePhoto" 
@@ -219,7 +247,9 @@
         </div>
 
         <!-- ŞARKI SÖZÜ ALINTI KARTI -->
-        <div class="bg-gradient-to-br from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-4 sm:p-5 mb-3 shadow-2xl relative overflow-hidden">
+        <div class="bg-gradient-to-br from-[#20103b]/95 via-[#180e30]/95 to-[#100924]/95 border border-pink-500/40 rounded-3xl p-4 sm:p-5 mb-3 shadow-[0_0_35px_rgba(236,72,153,0.15)] relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 w-32 h-32 bg-pink-500/15 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute -left-8 -bottom-8 w-32 h-32 bg-purple-500/15 rounded-full blur-2xl pointer-events-none"></div>
           <div class="absolute -right-6 -top-6 w-28 h-28 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
           
           <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-2">
@@ -302,8 +332,8 @@
     </main>
 
     <!-- Sade Alt Çubuk -->
-    <footer class="bg-slate-950 border-t border-slate-800 px-4 py-2.5 text-center text-[11px] text-slate-500">
-      Popdle • Mobil Programlama Vize Projesi
+    <footer class="bg-[#0e0921]/90 border-t border-purple-500/20 px-4 py-2.5 text-center text-[11px] text-purple-300/50 font-medium flex items-center justify-center gap-1.5">
+      <span>✨</span> Popdle • T-Pop Müzik ve İdol Tahmin Oyunu <span>✨</span>
     </footer>
 
   </div>
@@ -562,7 +592,8 @@
       playBeep(440, 'triangle', 0.1);
       setTimeout(() => playBeep(554.37, 'triangle', 0.1), 100);
       setTimeout(() => playBeep(659.25, 'triangle', 0.1), 200);
-      setTimeout(() => playBeep(880, 'triangle', 0.3), 300);
+      setTimeout(() => playBeep(880, 'triangle', 0.15), 300);
+      setTimeout(() => playBeep(1046.5, 'sine', 0.35), 420);
     }
 
     // === STATE VE YEREL DEPOLAMA ===
@@ -716,9 +747,9 @@
     }
 
     function getCardClass(status) {
-      if (status === 'correct') return 'bg-emerald-600 border-emerald-400 text-white shadow-md shadow-emerald-500/20';
-      if (status === 'partial') return 'bg-amber-600 border-amber-400 text-white shadow-md shadow-amber-500/20';
-      return 'bg-rose-700 border-rose-500 text-white shadow-md shadow-rose-500/20';
+      if (status === 'correct') return 'bg-gradient-to-b from-emerald-500 to-emerald-600 border border-emerald-300/60 text-white shadow-lg shadow-emerald-500/25 ring-1 ring-emerald-400/30';
+      if (status === 'partial') return 'bg-gradient-to-b from-amber-500 to-amber-600 border border-amber-300/60 text-white shadow-lg shadow-amber-500/25 ring-1 ring-amber-400/30';
+      return 'bg-gradient-to-b from-rose-600 to-rose-700 border border-rose-400/50 text-white shadow-md shadow-rose-500/20';
     }
 
     // === TAHMİN KARTINI AŞAĞIYA EKLE (RESPONSIVE & ANLAŞILIR TASARIM) ===
@@ -727,7 +758,7 @@
       if (emptyBox) emptyBox.style.display = 'none';
 
       const card = document.createElement('div');
-      card.className = 'bg-slate-800/95 border border-slate-700/80 rounded-2xl p-4 shadow-xl tile-flip space-y-3';
+      card.className = 'bg-[#181333]/90 backdrop-blur-md border border-purple-500/25 rounded-3xl p-4 shadow-2xl tile-flip space-y-3 relative overflow-hidden';
       
       const statusBadge = res.isWin 
         ? `<span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">🎉 DOĞRU BİLDİNİZ!</span>`
@@ -1514,13 +1545,13 @@
 
     function resetTabStyles() {
       [tabDaily, tabClassic, tabClue, tabLyrics].forEach(t => {
-        if (t) t.className = 'py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1';
+        if (t) t.className = 'py-2.5 rounded-2xl text-purple-200/60 hover:text-white hover:bg-white/5 transition-all flex items-center justify-center gap-1 font-bold';
       });
     }
 
     tabDaily.addEventListener('click', () => {
       resetTabStyles();
-      tabDaily.className = 'py-2.5 rounded-xl bg-purple-600 text-white transition flex items-center justify-center gap-1 shadow';
+      tabDaily.className = 'py-2.5 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black shadow-lg shadow-purple-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1';
       classicSection.classList.remove('hidden');
       clueSection.classList.add('hidden');
       lyricsSection.classList.add('hidden');
@@ -1529,7 +1560,7 @@
 
     tabClassic.addEventListener('click', () => {
       resetTabStyles();
-      tabClassic.className = 'py-2.5 rounded-xl bg-amber-600 text-white transition flex items-center justify-center gap-1 shadow';
+      tabClassic.className = 'py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-black shadow-lg shadow-amber-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1';
       classicSection.classList.remove('hidden');
       clueSection.classList.add('hidden');
       lyricsSection.classList.add('hidden');
@@ -1538,7 +1569,7 @@
 
     tabClue.addEventListener('click', () => {
       resetTabStyles();
-      tabClue.className = 'py-2.5 rounded-xl bg-cyan-600 text-white transition flex items-center justify-center gap-1 shadow';
+      tabClue.className = 'py-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black shadow-lg shadow-cyan-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1';
       classicSection.classList.add('hidden');
       clueSection.classList.remove('hidden');
       lyricsSection.classList.add('hidden');
@@ -1547,7 +1578,7 @@
 
     tabLyrics.addEventListener('click', () => {
       resetTabStyles();
-      tabLyrics.className = 'py-2.5 rounded-xl bg-pink-600 text-white transition flex items-center justify-center gap-1 shadow';
+      tabLyrics.className = 'py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white font-black shadow-lg shadow-pink-500/30 scale-[1.03] transition-all flex items-center justify-center gap-1';
       classicSection.classList.add('hidden');
       clueSection.classList.add('hidden');
       lyricsSection.classList.remove('hidden');
