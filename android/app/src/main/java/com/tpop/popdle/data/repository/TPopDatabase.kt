@@ -664,60 +664,92 @@ object TPopDatabase {
     // 42 RESMİ T-POP ŞARKISI VE İKONİK ŞARKI SÖZLERİ
     // ==========================================
     val songs: List<TPopSong> = listOf(
-        // 1. MANIFEST (11 Şarkı)
-        TPopSong("man_zamansizdik", "Zamansızdık", "Manifest", 2025, "Zamansızdık ilk başta, sandım hep iyi kalıcaz\nYetmiyo' hiçbi' iltifat hissettirmiyosan", "Manifest'in 2025 çıkış teklisi.", "https://genius.com/Manifest-zamanszdk-lyrics"),
-        TPopSong("man_ruya", "Rüya", "Manifest", 2025, "Rüyasında beni arıyormuş\nGüçlüyüz ve bunu biliyorsun", "Manifest'in 2025 hiti.", "https://genius.com/Manifest-ruya-lyrics"),
-        TPopSong("man_toz_pembe", "Toz Pembe", "Manifest", 2026, "Bakıyosun niye çok toz pembe hislerle?\nKafayı bozdun sen o düşlerle", "Manifest'in 2026 ritmik dans parçası.", "https://genius.com/Manifest-toz-pembe-lyrics"),
-        TPopSong("man_amator", "Amatör", "Manifest", 2025, "Acemi duygularla başladık aşka\nAmatör bir kalple sevdik güya", "Manifest'in 2025 albümünden pop ritimli teklisi.", "https://genius.com/Manifest-amator-lyrics"),
-        TPopSong("man_basrol_sensin", "Başrol Sensin", "Manifest", 2026, "Bu filmin senaryosu baştan yazıldı\nBaşrol sensin sanıyordun ama perde kapandı", "Manifest'in sinematik konseptli 2026 şarkısı.", "https://genius.com/Manifest-basrol-sensin-1-yl-ozel-lyrics"),
-        TPopSong("man_tralala", "TRALALA", "Manifest", 2026, "Tralala dillerde yine aynı melodi\nDinlemem artık senin o eski hikayeni", "Manifest'in enerjik festival hiti.", "https://genius.com/Manifest-tralala-lyrics"),
-        TPopSong("man_hileli", "Hileli", "Manifest", 2026, "Oyunun kuralı hileli baştan\nKazananı yok bu sessiz savaştan", "Ajda Pekkan ile iş birliği yapılan ikonik Manifest parçası.", "https://genius.com/Manifest-and-ajda-pekkan-hileli-lyrics"),
-        TPopSong("man_daha_iyi", "Daha İyi", "Manifest", 2026, "Bensiz daha iyi olduğunu sanıyorsan yanılıyorsun\nHer köşe başında dönüp beni arıyorsun", "Manifest'in 2026 duygusal ayrılık parçası.", "https://genius.com/Manifest-daha-iyi-lyrics"),
-        TPopSong("man_snap", "Snap", "Manifest", 2025, "Tek bir snap ile silindi geçmiş\nKim kimi daha çok derinden sevmiş", "Manifest'in hızlı tempolu 2025 şarkısı.", "https://genius.com/Manifest-snap-lyrics"),
-        TPopSong("man_ariyo", "Arıyo", "Manifest", 2024, "Gecenin köründe yine numaramı arıyo\nAçmıyorum diye içi içini yanıyo", "Manifest'in telefon melodisi sample'lı parçası.", "https://genius.com/Manifest-aryo-lyrics"),
-        TPopSong("man_kts", "KTS", "Manifest", 2024, "KTS çalar yine ritimler hızlanır\nSahneye çıktık mı gözler kamaşır", "Manifest'in sahne koreografi marşı.", "https://genius.com/Manifest-kts-lyrics"),
-
-        // 2. CRUSH (2 Şarkı)
-        TPopSong("cru_crush", "CRUSH!", "Crush", 2026, "Gülümsemek ister misin?\nYoksa durup izler misin?", "7 erkek üyeli Crush grubunun çıkış parçası.", "https://genius.com/Crush-tur-crush-lyrics"),
-        TPopSong("cru_benim_olsana", "Benim Olsana", "Crush", 2026, "Geceden sabaha uyumuşum düşlerimde seni beklerken\nDöndüm arkama kokun kalmış üzerimde onu koklarken", "Crush grubunun romantik hit parçası.", "https://genius.com/Crush-tur-benim-olsana-lyrics"),
-
-        // 3. KARMA / KARM6 (8 Şarkı)
-        TPopSong("kar_keske_benim_olsa", "Keşke Benim Olsa", "Karma", 2026, "Derdim var geceler uzar da uzar\nSaymadım bi' gece kaç ömür yutar", "KARM6'nın serotonin dolu hit parçası.", "https://genius.com/Karm6-keske-benim-olsa-lyrics"),
-        TPopSong("kar_sirra_kadem", "Sırra Kadem", "Karma", 2026, "Bir anda sırra kadem\nMuhtemelen vazgeçtin benden dinlemeden", "Karma grubunun duygusal T-Pop balladı.", "https://genius.com/Karm6-srra-kadem-lyrics"),
-        TPopSong("kar_crop_top", "Crop Top", "Karma", 2026, "Crop top üstümde, ritim kalbimde\nDönüp bakarlar her adımımda geriye", "Karma grubunun yaz konseptli yüksek tempolu parçası.", "https://genius.com/Karm6-crop-top-lyrics"),
-        TPopSong("kar_onumuz_yaz", "Önümüz Yaz", "Karma", 2026, "Hadi topla bavulu önümüz yaz\nGüneş tenimizde dertleri biraz arkada bırak", "Karma grubunun enerjik yaz hiti.", "https://genius.com/Simge-onumuz-yaz-lyrics"),
-        TPopSong("kar_blok_blok", "Blok Blok", "Karma", 2026, "Blok blok ördün duvarları aramıza\nŞimdi geçemezsin o kapıdan asla", "Karma grubunun trap-pop beat'li parçası.", "https://genius.com/Karm6-blok-blok-lyrics"),
-        TPopSong("kar_ihtimal", "İhtimal", "Karma", 2026, "En zayıf ihtimal bile tutar bazen\nSen vazgeçtin ama ben gitmedim ruhen", "Karma grubunun vokal uyumuyla öne çıkan parçası.", "https://genius.com/Karm6-ihtimal-lyrics"),
-        TPopSong("kar_ta_burama", "Ta Burama", "Karma", 2026, "Ta burama kadar geldi artık yetti\nSabrımın sınırları çoktan tükendi", "Karma grubunun isyankar şarkısı.", "https://genius.com/Karm6-and-serdar-ortac-ta-burama-lyrics"),
-        TPopSong("kar_karma", "KARMA", "Karma", 2026, "Karmadır adı döner dolaşır bulur\nYaptığın her kötülük önüne dikilip durur", "Karma grubunun kendi adını taşıyan marşı.", "https://genius.com/Karm6-karma-lyrics"),
-        TPopSong("kar_iki_yuzlu", "İki Yüzlü", "Karma", 2026, "İki yüzlü dünya dönüyor yine\nBaktım aynaya inandım kendime", "Karma grubunun maskeleri düşüren enerjik parçası.", "https://genius.com/Karm6-iki-yuzlu-lyrics"),
-
-        // 4. AURA (12 Şarkı)
-        TPopSong("aur_yuh", "YUH!", "Aura", 2026, "Yuhh! Sana gönülden inanana\nYuhh! Bir sözüne bel bağlayana", "4 kadın üyeli Aura grubunun viral çıkış şarkısı.", "https://genius.com/Aura-tur-yuh-lyrics"),
-        TPopSong("aur_pes", "PES", "Aura", 2026, "Bu kadarına pes! Bitti son heves\nBağıra çağıra kalmadı nefes!", "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti.", "https://genius.com/Aura-tur-pes-lyrics"),
-        TPopSong("aur_tuzak", "Tuzak", "Aura", 2026, "Gözlerin en tatlı tuzak\nBenden kilometrelerce uzak", "Aura grubunun elektro-pop tarzındaki parçası.", "https://genius.com/Aura-tur-tuzak-lyrics"),
-        TPopSong("aur_2036", "2036", "Aura", 2026, "Zamanın ötesindeyiz 2036\nBizim devrimiz başladı ışıklar yansın", "Aura'nın fütüristik T-Pop konseptli parçası.", "https://genius.com/Aura-tur-2036-lyrics"),
-        TPopSong("aur_we_are_aura", "We Are Aura!", "Aura", 2026, "Kızlarım sahnede beni bekler\nWe are Aura! Gücümüzü görecekler", "Aura'nın sahne intro marşı.", "https://genius.com/Aura-tur-we-are-aura-lyrics"),
-        TPopSong("aur_masum_kedi", "Masum Kedi", "Aura", 2026, "Görünüşe aldanma öyle masum kedi gibi\nTırnaklarını çıkarır bir anda kaplan gibi", "Aura'nın tatlı ve sert vokal geçişli şarkısı.", "https://genius.com/Aura-tur-masum-kedi-lyrics"),
-        TPopSong("aur_tempo", "Tempo", "Aura", 2026, "Tempoyu arttır, durmak yok bu gece\nRitim kalbimize işlesin hece hece", "Aura'nın kulüp ve dans hiti.", "https://genius.com/Aura-tur-tempo-lyrics"),
-        TPopSong("aur_aura", "AURA", "Aura", 2026, "Parlayan ışığımız kapatır gölgeleri\nİşte bu AURA, aşar tüm engelleri", "Aura grubunun imza şarkısı.", "https://genius.com/Aura-tur-aura-lyrics"),
-        TPopSong("aur_red_flag_aura", "Red Flag!", "Aura", 2026, "Her hareketin açıkça bir red flag\nUyarmıştı herkes beni tek tek", "Aura grubunun modern flört şarkısı.", "https://genius.com/Aura-tur-red-flag-lyrics"),
-        TPopSong("aur_iltifatlar", "İltifatlar", "Aura", 2026, "Dökülür dilinden boş iltifatlar\nArkasında gizli sahte niyetler var", "Aura grubunun güçlü vokal melodisi.", "https://genius.com/Aura-tur-iltifatlar-lyrics"),
-        TPopSong("aur_derbeder", "Derbeder", "Aura", 2026, "Derbeder ettin arkana bakmadan\nGeçer bu günler yüreğim yanmadan", "Aura'nın dramatik pop parçası.", "https://genius.com/Aura-tur-derbeder-lyrics"),
-        TPopSong("aur_parcali_bulutlu", "Parçalı Bulutlu", "Aura", 2026, "Ruh halim bugün parçalı bulutlu\nGittiğinden beri bu kalp seni unuttu", "Aura'nın melodik orta tempolu şarkısı.", "https://genius.com/Aura-tur-parcal-bulutlu-lyrics"),
-
-        // 5. MANTRA (7 Şarkı)
-        TPopSong("man_bi_kiss", "Bi Kiss", "Mantra", 2026, "Hadi bi' kiss, bi' kiss\nYolun sonu belli, içimde bi' his", "Mantra'nın dillerden düşmeyen pop hiti.", "https://genius.com/Mantra-bi-kiss-lyrics"),
-        TPopSong("man_toysun", "Toysun", "Mantra", 2026, "Hoş, ambalajın paketin\nFazla çaban var nedir derdin", "Mantra'nın havalı pop nakaratı.", "https://genius.com/Mantra-toysun-lyrics"),
-        TPopSong("man_tuttu_firlatti", "Tuttu Fırlattı", "Mantra", 2026, "Tuttu fırlattı kalbimi\nEzdi, üstünü çiğnedi", "Mantra'nın enerjik şarkısı.", "https://genius.com/Gokce-tuttu-frlatt-lyrics"),
-        TPopSong("man_goygoy", "Goygoy", "Mantra", 2026, "Goygoy yapma bana ciddi konuş biraz\nAşk bu oyun değil geçer kış ve yaz", "Mantra'nın eğlenceli şarkısı.", "https://genius.com/Mantra-goy-goy-lyrics"),
-        TPopSong("man_red_flag_man", "Red Flag", "Mantra", 2026, "Göz göre göre yürüdüm tehlikeye\nBütün işaretler red flag diye diye", "Mantra'nın dinamik tempo ve bas yüklü parçası.", "https://genius.com/Mantra-red-flag-lyrics"),
-        TPopSong("man_tek_basima", "Tek Başıma", "Mantra", 2026, "Tek başıma da gülerim kaderime\nİhtiyacım yok senin o sahte sevgine", "Mantra'nın özgüven marşı.", "https://genius.com/Mantra-tek-basma-lyrics"),
-        TPopSong("man_kaldim_ellerinde", "Kaldım Ellerinde", "Mantra", 2026, "Kaldım ellerinde bir yaprak gibi\nSavurma beni sonbahar yeli gibi", "Mantra'nın duygusal baladı.", "https://genius.com/Mantra-kaldm-ellerinde-lyrics"),
-
-        // 6. RADİKAL (2 Şarkı)
-        TPopSong("rad_hayran", "Hayran", "Radikal", 2026, "Kalbim kapalı, bana dokunma daha\nDedim sana bi' değil iki defa", "Radikal grubunun maskülen vokal hiti.", "https://genius.com/Radikal-hayran-lyrics"),
-        TPopSong("rad_korkmam_ben", "Korkmam Ben", "Radikal", 2026, "Geceleri hep unuturum\nTıpış tıpış geldim ayağına", "Radikal grubunun güçlü nakaratlı parçası.", "https://genius.com/Radikal-korkmam-ben-lyrics")
+        TPopSong("man_zamansizdik", "Zamansızdık", "Manifest", 2025, "Zamansızdık ilk başta, sandım hep iyi kalıcaz
+Yetmiyo' hiçbi' iltifat hissettirmiyosan", "Manifest'in 2025 çıkış teklisi, duygusal ve akılda kalıcı pop marşı.", "https://genius.com/Manifest-zamanszdk-lyrics"),
+        TPopSong("man_ariyo", "Arıyo", "Manifest", 2024, "Alışır kalbim sensiz yazlara, seni istemeye artık son verdim
+Tenimi geceleri arıyo', olmuyo' aşkı bensiz arıyo'", "Manifest'in telefon melodisi temalı 2024 çıkış şarkısı.", "https://genius.com/Manifest-aryo-lyrics"),
+        TPopSong("man_kts", "KTS", "Manifest", 2024, "İstese aşkına köle olurum, tek sözüne kendimi avuturum
+Aşkın yaktı beni ya, söndürsene o zaman; kalbimin tek sahibi", "Manifest'in 'Kalbimin Tek Sahibi' temalı yüksek ritimli koreografi şarkısı.", "https://genius.com/Manifest-kts-lyrics"),
+        TPopSong("man_snap", "Snap", "Manifest", 2025, "Sana alkış yok, anca finger snap, no thanks
+Geleceğinden parlak lipstick sürdüm, sıfır gramsın yok kalsın", "Manifest'in 'finger snap' nakaratlı enerjik dans parçası.", "https://genius.com/Manifest-snap-lyrics"),
+        TPopSong("man_ruya", "Rüya", "Manifest", 2025, "Rüyasında beni arıyormuş, güçlüyüz ve bunu biliyorsun
+Sen vazgeçtin bizden, tek sen kaybettin cidden", "Manifest'in 'Tek sen kaybettin cidden' nakaratlı 2025 hiti.", "https://genius.com/Manifest-ruya-lyrics"),
+        TPopSong("man_amator", "Amatör", "Manifest", 2025, "Sanıyo' ki herkes ona hayran, aynada kendine hodri meydan
+Hep aynı şov hep aynı dans, ama ama amatör", "Manifest'in 'Sanıyo ki herkes ona hayran' nakaratlı pop ritimli şarkısı.", "https://genius.com/Manifest-amator-lyrics"),
+        TPopSong("man_basrol_sensin", "Başrol Sensin", "Manifest", 2026, "Bi' hayalle geldik biz bu günlere, artık korkmak kaçmak yok bundan böyle
+Bizimle gel sen de kır zincirleri, fark edersin başrol sensin bu filmde", "Manifest'in 1. yıl dönümü için yayınladığı özel marş.", "https://genius.com/Manifest-basrol-sensin-1-yl-ozel-lyrics"),
+        TPopSong("man_daha_iyi", "Daha İyi", "Manifest", 2026, "Yalnız kalmadım işte, gör'ce'n sen bu gidişle
+Sensiz daha iyi, sensiz bensiz daha iyi", "Manifest'in 'Sensiz daha iyi' temalı 2026 parçası.", "https://genius.com/Manifest-daha-iyi-lyrics"),
+        TPopSong("man_hileli", "Hileli", "Manifest", 2026, "Senden kaçamadım, iyi ki bırakmadın peşimi
+Sabaha kadar oyna at zarları hileli", "Manifest'in süperstar Ajda Pekkan ile ortak düeti.", "https://genius.com/Manifest-and-ajda-pekkan-hileli-lyrics"),
+        TPopSong("man_toz_pembe", "Toz Pembe", "Manifest", 2026, "Bakıyo'sun niye çok toz pembe hislerle?
+Kafayı bozdun sen o düşlerle, koz bende", "Manifest'in 'Toz pembe hislerle' temalı dans parçası.", "https://genius.com/Manifest-toz-pembe-lyrics"),
+        TPopSong("man_tralala", "TRALALA", "Manifest", 2026, "Can't get your eyes off my, um, tra-la-la
+Look like an angel, God bless, mashallah, mm-mm", "Manifest'in global tarzda İngilizce festival hiti.", "https://genius.com/Manifest-tralala-lyrics"),
+        TPopSong("cru_crush", "CRUSH!", "Crush", 2026, "Gülümsemek ister misin? Yoksa durup izler misin?
+Bildiklerim çok değil ama senin gibileri bilmez miyim?", "7 erkek üyeli Crush grubunun çıkış parçası.", "https://genius.com/Crush-tur-crush-lyrics"),
+        TPopSong("cru_benim_olsana", "Benim Olsana", "Crush", 2026, "Geceden sabaha uyumuşum düşlerimde seni beklerken
+Döndüm arkama kokun kalmış üzerimde onu koklarken", "Crush grubunun romantik hit teklisi.", "https://genius.com/Crush-tur-benim-olsana-lyrics"),
+        TPopSong("kar_keske_benim_olsa", "Keşke Benim Olsa", "Karma", 2026, "Derdim var, geceler uzar da uzar; saymadım bi' gece kaç ömür yutar
+Kana kana içsem, inadına sevsem; tadı damağımda, keşke benim olsa", "KARM6'nın serotonin dolu, co-ed hit parçası.", "https://genius.com/Karm6-keske-benim-olsa-lyrics"),
+        TPopSong("kar_sirra_kadem", "Sırra Kadem", "Karma", 2026, "Bir anda sırra kadem, muhtemelen vazgeçtin benden dinlemeden
+Çekip vurdun kalbimden, yüreğim acıyor inkar edemem", "Karma grubunun duygusal T-Pop balladı.", "https://genius.com/Karm6-srra-kadem-lyrics"),
+        TPopSong("kar_crop_top", "Crop Top", "Karma", 2026, "Çek üstüne bi crop top, anında yıkılır TikTok
+Hep mi hoş hep mi gol, tek bi doz yetmiyor", "Karma grubunun yaz temalı yüksek tempolu hit parçası.", "https://genius.com/Karm6-crop-top-lyrics"),
+        TPopSong("kar_onumuz_yaz", "Önümüz Yaz", "Karma", 2026, "Düşür beni önüne, ben olmuşum sarhoş
+Güz çiçeği dövmemi de soldurur güneş, zamanımız az bak önümüz yaz", "Karma grubunun Simge Sağın cover'ı olan yaz şarkısı.", "https://genius.com/Simge-onumuz-yaz-lyrics"),
+        TPopSong("kar_blok_blok", "Blok Blok", "Karma", 2026, "Blok, blok, blok aklımdan fikrimden
+Blok, blok, blok söktüm seni kalbimden", "Karma grubunun 'Blok Blok' nakaratlı trap-pop parçası.", "https://genius.com/Karm6-blok-blok-lyrics"),
+        TPopSong("kar_ihtimal", "İhtimal", "Karma", 2026, "Denedim bütün ihtimalleri, değiştin bende normalleri
+Karışık sensiz ruh hallerim, bu kuytudan hadi gel çıkar beni", "Karma grubunun vokal uyumuyla öne çıkan 'Serotonin' albüm teklisi.", "https://genius.com/Karm6-ihtimal-lyrics"),
+        TPopSong("kar_ta_burama", "Ta Burama", "Karma", 2026, "Ta burama geldi katlandım, sussun diye sıradansın
+Cilven kime? Ta burama geldi", "Karma ve Serdar Ortaç iş birliği olan hareketli şarkı.", "https://genius.com/Karm6-and-serdar-ortac-ta-burama-lyrics"),
+        TPopSong("kar_karma", "KARMA", "Karma", 2026, "Karanlık ruhunu yorsa, kaygıların bi' gün ipleri alsa
+Güneşten umutsuz olma, kalbini yorma, bulur seni karma", "Karma grubunun kendi ismini taşıyan motivasyonel marşı.", "https://genius.com/Karm6-karma-lyrics"),
+        TPopSong("kar_iki_yuzlu", "İki Yüzlü", "Karma", 2026, "Ruma-ruma-rumama kanmam bu yalanlara, masken düştü sonunda
+Ama sen gel yine bul beni bul, iki yüzlü olamam senin gibi", "Karma grubunun maskeleri düşüren enerjik parçası.", "https://genius.com/Karm6-iki-yuzlu-lyrics"),
+        TPopSong("aur_yuh", "YUH!", "Aura", 2026, "Yuh sana gönülden inanana, yuh bi' sözüne bel bağlayana
+Yuh hevesine kapılana, yuh ki ne yuh, yuh ki ne yuh", "4 kadın üyeli Aura grubunun viral çıkış şarkısı.", "https://genius.com/Aura-tur-yuh-lyrics"),
+        TPopSong("aur_tuzak", "Tuzak", "Aura", 2026, "Korkma, tut sözünü, gitme benden uzağa; yeminlerimi boz, yaz adımı dağ taşa
+Değdin bütün başıma, düştüm tuzağına gel kurtarsana", "Aura grubunun elektro-pop tarzındaki 2026 parçası.", "https://genius.com/Aura-tur-tuzak-lyrics"),
+        TPopSong("aur_pes", "PES", "Aura", 2026, "Bu kadarına pes, bitti son heves; bağıra çağıra kalmadı nefes!
+Yalana dolana alışkın olana rüzgârınla deli deli es!", "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti.", "https://genius.com/Aura-tur-pes-lyrics"),
+        TPopSong("aur_2036", "2036", "Aura", 2026, "Bi' bakmışsın yıl 2036, silindi tüm anılar kalmadı sıkıntı
+Derler buna Karma, sen hiç inanmasan da, yaz şimdi günlüğüne ağlaya ağlaya", "Aura'nın fütüristik 'Elemental' albüm parçası.", "https://genius.com/Aura-tur-2036-lyrics"),
+        TPopSong("aur_we_are_aura", "We Are Aura!", "Aura", 2026, "Dediler 'Yavaşla', biz bastık hep gaza
+A-U-R-A, A-U-R-A, we are AURA", "Aura grubunun intro sahne marşı.", "https://genius.com/Aura-tur-we-are-aura-lyrics"),
+        TPopSong("aur_masum_kedi", "Masum Kedi", "Aura", 2026, "Kükrerdim aslan gibi herkese senden önce
+Kaybettim kendimi, şimdi bir masum kedi", "Aura'nın tatlı ve sert vokal geçişli şarkısı.", "https://genius.com/Aura-tur-masum-kedi-lyrics"),
+        TPopSong("aur_tempo", "Tempo", "Aura", 2026, "Bıkmadan usanmadan, yaş alırken yaşlanmadan
+Eğilmeden bükülmeden, tempo tempo tempo tempo", "Aura'nın Sezen Aksu klasiğini yeniden yorumladığı dans hiti.", "https://genius.com/Aura-tur-tempo-lyrics"),
+        TPopSong("aur_aura", "AURA", "Aura", 2026, "Bu aura başka, geldi seni yerinden sarsmaya!
+Yine all eyes on us! Arttır ses çok az! Döndür şarkımı şimdi loop'ta", "Aura grubunun imza marşı.", "https://genius.com/Aura-tur-aura-lyrics"),
+        TPopSong("aur_red_flag_aura", "Red Flag!", "Aura", 2026, "Üzülmem dökme göz yaşlarına, kaldın bak yine mi tek başına
+İnanmam red flag tavırlarına!", "Aura grubunun modern flört kültürünü eleştiren şarkısı.", "https://genius.com/Aura-tur-red-flag-lyrics"),
+        TPopSong("aur_iltifatlar", "İltifatlar", "Aura", 2026, "Çıkmadı aklımdan iltifatlar, hadi gelsin o zaman itiraflar
+Tüm gün konuştum kızlarımla, alındı gerekli tüm onaylar", "Aura grubunun güçlü vokal melodisi.", "https://genius.com/Aura-tur-iltifatlar-lyrics"),
+        TPopSong("aur_derbeder", "Derbeder", "Aura", 2026, "Oysa tek derdin bendim aslında, keşkelerle kalıcam hep o aklında!
+Yakışmadı hiç sana bu haller, oldun tam bir derbeder", "Aura'nın 'Derbeder' nakaratlı enerjik parçası.", "https://genius.com/Aura-tur-derbeder-lyrics"),
+        TPopSong("aur_parcali_bulutlu", "Parçalı Bulutlu", "Aura", 2026, "Buralar parçalı bulutlu, kaybetmedik hiç umudu
+Gerekirse bin kere daha denerim ama gitmem yaşamadan bu gururu!", "Aura grubunun motivasyonel pop balladı.", "https://genius.com/Aura-tur-parcal-bulutlu-lyrics"),
+        TPopSong("man_bi_kiss", "Bi Kiss", "Mantra", 2026, "Hadi bi' kiss, bi' kiss, yolun sonu belli içimde bi' his
+Dökülür o dudaklarından zehir, yanıyorum kalmadı akıl fikir", "Mantra grubunun baştan çıkarıcı dans hiti.", "https://genius.com/Mantra-bi-kiss-lyrics"),
+        TPopSong("man_toysun", "Toysun", "Mantra", 2026, "Henüz toysun, daha pişeceksin
+Bebeğim düşe kalka öğreneceksin", "Mantra grubunun 'Daha pişeceksin' nakaratlı enerjik parçası.", "https://genius.com/Mantra-toysun-lyrics"),
+        TPopSong("man_goygoy", "Goygoy", "Mantra", 2026, "Hava cıva goygoy goygoy, lafa söze kalsak işimiz çok zor
+Nasıl bi muhabbet gel de sabret, görüntü var ses yok", "Mantra grubunun 'Goygoy' ritimli pop-rap şarkısı.", "https://genius.com/Mantra-goy-goy-lyrics"),
+        TPopSong("man_tuttu_firlatti", "Tuttu Fırlattı", "Mantra", 2026, "Tuttu fırlattı kalbimi, ezdi üstünü çiğnedi
+Zamanla geçer dedi, zamanla zamanla", "Mantra'nın Gökçe'nin efsanevi şarkısına getirdiği modern yorum.", "https://genius.com/Gokce-tuttu-frlatt-lyrics"),
+        TPopSong("man_red_flag_mantra", "Red Flag", "Mantra", 2026, "Red flag net hem de Ultra Pro Max
+Belli değil sağı solu hem de sırf kompleks, yok almayım ben canım no thanks", "Mantra grubunun 'Ultra Pro Max' sözlü viral parçası.", "https://genius.com/Mantra-red-flag-lyrics"),
+        TPopSong("man_tek_basima", "Tek Başıma", "Mantra", 2026, "Tek başıma kurdum yaktım, tek başıma düştüm kalktım
+Tek başıma ben başardım yar, o yar", "Mantra grubunun güçlü duruş sergileyen parçası.", "https://genius.com/Mantra-tek-basma-lyrics"),
+        TPopSong("man_kaldim_ellerinde", "Kaldım Ellerinde", "Mantra", 2026, "Kaldım ellerinde, vurdun hedefi tam yerinden
+Aşk gelince saklanamazsın, yakalar o yaka paça kurtulamazsın", "Mantra'nın 'Ateşimi harla' nakaratlı ritmik şarkısı.", "https://genius.com/Mantra-kaldm-ellerinde-lyrics"),
+        TPopSong("rad_hayran", "Hayran", "Radikal", 2026, "Sana benden olmaz bi' hayran, koşmam peşinde darmaduman
+Kaçsan da kovalamam, hayran, hiç boşuna çabalama olmam Mecnun'un Leyla'm", "Radikal grubunun iddialı çıkış şarkısı.", "https://genius.com/Radikal-hayran-lyrics"),
+        TPopSong("rad_korkmam_ben", "Korkmam Ben", "Radikal", 2026, "Korkmam ben senin yalanlarından, işlemez anılarıma
+Yalancılar giremez rüyalarıma", "Radikal grubunun güçlü ve cesur sözlere sahip şarkısı.", "https://genius.com/Radikal-korkmam-ben-lyrics")
     )
 
     fun getRandomSong(): TPopSong = songs.random()

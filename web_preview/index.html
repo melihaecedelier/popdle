@@ -677,60 +677,92 @@
 
     // === RESMİ ŞARKILAR VE İKONİK ŞARKI SÖZLERİ (42 ŞARKI LİSTESİ) ===
     const TPOP_SONGS = [
-      // 1. MANIFEST (11 Şarkı)
-      { id: "man_zamansizdik", title: "Zamansızdık", group: "Manifest", year: 2025, lyrics: "Zamansızdık ilk başta, sandım hep iyi kalıcaz\nYetmiyo' hiçbi' iltifat hissettirmiyosan", clue: "Manifest'in 2025 çıkış teklisi, duygusal ve akılda kalıcı pop marşı.", lyricsUrl: "https://genius.com/Manifest-zamanszdk-lyrics" },
-      { id: "man_ruya", title: "Rüya", group: "Manifest", year: 2025, lyrics: "Rüyasında beni arıyormuş\nGüçlüyüz ve bunu biliyorsun", clue: "Manifest'in 'Tek sen kaybettin cidden' nakaratlı 2025 hiti.", lyricsUrl: "https://genius.com/Manifest-ruya-lyrics" },
-      { id: "man_toz_pembe", title: "Toz Pembe", group: "Manifest", year: 2026, lyrics: "Bakıyosun niye çok toz pembe hislerle?\nKafayı bozdun sen o düşlerle", clue: "Manifest'in 2026 ritmik ve renkli dans parçası.", lyricsUrl: "https://genius.com/Manifest-toz-pembe-lyrics" },
-      { id: "man_amator", title: "Amatör", group: "Manifest", year: 2025, lyrics: "Acemi duygularla başladık aşka\nAmatör bir kalple sevdik güya", clue: "Manifest'in 2025 albümünden pop ritimli teklisi.", lyricsUrl: "https://genius.com/Manifest-amator-lyrics" },
-      { id: "man_basrol_sensin", title: "Başrol Sensin", group: "Manifest", year: 2026, lyrics: "Bu filmin senaryosu baştan yazıldı\nBaşrol sensin sanıyordun ama perde kapandı", clue: "Manifest'in sinematik konseptli 2026 şarkısı.", lyricsUrl: "https://genius.com/Manifest-basrol-sensin-1-yl-ozel-lyrics" },
-      { id: "man_tralala", title: "TRALALA", group: "Manifest", year: 2026, lyrics: "Tralala dillerde yine aynı melodi\nDinlemem artık senin o eski hikayeni", clue: "Manifest'in enerjik festival hiti.", lyricsUrl: "https://genius.com/Manifest-tralala-lyrics" },
-      { id: "man_hileli", title: "Hileli", group: "Manifest", year: 2026, lyrics: "Oyunun kuralı hileli baştan\nKazananı yok bu sessiz savaştan", clue: "Ajda Pekkan ile iş birliği yapılan ikonik Manifest parçası.", lyricsUrl: "https://genius.com/Manifest-and-ajda-pekkan-hileli-lyrics" },
-      { id: "man_daha_iyi", title: "Daha İyi", group: "Manifest", year: 2026, lyrics: "Bensiz daha iyi olduğunu sanıyorsan yanılıyorsun\nHer köşe başında dönüp beni arıyorsun", clue: "Manifest'in 2026 duygusal ayrılık parçası.", lyricsUrl: "https://genius.com/Manifest-daha-iyi-lyrics" },
-      { id: "man_snap", title: "Snap", group: "Manifest", year: 2025, lyrics: "Tek bir snap ile silindi geçmiş\nKim kimi daha çok derinden sevmiş", clue: "Manifest'in hızlı tempolu 2025 şarkısı.", lyricsUrl: "https://genius.com/Manifest-snap-lyrics" },
-      { id: "man_ariyo", title: "Arıyo", group: "Manifest", year: 2024, lyrics: "Gecenin köründe yine numaramı arıyo\nAçmıyorum diye içi içini yanıyo", clue: "Manifest'in telefon melodisi sample'lı parçası.", lyricsUrl: "https://genius.com/Manifest-aryo-lyrics" },
-      { id: "man_kts", title: "KTS", group: "Manifest", year: 2024, lyrics: "KTS çalar yine ritimler hızlanır\nSahneye çıktık mı gözler kamaşır", clue: "Manifest'in sahne koreografi marşı.", lyricsUrl: "https://genius.com/Manifest-kts-lyrics" },
-
-      // 2. CRUSH (2 Şarkı)
-      { id: "cru_crush", title: "CRUSH!", group: "Crush", year: 2026, lyrics: "Gülümsemek ister misin?\nYoksa durup izler misin?", clue: "7 erkek üyeli Crush grubunun çıkış parçası.", lyricsUrl: "https://genius.com/Crush-tur-crush-lyrics" },
-      { id: "cru_benim_olsana", title: "Benim Olsana", group: "Crush", year: 2026, lyrics: "Geceden sabaha uyumuşum düşlerimde seni beklerken\nDöndüm arkama kokun kalmış üzerimde onu koklarken", clue: "Crush grubunun romantik ve vokal ağırlıklı hit parçası.", lyricsUrl: "https://genius.com/Crush-tur-benim-olsana-lyrics" },
-
-      // 3. KARMA / KARM6 (8 Şarkı)
-      { id: "kar_keske_benim_olsa", title: "Keşke Benim Olsa", group: "Karma", year: 2026, lyrics: "Derdim var geceler uzar da uzar\nSaymadım bi' gece kaç ömür yutar", clue: "KARM6'nın serotonin dolu, co-ed vokal ve rap patlamalı hit parçası.", lyricsUrl: "https://genius.com/Karm6-keske-benim-olsa-lyrics" },
-      { id: "kar_sirra_kadem", title: "Sırra Kadem", group: "Karma", year: 2026, lyrics: "Bir anda sırra kadem\nMuhtemelen vazgeçtin benden dinlemeden", clue: "Karma grubunun 2026 duygusal T-Pop balladı.", lyricsUrl: "https://genius.com/Karm6-srra-kadem-lyrics" },
-      { id: "kar_crop_top", title: "Crop Top", group: "Karma", year: 2026, lyrics: "Crop top üstümde, ritim kalbimde\nDönüp bakarlar her adımımda geriye", clue: "Karma grubunun yaz konseptli yüksek tempolu parçası.", lyricsUrl: "https://genius.com/Karm6-crop-top-lyrics" },
-      { id: "kar_onumuz_yaz", title: "Önümüz Yaz", group: "Karma", year: 2026, lyrics: "Hadi topla bavulu önümüz yaz\nGüneş tenimizde dertleri biraz arkada bırak", clue: "Karma grubunun enerjik yaz hiti.", lyricsUrl: "https://genius.com/Simge-onumuz-yaz-lyrics" },
-      { id: "kar_blok_blok", title: "Blok Blok", group: "Karma", year: 2026, lyrics: "Blok blok ördün duvarları aramıza\nŞimdi geçemezsin o kapıdan asla", clue: "Karma grubunun trap-pop beat'li parçası.", lyricsUrl: "https://genius.com/Karm6-blok-blok-lyrics" },
-      { id: "kar_ihtimal", title: "İhtimal", group: "Karma", year: 2026, lyrics: "En zayıf ihtimal bile tutar bazen\nSen vazgeçtin ama ben gitmedim ruhen", clue: "Karma grubunun vokal uyumuyla öne çıkan parçası.", lyricsUrl: "https://genius.com/Karm6-ihtimal-lyrics" },
-      { id: "kar_ta_burama", title: "Ta Burama", group: "Karma", year: 2026, lyrics: "Ta burama kadar geldi artık yetti\nSabrımın sınırları çoktan tükendi", clue: "Karma grubunun isyankar pop-rock esintili şarkısı.", lyricsUrl: "https://genius.com/Karm6-and-serdar-ortac-ta-burama-lyrics" },
-      { id: "kar_karma", title: "KARMA", group: "Karma", year: 2026, lyrics: "Karmadır adı döner dolaşır bulur\nYaptığın her kötülük önüne dikilip durur", clue: "Karma grubunun kendi adını taşıyan marşı.", lyricsUrl: "https://genius.com/Karm6-karma-lyrics" },
-      { id: "kar_iki_yuzlu", title: "İki Yüzlü", group: "Karma", year: 2026, lyrics: "İki yüzlü dünya dönüyor yine\nBaktım aynaya inandım kendime", clue: "Karma grubunun maskeleri düşüren enerjik parçası.", lyricsUrl: "https://genius.com/Karm6-iki-yuzlu-lyrics" },
-
-      // 4. AURA (12 Şarkı)
-      { id: "aur_yuh", title: "YUH!", group: "Aura", year: 2026, lyrics: "Yuhh! Sana gönülden inanana\nYuhh! Bir sözüne bel bağlayana", clue: "4 kadın üyeli Aura grubunun ortalığı kasıp kavuran viral çıkış şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-yuh-lyrics" },
-      { id: "aur_pes", title: "PES", group: "Aura", year: 2026, lyrics: "Bu kadarına pes! Bitti son heves\nBağıra çağıra kalmadı nefes!", clue: "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti.", lyricsUrl: "https://genius.com/Aura-tur-pes-lyrics" },
-      { id: "aur_tuzak", title: "Tuzak", group: "Aura", year: 2026, lyrics: "Gözlerin en tatlı tuzak\nBenden kilometrelerce uzak", clue: "Aura grubunun elektro-pop tarzındaki 2026 parçası.", lyricsUrl: "https://genius.com/Aura-tur-tuzak-lyrics" },
-      { id: "aur_2036", title: "2036", group: "Aura", year: 2026, lyrics: "Zamanın ötesindeyiz 2036\nBizim devrimiz başladı ışıklar yansın", clue: "Aura'nın fütüristik T-Pop konseptli parçası.", lyricsUrl: "https://genius.com/Aura-tur-2036-lyrics" },
-      { id: "aur_we_are_aura", title: "We Are Aura!", group: "Aura", year: 2026, lyrics: "Kızlarım sahnede beni bekler\nWe are Aura! Gücümüzü görecekler", clue: "Aura'nın sahne intro marşı.", lyricsUrl: "https://genius.com/Aura-tur-we-are-aura-lyrics" },
-      { id: "aur_masum_kedi", title: "Masum Kedi", group: "Aura", year: 2026, lyrics: "Görünüşe aldanma öyle masum kedi gibi\nTırnaklarını çıkarır bir anda kaplan gibi", clue: "Aura'nın tatlı ve sert vokal geçişli şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-masum-kedi-lyrics" },
-      { id: "aur_tempo", title: "Tempo", group: "Aura", year: 2026, lyrics: "Tempoyu arttır, durmak yok bu gece\nRitim kalbimize işlesin hece hece", clue: "Aura'nın kulüp ve dans hiti.", lyricsUrl: "https://genius.com/Aura-tur-tempo-lyrics" },
-      { id: "aur_aura", title: "AURA", group: "Aura", year: 2026, lyrics: "Parlayan ışığımız kapatır gölgeleri\nİşte bu AURA, aşar tüm engelleri", clue: "Aura grubunun imza şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-aura-lyrics" },
-      { id: "aur_red_flag_aura", title: "Red Flag!", group: "Aura", year: 2026, lyrics: "Her hareketin açıkça bir red flag\nUyarmıştı herkes beni tek tek", clue: "Aura grubunun modern flört kültürünü eleştiren şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-red-flag-lyrics" },
-      { id: "aur_iltifatlar", title: "İltifatlar", group: "Aura", year: 2026, lyrics: "Dökülür dilinden boş iltifatlar\nArkasında gizli sahte niyetler var", clue: "Aura grubunun güçlü vokal melodisi.", lyricsUrl: "https://genius.com/Aura-tur-iltifatlar-lyrics" },
-      { id: "aur_derbeder", title: "Derbeder", group: "Aura", year: 2026, lyrics: "Derbeder ettin arkana bakmadan\nGeçer bu günler yüreğim yanmadan", clue: "Aura'nın dramatik pop parçası.", lyricsUrl: "https://genius.com/Aura-tur-derbeder-lyrics" },
-      { id: "aur_parcali_bulutlu", title: "Parçalı Bulutlu", group: "Aura", year: 2026, lyrics: "Ruh halim bugün parçalı bulutlu\nGittiğinden beri bu kalp seni unuttu", clue: "Aura'nın melodik orta tempolu şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-parcal-bulutlu-lyrics" },
-
-      // 5. MANTRA (7 Şarkı)
-      { id: "man_bi_kiss", title: "Bi Kiss", group: "Mantra", year: 2026, lyrics: "Hadi bi' kiss, bi' kiss\nYolun sonu belli, içimde bi' his", clue: "Mantra'nın dillerden düşmeyen kanca nakaratlı pop hiti.", lyricsUrl: "https://genius.com/Mantra-bi-kiss-lyrics" },
-      { id: "man_toysun", title: "Toysun", group: "Mantra", year: 2026, lyrics: "Hoş, ambalajın paketin\nFazla çaban var nedir derdin", clue: "Mantra'nın iğneleyici ve havalı pop nakaratı.", lyricsUrl: "https://genius.com/Mantra-toysun-lyrics" },
-      { id: "man_tuttu_firlatti", title: "Tuttu Fırlattı", group: "Mantra", year: 2026, lyrics: "Tuttu fırlattı kalbimi\nEzdi, üstünü çiğnedi", clue: "Mantra'nın nostaljik popu modern T-Pop beat'leriyle harmanladığı şarkı.", lyricsUrl: "https://genius.com/Gokce-tuttu-frlatt-lyrics" },
-      { id: "man_goygoy", title: "Goygoy", group: "Mantra", year: 2026, lyrics: "Goygoy yapma bana ciddi konuş biraz\nAşk bu oyun değil geçer kış ve yaz", clue: "Mantra'nın eğlenceli ve laf sokucu şarkısı.", lyricsUrl: "https://genius.com/Mantra-goy-goy-lyrics" },
-      { id: "man_red_flag_man", title: "Red Flag", group: "Mantra", year: 2026, lyrics: "Göz göre göre yürüdüm tehlikeye\nBütün işaretler red flag diye diye", clue: "Mantra'nın dinamik tempo ve bas yüklü parçası.", lyricsUrl: "https://genius.com/Mantra-red-flag-lyrics" },
-      { id: "man_tek_basima", title: "Tek Başıma", group: "Mantra", year: 2026, lyrics: "Tek başıma da gülerim kaderime\nİhtiyacım yok senin o sahte sevgine", clue: "Mantra'nın özgüven marşı.", lyricsUrl: "https://genius.com/Mantra-tek-basma-lyrics" },
-      { id: "man_kaldim_ellerinde", title: "Kaldım Ellerinde", group: "Mantra", year: 2026, lyrics: "Kaldım ellerinde bir yaprak gibi\nSavurma beni sonbahar yeli gibi", clue: "Mantra'nın duygusal baladı.", lyricsUrl: "https://genius.com/Mantra-kaldm-ellerinde-lyrics" },
-
-      // 6. RADİKAL (2 Şarkı)
-      { id: "rad_hayran", title: "Hayran", group: "Radikal", year: 2026, lyrics: "Kalbim kapalı, bana dokunma daha\nDedim sana bi' değil iki defa", clue: "4 erkek üyeli Radikal grubunun maskülen ve ritmik vokal hiti.", lyricsUrl: "https://genius.com/Radikal-hayran-lyrics" },
-      { id: "rad_korkmam_ben", title: "Korkmam Ben", group: "Radikal", year: 2026, lyrics: "Geceleri hep unuturum\nTıpış tıpış geldim ayağına", clue: "Radikal grubunun güçlü nakaratıyla akıllara kazınan parçası.", lyricsUrl: "https://genius.com/Radikal-korkmam-ben-lyrics" }
+      { id: "man_zamansizdik", title: "Zamansızdık", group: "Manifest", year: 2025, lyrics: "Zamansızdık ilk başta, sandım hep iyi kalıcaz
+Yetmiyo' hiçbi' iltifat hissettirmiyosan", clue: "Manifest'in 2025 çıkış teklisi, duygusal ve akılda kalıcı pop marşı.", lyricsUrl: "https://genius.com/Manifest-zamanszdk-lyrics" },
+      { id: "man_ariyo", title: "Arıyo", group: "Manifest", year: 2024, lyrics: "Alışır kalbim sensiz yazlara, seni istemeye artık son verdim
+Tenimi geceleri arıyo', olmuyo' aşkı bensiz arıyo'", clue: "Manifest'in telefon melodisi temalı 2024 çıkış şarkısı.", lyricsUrl: "https://genius.com/Manifest-aryo-lyrics" },
+      { id: "man_kts", title: "KTS", group: "Manifest", year: 2024, lyrics: "İstese aşkına köle olurum, tek sözüne kendimi avuturum
+Aşkın yaktı beni ya, söndürsene o zaman; kalbimin tek sahibi", clue: "Manifest'in 'Kalbimin Tek Sahibi' temalı yüksek ritimli koreografi şarkısı.", lyricsUrl: "https://genius.com/Manifest-kts-lyrics" },
+      { id: "man_snap", title: "Snap", group: "Manifest", year: 2025, lyrics: "Sana alkış yok, anca finger snap, no thanks
+Geleceğinden parlak lipstick sürdüm, sıfır gramsın yok kalsın", clue: "Manifest'in 'finger snap' nakaratlı enerjik dans parçası.", lyricsUrl: "https://genius.com/Manifest-snap-lyrics" },
+      { id: "man_ruya", title: "Rüya", group: "Manifest", year: 2025, lyrics: "Rüyasında beni arıyormuş, güçlüyüz ve bunu biliyorsun
+Sen vazgeçtin bizden, tek sen kaybettin cidden", clue: "Manifest'in 'Tek sen kaybettin cidden' nakaratlı 2025 hiti.", lyricsUrl: "https://genius.com/Manifest-ruya-lyrics" },
+      { id: "man_amator", title: "Amatör", group: "Manifest", year: 2025, lyrics: "Sanıyo' ki herkes ona hayran, aynada kendine hodri meydan
+Hep aynı şov hep aynı dans, ama ama amatör", clue: "Manifest'in 'Sanıyo ki herkes ona hayran' nakaratlı pop ritimli şarkısı.", lyricsUrl: "https://genius.com/Manifest-amator-lyrics" },
+      { id: "man_basrol_sensin", title: "Başrol Sensin", group: "Manifest", year: 2026, lyrics: "Bi' hayalle geldik biz bu günlere, artık korkmak kaçmak yok bundan böyle
+Bizimle gel sen de kır zincirleri, fark edersin başrol sensin bu filmde", clue: "Manifest'in 1. yıl dönümü için yayınladığı özel marş.", lyricsUrl: "https://genius.com/Manifest-basrol-sensin-1-yl-ozel-lyrics" },
+      { id: "man_daha_iyi", title: "Daha İyi", group: "Manifest", year: 2026, lyrics: "Yalnız kalmadım işte, gör'ce'n sen bu gidişle
+Sensiz daha iyi, sensiz bensiz daha iyi", clue: "Manifest'in 'Sensiz daha iyi' temalı 2026 parçası.", lyricsUrl: "https://genius.com/Manifest-daha-iyi-lyrics" },
+      { id: "man_hileli", title: "Hileli", group: "Manifest", year: 2026, lyrics: "Senden kaçamadım, iyi ki bırakmadın peşimi
+Sabaha kadar oyna at zarları hileli", clue: "Manifest'in süperstar Ajda Pekkan ile ortak düeti.", lyricsUrl: "https://genius.com/Manifest-and-ajda-pekkan-hileli-lyrics" },
+      { id: "man_toz_pembe", title: "Toz Pembe", group: "Manifest", year: 2026, lyrics: "Bakıyo'sun niye çok toz pembe hislerle?
+Kafayı bozdun sen o düşlerle, koz bende", clue: "Manifest'in 'Toz pembe hislerle' temalı dans parçası.", lyricsUrl: "https://genius.com/Manifest-toz-pembe-lyrics" },
+      { id: "man_tralala", title: "TRALALA", group: "Manifest", year: 2026, lyrics: "Can't get your eyes off my, um, tra-la-la
+Look like an angel, God bless, mashallah, mm-mm", clue: "Manifest'in global tarzda İngilizce festival hiti.", lyricsUrl: "https://genius.com/Manifest-tralala-lyrics" },
+      { id: "cru_crush", title: "CRUSH!", group: "Crush", year: 2026, lyrics: "Gülümsemek ister misin? Yoksa durup izler misin?
+Bildiklerim çok değil ama senin gibileri bilmez miyim?", clue: "7 erkek üyeli Crush grubunun çıkış parçası.", lyricsUrl: "https://genius.com/Crush-tur-crush-lyrics" },
+      { id: "cru_benim_olsana", title: "Benim Olsana", group: "Crush", year: 2026, lyrics: "Geceden sabaha uyumuşum düşlerimde seni beklerken
+Döndüm arkama kokun kalmış üzerimde onu koklarken", clue: "Crush grubunun romantik hit teklisi.", lyricsUrl: "https://genius.com/Crush-tur-benim-olsana-lyrics" },
+      { id: "kar_keske_benim_olsa", title: "Keşke Benim Olsa", group: "Karma", year: 2026, lyrics: "Derdim var, geceler uzar da uzar; saymadım bi' gece kaç ömür yutar
+Kana kana içsem, inadına sevsem; tadı damağımda, keşke benim olsa", clue: "KARM6'nın serotonin dolu, co-ed hit parçası.", lyricsUrl: "https://genius.com/Karm6-keske-benim-olsa-lyrics" },
+      { id: "kar_sirra_kadem", title: "Sırra Kadem", group: "Karma", year: 2026, lyrics: "Bir anda sırra kadem, muhtemelen vazgeçtin benden dinlemeden
+Çekip vurdun kalbimden, yüreğim acıyor inkar edemem", clue: "Karma grubunun duygusal T-Pop balladı.", lyricsUrl: "https://genius.com/Karm6-srra-kadem-lyrics" },
+      { id: "kar_crop_top", title: "Crop Top", group: "Karma", year: 2026, lyrics: "Çek üstüne bi crop top, anında yıkılır TikTok
+Hep mi hoş hep mi gol, tek bi doz yetmiyor", clue: "Karma grubunun yaz temalı yüksek tempolu hit parçası.", lyricsUrl: "https://genius.com/Karm6-crop-top-lyrics" },
+      { id: "kar_onumuz_yaz", title: "Önümüz Yaz", group: "Karma", year: 2026, lyrics: "Düşür beni önüne, ben olmuşum sarhoş
+Güz çiçeği dövmemi de soldurur güneş, zamanımız az bak önümüz yaz", clue: "Karma grubunun Simge Sağın cover'ı olan yaz şarkısı.", lyricsUrl: "https://genius.com/Simge-onumuz-yaz-lyrics" },
+      { id: "kar_blok_blok", title: "Blok Blok", group: "Karma", year: 2026, lyrics: "Blok, blok, blok aklımdan fikrimden
+Blok, blok, blok söktüm seni kalbimden", clue: "Karma grubunun 'Blok Blok' nakaratlı trap-pop parçası.", lyricsUrl: "https://genius.com/Karm6-blok-blok-lyrics" },
+      { id: "kar_ihtimal", title: "İhtimal", group: "Karma", year: 2026, lyrics: "Denedim bütün ihtimalleri, değiştin bende normalleri
+Karışık sensiz ruh hallerim, bu kuytudan hadi gel çıkar beni", clue: "Karma grubunun vokal uyumuyla öne çıkan 'Serotonin' albüm teklisi.", lyricsUrl: "https://genius.com/Karm6-ihtimal-lyrics" },
+      { id: "kar_ta_burama", title: "Ta Burama", group: "Karma", year: 2026, lyrics: "Ta burama geldi katlandım, sussun diye sıradansın
+Cilven kime? Ta burama geldi", clue: "Karma ve Serdar Ortaç iş birliği olan hareketli şarkı.", lyricsUrl: "https://genius.com/Karm6-and-serdar-ortac-ta-burama-lyrics" },
+      { id: "kar_karma", title: "KARMA", group: "Karma", year: 2026, lyrics: "Karanlık ruhunu yorsa, kaygıların bi' gün ipleri alsa
+Güneşten umutsuz olma, kalbini yorma, bulur seni karma", clue: "Karma grubunun kendi ismini taşıyan motivasyonel marşı.", lyricsUrl: "https://genius.com/Karm6-karma-lyrics" },
+      { id: "kar_iki_yuzlu", title: "İki Yüzlü", group: "Karma", year: 2026, lyrics: "Ruma-ruma-rumama kanmam bu yalanlara, masken düştü sonunda
+Ama sen gel yine bul beni bul, iki yüzlü olamam senin gibi", clue: "Karma grubunun maskeleri düşüren enerjik parçası.", lyricsUrl: "https://genius.com/Karm6-iki-yuzlu-lyrics" },
+      { id: "aur_yuh", title: "YUH!", group: "Aura", year: 2026, lyrics: "Yuh sana gönülden inanana, yuh bi' sözüne bel bağlayana
+Yuh hevesine kapılana, yuh ki ne yuh, yuh ki ne yuh", clue: "4 kadın üyeli Aura grubunun viral çıkış şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-yuh-lyrics" },
+      { id: "aur_tuzak", title: "Tuzak", group: "Aura", year: 2026, lyrics: "Korkma, tut sözünü, gitme benden uzağa; yeminlerimi boz, yaz adımı dağ taşa
+Değdin bütün başıma, düştüm tuzağına gel kurtarsana", clue: "Aura grubunun elektro-pop tarzındaki 2026 parçası.", lyricsUrl: "https://genius.com/Aura-tur-tuzak-lyrics" },
+      { id: "aur_pes", title: "PES", group: "Aura", year: 2026, lyrics: "Bu kadarına pes, bitti son heves; bağıra çağıra kalmadı nefes!
+Yalana dolana alışkın olana rüzgârınla deli deli es!", clue: "Aura'nın toksik ilişkilere meydan okuyan 'PES' hiti.", lyricsUrl: "https://genius.com/Aura-tur-pes-lyrics" },
+      { id: "aur_2036", title: "2036", group: "Aura", year: 2026, lyrics: "Bi' bakmışsın yıl 2036, silindi tüm anılar kalmadı sıkıntı
+Derler buna Karma, sen hiç inanmasan da, yaz şimdi günlüğüne ağlaya ağlaya", clue: "Aura'nın fütüristik 'Elemental' albüm parçası.", lyricsUrl: "https://genius.com/Aura-tur-2036-lyrics" },
+      { id: "aur_we_are_aura", title: "We Are Aura!", group: "Aura", year: 2026, lyrics: "Dediler 'Yavaşla', biz bastık hep gaza
+A-U-R-A, A-U-R-A, we are AURA", clue: "Aura grubunun intro sahne marşı.", lyricsUrl: "https://genius.com/Aura-tur-we-are-aura-lyrics" },
+      { id: "aur_masum_kedi", title: "Masum Kedi", group: "Aura", year: 2026, lyrics: "Kükrerdim aslan gibi herkese senden önce
+Kaybettim kendimi, şimdi bir masum kedi", clue: "Aura'nın tatlı ve sert vokal geçişli şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-masum-kedi-lyrics" },
+      { id: "aur_tempo", title: "Tempo", group: "Aura", year: 2026, lyrics: "Bıkmadan usanmadan, yaş alırken yaşlanmadan
+Eğilmeden bükülmeden, tempo tempo tempo tempo", clue: "Aura'nın Sezen Aksu klasiğini yeniden yorumladığı dans hiti.", lyricsUrl: "https://genius.com/Aura-tur-tempo-lyrics" },
+      { id: "aur_aura", title: "AURA", group: "Aura", year: 2026, lyrics: "Bu aura başka, geldi seni yerinden sarsmaya!
+Yine all eyes on us! Arttır ses çok az! Döndür şarkımı şimdi loop'ta", clue: "Aura grubunun imza marşı.", lyricsUrl: "https://genius.com/Aura-tur-aura-lyrics" },
+      { id: "aur_red_flag_aura", title: "Red Flag!", group: "Aura", year: 2026, lyrics: "Üzülmem dökme göz yaşlarına, kaldın bak yine mi tek başına
+İnanmam red flag tavırlarına!", clue: "Aura grubunun modern flört kültürünü eleştiren şarkısı.", lyricsUrl: "https://genius.com/Aura-tur-red-flag-lyrics" },
+      { id: "aur_iltifatlar", title: "İltifatlar", group: "Aura", year: 2026, lyrics: "Çıkmadı aklımdan iltifatlar, hadi gelsin o zaman itiraflar
+Tüm gün konuştum kızlarımla, alındı gerekli tüm onaylar", clue: "Aura grubunun güçlü vokal melodisi.", lyricsUrl: "https://genius.com/Aura-tur-iltifatlar-lyrics" },
+      { id: "aur_derbeder", title: "Derbeder", group: "Aura", year: 2026, lyrics: "Oysa tek derdin bendim aslında, keşkelerle kalıcam hep o aklında!
+Yakışmadı hiç sana bu haller, oldun tam bir derbeder", clue: "Aura'nın 'Derbeder' nakaratlı enerjik parçası.", lyricsUrl: "https://genius.com/Aura-tur-derbeder-lyrics" },
+      { id: "aur_parcali_bulutlu", title: "Parçalı Bulutlu", group: "Aura", year: 2026, lyrics: "Buralar parçalı bulutlu, kaybetmedik hiç umudu
+Gerekirse bin kere daha denerim ama gitmem yaşamadan bu gururu!", clue: "Aura grubunun motivasyonel pop balladı.", lyricsUrl: "https://genius.com/Aura-tur-parcal-bulutlu-lyrics" },
+      { id: "man_bi_kiss", title: "Bi Kiss", group: "Mantra", year: 2026, lyrics: "Hadi bi' kiss, bi' kiss, yolun sonu belli içimde bi' his
+Dökülür o dudaklarından zehir, yanıyorum kalmadı akıl fikir", clue: "Mantra grubunun baştan çıkarıcı dans hiti.", lyricsUrl: "https://genius.com/Mantra-bi-kiss-lyrics" },
+      { id: "man_toysun", title: "Toysun", group: "Mantra", year: 2026, lyrics: "Henüz toysun, daha pişeceksin
+Bebeğim düşe kalka öğreneceksin", clue: "Mantra grubunun 'Daha pişeceksin' nakaratlı enerjik parçası.", lyricsUrl: "https://genius.com/Mantra-toysun-lyrics" },
+      { id: "man_goygoy", title: "Goygoy", group: "Mantra", year: 2026, lyrics: "Hava cıva goygoy goygoy, lafa söze kalsak işimiz çok zor
+Nasıl bi muhabbet gel de sabret, görüntü var ses yok", clue: "Mantra grubunun 'Goygoy' ritimli pop-rap şarkısı.", lyricsUrl: "https://genius.com/Mantra-goy-goy-lyrics" },
+      { id: "man_tuttu_firlatti", title: "Tuttu Fırlattı", group: "Mantra", year: 2026, lyrics: "Tuttu fırlattı kalbimi, ezdi üstünü çiğnedi
+Zamanla geçer dedi, zamanla zamanla", clue: "Mantra'nın Gökçe'nin efsanevi şarkısına getirdiği modern yorum.", lyricsUrl: "https://genius.com/Gokce-tuttu-frlatt-lyrics" },
+      { id: "man_red_flag_mantra", title: "Red Flag", group: "Mantra", year: 2026, lyrics: "Red flag net hem de Ultra Pro Max
+Belli değil sağı solu hem de sırf kompleks, yok almayım ben canım no thanks", clue: "Mantra grubunun 'Ultra Pro Max' sözlü viral parçası.", lyricsUrl: "https://genius.com/Mantra-red-flag-lyrics" },
+      { id: "man_tek_basima", title: "Tek Başıma", group: "Mantra", year: 2026, lyrics: "Tek başıma kurdum yaktım, tek başıma düştüm kalktım
+Tek başıma ben başardım yar, o yar", clue: "Mantra grubunun güçlü duruş sergileyen parçası.", lyricsUrl: "https://genius.com/Mantra-tek-basma-lyrics" },
+      { id: "man_kaldim_ellerinde", title: "Kaldım Ellerinde", group: "Mantra", year: 2026, lyrics: "Kaldım ellerinde, vurdun hedefi tam yerinden
+Aşk gelince saklanamazsın, yakalar o yaka paça kurtulamazsın", clue: "Mantra'nın 'Ateşimi harla' nakaratlı ritmik şarkısı.", lyricsUrl: "https://genius.com/Mantra-kaldm-ellerinde-lyrics" },
+      { id: "rad_hayran", title: "Hayran", group: "Radikal", year: 2026, lyrics: "Sana benden olmaz bi' hayran, koşmam peşinde darmaduman
+Kaçsan da kovalamam, hayran, hiç boşuna çabalama olmam Mecnun'un Leyla'm", clue: "Radikal grubunun iddialı çıkış şarkısı.", lyricsUrl: "https://genius.com/Radikal-hayran-lyrics" },
+      { id: "rad_korkmam_ben", title: "Korkmam Ben", group: "Radikal", year: 2026, lyrics: "Korkmam ben senin yalanlarından, işlemez anılarıma
+Yalancılar giremez rüyalarıma", clue: "Radikal grubunun güçlü ve cesur sözlere sahip şarkısı.", lyricsUrl: "https://genius.com/Radikal-korkmam-ben-lyrics" }
     ];
 
     // === SES SENTEZLEYİCİ ===
